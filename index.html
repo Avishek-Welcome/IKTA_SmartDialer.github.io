@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IKTA Smart Dialer — Official Developer Portal & User Guide</title>
+  <meta name="description" content="IKTA Smart Dialer (com.ikta.iktasmartdialer) — Smart Caller ID, TRAI 1909 DND Spam Protection, and Educational Quiz Rewards for Android." />
+  <style>
+    :root {
+      --bg-dark: #0a1128;
+      --bg-card: #111d42;
+      --accent-pink: #ff2e7e;
+      --accent-gold: #ffd166;
+      --accent-cyan: #00d2ff;
+      --accent-green: #06d6a0;
+      --text-light: #f8fafc;
+      --text-muted: #cbd5e1;
+      --border-glow: rgba(255, 209, 102, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* Tricolor Top Accent Bar */
+    .tricolor-bar {
+      height: 5px;
+      background: linear-gradient(90deg, #ff9933 0%, #ffffff 50%, #138808 100%);
+      width: 100%;
+    }
+
+    header {
+      background: radial-gradient(circle at top right, #1d2d6b, var(--bg-dark) 70%);
+      padding: 3.5rem 1.5rem 3rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border-glow);
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 46, 126, 0.16);
+      color: #ff6ba3;
+      border: 1px solid var(--accent-pink);
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: var(--accent-gold);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      max-width: 680px;
+      margin: 0 auto 1.8rem;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.6rem;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-pink), #d91b65);
+      color: #ffffff;
+      box-shadow: 0 6px 20px rgba(255, 46, 126, 0.35);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--accent-gold);
+      border: 1px solid var(--accent-gold);
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    h2 {
+      color: var(--accent-gold);
+      font-size: 1.75rem;
+      margin-bottom: 1.2rem;
+      border-left: 4px solid var(--accent-pink);
+      padding-left: 0.85rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .card h3 {
+      color: var(--accent-cyan);
+      margin-bottom: 0.5rem;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Step-by-Step Instructions */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--bg-card);
+      border: 1px solid rgba(0, 210, 255, 0.2);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent-pink);
+      color: #fff;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .step-content h4 {
+      color: var(--accent-gold);
+      margin-bottom: 0.25rem;
+      font-size: 1.05rem;
+    }
+
+    .step-content p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Policy & Privacy Box */
+    .policy-box {
+      background: rgba(17, 29, 66, 0.85);
+      border: 1px solid var(--border-glow);
+      border-radius: 14px;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .policy-box h3 {
+      color: var(--accent-green);
+      margin-bottom: 0.6rem;
+    }
+
+    .policy-box ul {
+      margin-left: 1.25rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .policy-box li {
+      margin-bottom: 0.45rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--border-glow);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tricolor-bar"></div>
+
+  <header>
+    <span class="badge">Android App • com.ikta.iktasmartdialer</span>
+    <h1>IKTA Smart Dialer</h1>
+    <p class="subtitle">
+      Next-generation Default Phone &amp; Caller ID application with smart call management, one-tap TRAI 1909 DND spam reporting, and interactive general knowledge quiz challenges.
+    </p>
+    <div class="cta-group">
+      <a href="#instructions" class="btn btn-primary">How to Set Up &amp; Use</a>
+      <a href="#privacy" class="btn btn-secondary">Privacy Policy &amp; Data Safety</a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Core Features -->
+    <h2>Key Application Features</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Smart Default Dialer</h3>
+        <p>Fast T9 keypad search, clean call history logs, speed dial shortcuts, and customizable caller ID themes.</p>
+      </div>
+      <div class="card">
+        <h3>TRAI 1909 Spam Reporting</h3>
+        <p>Identify unwanted telemarketing calls and generate instant TRAI 1909 DND spam complaints right after a call ends.</p>
+      </div>
+      <div class="card">
+        <h3>Cloud Contact Photo Sync</h3>
+        <p>Keep your address book organized with duplicate contact cleanup and automatic contact profile photo syncing.</p>
+      </div>
+      <div class="card">
+        <h3>Quiz Squad &amp; Study Group</h3>
+        <p>Participate in daily educational quizzes, earn virtual IKTA Coins for personal satisfaction, and climb the Friends Leaderboard.</p>
+      </div>
+    </div>
+
+    <!-- Step-by-Step User Instructions -->
+    <h2 id="instructions">Step-by-Step Setup &amp; Usage Instructions</h2>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Install &amp; Set as Default Phone App</h4>
+          <p>Open <strong>IKTA Smart Dialer</strong> after installation and tap <strong>"Set as Default"</strong> when prompted by Android. This allows the app to handle outgoing/incoming calls, display Caller ID, and manage your call history.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Grant Essential Telecommunications Permissions</h4>
+          <p>Allow <strong>Phone</strong>, <strong>Contacts</strong>, and <strong>Call Logs</strong> permissions so you can search contacts quickly, view recent call durations, and manage blocked numbers.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Report Spam Calls via TRAI 1909</h4>
+          <p>After disconnecting an unsolicited commercial call, open the call entry or post-call summary and select <strong>Report Spam (1909)</strong> to format and submit a DND complaint.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Play Educational Quizzes &amp; Earn Virtual IKTA Coins</h4>
+          <p>Navigate to the <strong>Win Quiz &amp; Collect Coins</strong> section, optionally watch a rewarded video ad to unlock quiz rounds, and answer general knowledge questions to earn virtual IKTA Coins and Study Group ranking points.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Privacy, Virtual Coin Disclaimer & Data Deletion -->
+    <h2 id="privacy">Privacy Policy, Virtual Points Disclaimer &amp; Support</h2>
+    <div class="policy-box">
+      <h3>Important Disclosures &amp; Data Safety</h3>
+      <ul>
+        <li><strong>Core Dialer Data Usage:</strong> Contacts and Call Log data are used strictly to provide core default dialer, caller ID, and call history features on your device. We never sell your personal contacts or call logs.</li>
+        <li><strong>Advertising &amp; Analytics:</strong> This application uses Google AdMob and certified mediation partners to display ads. Advertising IDs (AAID) may be processed securely in transit for ad delivery and analytics.</li>
+        <li><strong>Virtual IKTA Coins Disclaimer:</strong> IKTA Coins and Team Points are purely virtual score units earned for educational quiz participation and personal satisfaction. They hold <strong>zero cash, monetary, gift, or cryptocurrency value</strong> and cannot be withdrawn or redeemed for real money.</li>
+        <li><strong>Account &amp; Data Deletion Request:</strong> Users can clear local app data anytime via Android Settings or request cloud profile deletion by contacting our developer support email below.</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <footer>
+    <p><strong>ABS Software Solutions</strong> — Developer of IKTA Smart Dialer (<code>com.ikta.iktasmartdialer</code>)</p>
+    <p>Authorized Seller Verification: <a href="/app-ads.txt">app-ads.txt</a> | Support: <a href="mailto:support@abssoftwaresolutions.in">support@abssoftwaresolutions.in</a></p>
+    <p style="margin-top: 0.5rem; font-size: 0.8rem;">&copy; 2026 ABS Software Solutions. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
