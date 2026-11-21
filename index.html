@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IKTA Smart Dialer — Intelligent, Fast & Privacy-Centric Android Dialer</title>
-    <meta name="description" content="A modern, high-performance Android telephone suite featuring 12ms T9 search, orange unknown call highlighting, TRAI 1909 regulatory complaints, cryptographic caller ID, crowdsourced spam defense, and an educational 10-tier quiz network.">
+    <meta name="description" content="A modern, high-performance Android telephone suite featuring instant WhatsApp identity verification, 12ms T9 search, orange unknown call highlighting, TRAI 1909 regulatory complaints, and an educational 10-tier quiz network. Available on Google Play.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,6 +27,14 @@
                             700: '#4338CA',
                             800: '#3730A3',
                             900: '#312E81'
+                        },
+                        wa: {
+                            50: '#ECFDF5',
+                            100: '#D1FAE5',
+                            500: '#10B981',
+                            600: '#059669',
+                            700: '#047857',
+                            brand: '#25D366'
                         },
                         slateBg: '#F8FAFC',
                         cardBg: '#FFFFFF',
@@ -53,8 +61,9 @@
             font-family: 'Inter', sans-serif;
             background-image:
                 radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.08) 0%, transparent 60%),
-                radial-gradient(circle at 100% 30%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
-                radial-gradient(circle at 0% 70%, rgba(244, 63, 94, 0.04) 0%, transparent 50%);
+                radial-gradient(circle at 95% 20%, rgba(16, 185, 129, 0.07) 0%, transparent 50%),
+                radial-gradient(circle at 5% 45%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 50% 85%, rgba(244, 63, 94, 0.04) 0%, transparent 50%);
             background-attachment: fixed;
         }
 
@@ -80,6 +89,19 @@
             transform: translateY(-3px);
         }
 
+        .wa-card {
+            background: #FFFFFF;
+            border: 1px solid #A7F3D0;
+            box-shadow: 0 10px 30px -5px rgba(16, 185, 129, 0.12);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .wa-card:hover {
+            border-color: #10B981;
+            box-shadow: 0 22px 40px -5px rgba(16, 185, 129, 0.2);
+            transform: translateY(-3px);
+        }
+
         .gradient-border-card {
             background: #FFFFFF;
             border: 2px solid transparent;
@@ -87,6 +109,15 @@
             background-origin: border-box;
             background-clip: padding-box, border-box;
             box-shadow: 0 10px 30px -5px rgba(79, 70, 229, 0.15);
+        }
+
+        .gradient-wa-card {
+            background: #FFFFFF;
+            border: 2px solid transparent;
+            background-image: linear-gradient(white, white), linear-gradient(135deg, #059669, #10B981, #3B82F6);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            box-shadow: 0 15px 35px -5px rgba(16, 185, 129, 0.2);
         }
 
         /* Phone Mockup Frame */
@@ -154,7 +185,7 @@
     </div>
 
     <!-- ================= NAVBAR ================= -->
-    <header class="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/85 backdrop-blur-md shadow-sm">
+    <header class="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur-md shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
             <!-- Brand Logo -->
             <a href="index.html" class="flex items-center gap-3 group">
@@ -170,29 +201,32 @@
             </a>
 
             <!-- Centered Nav Links -->
-            <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600">
+            <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-600">
+                <a href="#hero" class="hover:text-indigo-600 transition" data-i18n="nav_home">Home Screen</a>
+                <a href="#identity-verification" class="text-emerald-700 hover:text-emerald-800 transition flex items-center gap-1.5 font-bold bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 shadow-sm">
+                    <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i> <span data-i18n="nav_identity">Instant Verification</span>
+                </a>
                 <a href="#features" class="hover:text-indigo-600 transition" data-i18n="nav_features">Capabilities</a>
                 <a href="setup_guide.html" class="hover:text-indigo-600 transition" data-i18n="nav_setup">Setup Guide</a>
                 <a href="quiz.html" class="text-indigo-600 hover:text-indigo-700 transition flex items-center gap-1.5">
                     <i class="fa-solid fa-trophy text-amber-500 text-xs"></i> <span data-i18n="nav_quiz">Quiz & Network</span>
                 </a>
                 <a href="#comparison" class="hover:text-indigo-600 transition" data-i18n="nav_comparison">Comparison</a>
-                <a href="privacy_policy.html" class="hover:text-indigo-600 transition" data-i18n="nav_privacy">Privacy & Safety</a>
                 <a href="contact_us.html" class="hover:text-indigo-600 transition" data-i18n="nav_contact">Contact</a>
             </nav>
 
             <!-- Actions Right -->
             <div class="flex items-center gap-3">
                 <!-- Language Selector Button in Navbar -->
-                <button onclick="openLangModal()" class="px-3.5 py-1.5 text-xs font-mono font-bold rounded-lg border border-slate-200 bg-slate-50 text-slate-700 hover:text-indigo-600 hover:border-indigo-400 hover:bg-indigo-50 transition flex items-center gap-2 shadow-sm">
+                <button onclick="openLangModal()" class="px-3 py-1.5 text-xs font-mono font-bold rounded-lg border border-slate-200 bg-slate-50 text-slate-700 hover:text-indigo-600 hover:border-indigo-400 hover:bg-indigo-50 transition flex items-center gap-2 shadow-sm">
                     <i class="fa-solid fa-globe text-indigo-600"></i>
                     <span id="currentLangLabel">English</span>
                     <i class="fa-solid fa-angle-down text-[10px] text-slate-400"></i>
                 </button>
 
-                <!-- High Contrast Light Theme CTA -->
-                <a href="#download" class="hidden sm:inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-bold tracking-wide text-white uppercase rounded-lg bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 transition shadow-md shadow-indigo-500/25">
-                    <i class="fa-solid fa-download"></i> <span data-i18n="nav_cta">Download App</span>
+                <!-- Official Google Play Link Button (Exclusive Download Source) -->
+                <a href="https://play.google.com/store/apps/details?id=com.ikta.iktasmartdialer" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-bold tracking-wide text-white uppercase rounded-lg bg-slate-900 hover:bg-slate-800 transition shadow-md shadow-slate-900/20">
+                    <i class="fa-brands fa-google-play text-emerald-400"></i> <span data-i18n="nav_cta">Google Play</span>
                 </a>
 
                 <!-- Mobile Menu Button -->
@@ -204,6 +238,10 @@
 
         <!-- Mobile Navigation Menu -->
         <div id="mobileNav" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-5 space-y-3 font-semibold text-sm text-slate-700 shadow-xl">
+            <a href="#hero" onclick="toggleMobileNav()" class="block py-2 hover:text-indigo-600" data-i18n="nav_home">Home Screen</a>
+            <a href="#identity-verification" onclick="toggleMobileNav()" class="block py-2 text-emerald-700 font-bold flex items-center gap-2 bg-emerald-50 px-3 rounded-lg border border-emerald-200">
+                <i class="fa-brands fa-whatsapp text-emerald-600"></i> <span data-i18n="nav_identity">Instant Identity Verification</span>
+            </a>
             <a href="#features" onclick="toggleMobileNav()" class="block py-2 hover:text-indigo-600" data-i18n="nav_features">Capabilities</a>
             <a href="setup_guide.html" class="block py-2 hover:text-indigo-600" data-i18n="nav_setup">Setup Guide</a>
             <a href="quiz.html" class="block py-2 text-indigo-600 flex items-center gap-2">
@@ -216,13 +254,15 @@
                 <button onclick="openLangModal(); toggleMobileNav();" class="flex-1 py-2 text-xs font-bold rounded-lg border border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-globe text-indigo-600"></i> Select Language
                 </button>
-                <a href="#download" onclick="toggleMobileNav()" class="flex-1 py-2 text-xs font-bold rounded-lg bg-indigo-600 text-white text-center">Download APK</a>
+                <a href="https://play.google.com/store/apps/details?id=com.ikta.iktasmartdialer" target="_blank" rel="noopener noreferrer" onclick="toggleMobileNav()" class="flex-1 py-2 text-xs font-bold rounded-lg bg-slate-900 text-white text-center flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-google-play text-emerald-400"></i> Google Play
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- ================= ASYMMETRIC HERO SECTION (LIGHT THEME) ================= -->
-    <section class="relative z-10 pt-12 pb-20 lg:pt-16 lg:pb-28 overflow-hidden">
+    <!-- ================= ASYMMETRIC HERO SECTION (LIGHT THEME - HOME SCREEN DISPLAYED FIRST) ================= -->
+    <section id="hero" class="relative z-10 pt-12 pb-20 lg:pt-16 lg:pb-28 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
@@ -230,9 +270,9 @@
                 <div class="lg:col-span-7 space-y-6">
 
                     <!-- Eyebrow Pill -->
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-indigo-200 bg-indigo-50/80 text-indigo-800 text-xs font-mono font-semibold shadow-sm">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-indigo-200 bg-indigo-50/80 text-indigo-800 text-xs font-mono font-semibold shadow-sm">
                         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span data-i18n="hero_pill">Official v1.0.0 Production Release • 100% Ad-Free Verified</span>
+                        <span data-i18n="hero_pill">Official Production Release • Available on Google Play Store</span>
                     </div>
 
                     <!-- 2-Line Headline -->
@@ -243,19 +283,19 @@
 
                     <!-- Subheadline (Inter, 1.6 Line-Height, max-w-65ch) -->
                     <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-[65ch]" data-i18n="hero_sub">
-                        An ultra-fast, modern telephone suite engineered with a 12ms SQLite T9 search engine, orange unknown call highlighting, 1-tap TRAI 1909 regulatory complaints, and an educational 10-tier quiz network.
+                        An ultra-fast, modern telephone suite engineered with a 12ms SQLite T9 search engine, instant WhatsApp identity verification, orange unknown call highlighting, 1-tap TRAI 1909 regulatory complaints, and an educational 10-tier quiz network.
                     </p>
 
-                    <!-- Primary & Secondary CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-                        <a href="IKTA_Smart_Dialer_Website_Pages.zip" download="IKTA_Smart_Dialer_Website_Pages.zip" class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-sm tracking-wide shadow-lg shadow-indigo-500/25 transition hover:-translate-y-0.5">
-                            <i class="fa-solid fa-file-zipper text-base"></i>
-                            <span data-i18n="btn_download_zip">Download Website (.ZIP)</span>
+                    <!-- Primary & Secondary CTA Buttons (Google Play Only - No Direct APK Download) -->
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+                        <a href="https://play.google.com/store/apps/details?id=com.ikta.iktasmartdialer" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm tracking-wide shadow-lg shadow-slate-900/20 transition hover:-translate-y-0.5">
+                            <i class="fa-brands fa-google-play text-emerald-400 text-base"></i>
+                            <span data-i18n="btn_google_play">Get on Google Play</span>
                         </a>
 
-                        <a href="IKTASmartDialer.apk" download="IKTASmartDialer.apk" class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border-2 border-slate-200 hover:border-indigo-400 font-bold text-sm tracking-wide shadow-sm transition hover:-translate-y-0.5">
-                            <i class="fa-brands fa-android text-emerald-600 text-base"></i>
-                            <span data-i18n="btn_download_apk">Get Android App (.APK)</span>
+                        <a href="#identity-verification" class="inline-flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold text-sm tracking-wide shadow-sm transition hover:-translate-y-0.5">
+                            <i class="fa-brands fa-whatsapp text-emerald-600 text-lg"></i>
+                            <span>Instant Verification</span>
                         </a>
 
                         <a href="setup_guide.html" class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-sm transition">
@@ -286,44 +326,168 @@
 
                 </div>
 
-                <!-- Right Column: Interactive Phone Mockup with Dual Screen Toggle -->
+                <!-- Right Column: Interactive Phone Mockup with HOME SCREEN SHOWN AT FIRST -->
                 <div class="lg:col-span-5 flex justify-center">
                     <div class="relative w-full max-w-sm">
 
                         <!-- Background Ambient Glow -->
-                        <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500/15 via-purple-500/10 to-pink-500/10 rounded-3xl blur-2xl -z-10"></div>
+                        <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500/15 via-emerald-500/15 to-purple-500/10 rounded-3xl blur-2xl -z-10"></div>
 
                         <!-- Phone Container -->
                         <div class="phone-frame-light p-2 shadow-2xl">
-                            <!-- Inner Display Screen -->
+                            <!-- Inner Display Screen: HOME SCREEN SHOWN AT FIRST -->
                             <div class="bg-slate-950 rounded-[32px] overflow-hidden relative">
-                                <img id="heroPhoneImg" src="screenshots/topic_dialer_dual_sim.png" alt="IKTA Smart Dialer Interface" class="w-full h-auto object-cover transition-opacity duration-300">
+                                <img id="heroPhoneImg" src="screenshots/home_screen.png" alt="IKTA Smart Dialer Home Screen" class="w-full h-auto object-cover transition-opacity duration-300">
 
                                 <!-- Floating Micro-telemetry Badges -->
                                 <div class="absolute top-8 left-3 right-3 flex items-center justify-between pointer-events-none">
                                     <div class="px-2.5 py-1 rounded-full bg-slate-900/90 border border-emerald-500/40 text-[10px] font-mono text-emerald-400 flex items-center gap-1.5 shadow-md">
-                                        <i class="fa-solid fa-shield-halved"></i>
-                                        <span>TELECOM PRIVACY ON</span>
+                                        <i class="fa-solid fa-clock-rotate-left"></i>
+                                        <span id="heroScreenBadgeText">HOME & RECENTS</span>
                                     </div>
                                     <div class="px-2.5 py-1 rounded-full bg-slate-900/90 border border-indigo-500/40 text-[10px] font-mono text-indigo-400 flex items-center gap-1.5 shadow-md">
-                                        <i class="fa-solid fa-bolt"></i>
-                                        <span>12ms T9 ENGINE</span>
+                                        <i class="fa-solid fa-shield-halved"></i>
+                                        <span>PRIVACY HARDENED</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Interactive Phone Screen Switcher Controls -->
-                        <div class="mt-4 flex items-center justify-center gap-2">
-                            <button onclick="setHeroScreen('screenshots/topic_dialer_dual_sim.png', this)" class="screen-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white shadow-sm transition">
-                                Dialer & Dual-SIM
+                        <!-- Interactive Phone Screen Switcher Controls (Home Screen First) -->
+                        <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
+                            <button onclick="setHeroScreen('screenshots/home_screen.png', this, 'HOME & RECENTS')" class="screen-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white shadow-sm transition">
+                                Home Screen
                             </button>
-                            <button onclick="setHeroScreen('screenshots/topic_unknown_orange_filter.png', this)" class="screen-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition">
-                                Orange Unknown
+                            <button onclick="setHeroScreen('screenshots/whatsapp_identity_verification.gif', this, 'INSTANT DP VERIFY')" class="screen-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition flex items-center gap-1">
+                                <i class="fa-brands fa-whatsapp text-emerald-600"></i> WhatsApp GIF
                             </button>
-                            <button onclick="setHeroScreen('screenshots/topic_quiz_and_coins.png', this)" class="screen-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition">
+                            <button onclick="setHeroScreen('screenshots/topic_dialer_dual_sim.png', this, '12ms T9 ENGINE')" class="screen-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition">
+                                Dual-SIM Dialer
+                            </button>
+                            <button onclick="setHeroScreen('screenshots/topic_unknown_orange_filter.png', this, 'ORANGE UNKNOWN')" class="screen-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition">
+                                Orange Alert
+                            </button>
+                            <button onclick="setHeroScreen('screenshots/topic_quiz_and_coins.png', this, 'QUIZ NETWORK')" class="screen-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition">
                                 Quiz Network
                             </button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FEATURE SHOWCASE SPOTLIGHT: INSTANT IDENTITY VERIFICATION ================= -->
+    <section id="identity-verification" class="relative z-10 py-20 bg-gradient-to-b from-emerald-50/40 via-white to-slate-50 border-y border-emerald-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                <!-- Left Column: High-Impact Typography & Feature Details -->
+                <div class="lg:col-span-6 space-y-6">
+
+                    <!-- Eyebrow Badge -->
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-300 bg-emerald-100/70 text-emerald-800 text-xs font-mono font-bold shadow-sm">
+                        <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i>
+                        <span data-i18n="identity_badge">EXCLUSIVE TELEPHONY SECURITY • INSTANT IDENTITY VERIFICATION</span>
+                    </div>
+
+                    <!-- Title (Exact User Request) -->
+                    <h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-slate-900 tracking-tight leading-tight" data-i18n="identity_title">
+                        Instant Identity Verification
+                    </h2>
+
+                    <!-- Exact User Requested Copy -->
+                    <p class="text-slate-700 text-lg sm:text-xl font-medium leading-relaxed" data-i18n="identity_desc">
+                        Quickly check a caller's WhatsApp profile picture and account presence before sending a message or returning a missed call.
+                    </p>
+
+                    <!-- Feature Capabilities List -->
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-white border border-emerald-200 shadow-sm">
+                            <div class="w-9 h-9 rounded-lg bg-emerald-500 text-white flex items-center justify-center shrink-0 text-base shadow-sm">
+                                <i class="fa-solid fa-image"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Real-Time WhatsApp Profile Picture Preview</h4>
+                                <p class="text-slate-600 text-xs mt-0.5 leading-relaxed">Instantly verify the caller's authentic identity, photo avatar, and status before initiating callback.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-white border border-emerald-200 shadow-sm">
+                            <div class="w-9 h-9 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0 text-base shadow-sm">
+                                <i class="fa-solid fa-user-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Account Presence & Active Status Check</h4>
+                                <p class="text-slate-600 text-xs mt-0.5 leading-relaxed">Know immediately whether the number belongs to a real individual or a dead disposable burner number.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-white border border-emerald-200 shadow-sm">
+                            <div class="w-9 h-9 rounded-lg bg-teal-600 text-white flex items-center justify-center shrink-0 text-base shadow-sm">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">1-Tap Direct Message Without Saving Contact</h4>
+                                <p class="text-slate-600 text-xs mt-0.5 leading-relaxed">Chat directly on WhatsApp with delivery drivers or clients without cluttering your phone contact book.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct Action Buttons -->
+                    <div class="pt-2 flex flex-wrap items-center gap-3 font-mono text-xs">
+                        <button onclick="openTopicModal('whatsapp_identity')" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition shadow-md shadow-emerald-500/25 flex items-center gap-2">
+                            <i class="fa-solid fa-expand"></i> Inspect Live Screens Side-by-Side
+                        </button>
+                        <a href="https://play.google.com/store/apps/details?id=com.ikta.iktasmartdialer" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold transition flex items-center gap-2 shadow-sm">
+                            <i class="fa-brands fa-google-play text-emerald-400 text-sm"></i> Download on Google Play
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Animated GIF Showcase Card inside Phone Frame -->
+                <div class="lg:col-span-6 flex justify-center">
+                    <div class="relative w-full max-w-md">
+
+                        <!-- Ambient Radial Glow -->
+                        <div class="absolute -inset-6 bg-gradient-to-tr from-emerald-500/25 via-teal-500/15 to-indigo-500/15 rounded-3xl blur-2xl -z-10"></div>
+
+                        <!-- Showcase Card Container -->
+                        <div class="wa-card rounded-3xl p-4 sm:p-5 shadow-2xl relative bg-white">
+                            <!-- Card Header -->
+                            <div class="flex items-center justify-between pb-3 mb-3 border-b border-emerald-100">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    <span class="font-mono text-xs font-bold text-emerald-800 uppercase tracking-wider">Live Action Telephony Demo</span>
+                                </div>
+                                <span class="font-mono text-[11px] text-slate-400 bg-slate-50 px-2.5 py-0.5 rounded-full border border-slate-200">whatsapp_identity_verification.gif</span>
+                            </div>
+
+                            <!-- Phone Container for GIF -->
+                            <div class="phone-frame-light p-1.5 shadow-xl mx-auto max-w-[340px]">
+                                <div class="bg-black rounded-[32px] overflow-hidden relative">
+                                    <img src="screenshots/whatsapp_identity_verification.gif" alt="Instant Identity Verification: Quickly check a caller's WhatsApp profile picture and account presence before sending a message or returning a missed call." class="w-full h-auto object-cover rounded-[30px]">
+
+                                    <!-- In-screen Overlay Banner -->
+                                    <div class="absolute bottom-3 left-3 right-3 p-2.5 rounded-xl bg-slate-900/90 backdrop-blur-md border border-emerald-500/40 text-white text-[11px] font-mono flex items-center justify-between shadow-lg">
+                                        <div class="flex items-center gap-2">
+                                            <i class="fa-brands fa-whatsapp text-emerald-400 text-base"></i>
+                                            <span class="font-bold text-emerald-300">DP & Presence Verified</span>
+                                        </div>
+                                        <span class="text-slate-300 font-semibold text-[10px]">1-Tap Secure Chat</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Caption below the GIF -->
+                            <div class="mt-4 text-center">
+                                <p class="text-xs font-mono text-slate-500">
+                                    <strong class="text-emerald-700">Instant Identity Verification:</strong> Quickly check a caller's WhatsApp profile picture and account presence before sending a message or returning a missed call.
+                                </p>
+                            </div>
                         </div>
 
                     </div>
@@ -350,6 +514,38 @@
 
             <!-- Bento Grid (3-Columns, gap-6) -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- Card 0 (Span 3 - Spotlight): WhatsApp Instant Identity Verification -->
+                <div class="md:col-span-3 gradient-wa-card rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-8 group cursor-pointer" onclick="openTopicModal('whatsapp_identity')">
+                    <div class="space-y-3 max-w-2xl">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-emerald-100 text-emerald-800 border border-emerald-300">
+                                <i class="fa-brands fa-whatsapp text-emerald-600"></i> NEW CAPABILITY • IDENTITY SHIELD
+                            </span>
+                            <span class="text-xs font-mono text-emerald-700 font-semibold">Live Animated Action GIF Included</span>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-slate-900 group-hover:text-emerald-700 transition">
+                            Instant Identity Verification & WhatsApp DP Check
+                        </h3>
+                        <p class="text-slate-700 text-sm leading-relaxed">
+                            Quickly check a caller's WhatsApp profile picture and account presence before sending a message or returning a missed call. Know who is contacting you without exposing your personal address book.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-600 pt-1">
+                            <span class="text-emerald-700 font-bold"><i class="fa-solid fa-check"></i> Live DP Preview</span>
+                            <span class="text-emerald-700 font-bold"><i class="fa-solid fa-check"></i> Active Presence Detection</span>
+                            <span class="text-emerald-700 font-bold"><i class="fa-solid fa-check"></i> Unsaved Number Chat</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 shrink-0">
+                        <div class="w-16 h-16 rounded-2xl bg-emerald-50 border-2 border-emerald-200 flex items-center justify-center text-emerald-600 text-3xl shadow-sm group-hover:scale-105 transition">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div class="text-xs font-mono text-slate-500 text-left">
+                            <div class="font-bold text-slate-800">Inspect Dual Views</div>
+                            <div class="text-emerald-600 font-semibold">Animated GIF + Call Logs</div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Card 1 (Span 2): SQLite 12ms T9 Search Engine -->
                 <div class="md:col-span-2 light-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between group cursor-pointer" onclick="openTopicModal('t9')">
@@ -551,7 +747,7 @@
                     How IKTA Smart Dialer Outclasses Legacy Solutions
                 </h2>
                 <p class="text-slate-600 text-base" data-i18n="comp_sub">
-                    No intrusive subscriptions, no contact scraping, and zero laggy background services.
+                    Strict Telecom privacy compliance, zero contact scraping, and ultra-fast local SQLite execution.
                 </p>
             </div>
 
@@ -565,6 +761,7 @@
                         <h3 class="font-heading font-bold text-2xl text-slate-800">Native Android App</h3>
                         <p class="text-slate-500 text-sm">Pre-installed phone apps by Samsung, Google, or Xiaomi.</p>
                         <div class="py-4 border-y border-slate-100 space-y-3 font-mono text-xs text-slate-600">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-xmark text-rose-500"></i> No WhatsApp DP & presence check</div>
                             <div class="flex items-center gap-2"><i class="fa-solid fa-xmark text-rose-500"></i> Slow search over 3,000+ contacts</div>
                             <div class="flex items-center gap-2"><i class="fa-solid fa-xmark text-rose-500"></i> No Orange highlight for unknowns</div>
                             <div class="flex items-center gap-2"><i class="fa-solid fa-xmark text-rose-500"></i> No TRAI 1909 regulatory 1-tap SMS</div>
@@ -579,7 +776,7 @@
 
                 <!-- Tier 2: IKTA Smart Dialer (RECOMMENDED) -->
                 <div class="gradient-border-card rounded-2xl p-8 relative flex flex-col justify-between shadow-xl">
-                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-mono text-[11px] font-bold tracking-wider uppercase shadow-md">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-indigo-600 via-emerald-600 to-purple-600 text-white font-mono text-[11px] font-bold tracking-wider uppercase shadow-md">
                         RECOMMENDED CHOICE
                     </div>
                     <div class="space-y-4 pt-2">
@@ -587,6 +784,7 @@
                         <h3 class="font-heading font-bold text-3xl text-slate-900">IKTA Smart Dialer</h3>
                         <p class="text-slate-600 text-sm">Complete high-speed telephone suite with privacy and educational rewards.</p>
                         <div class="py-4 border-y border-slate-100 space-y-3 font-mono text-xs text-slate-800 font-medium">
+                            <div class="flex items-center gap-2 text-emerald-700 font-bold"><i class="fa-brands fa-whatsapp text-emerald-600"></i> Instant WhatsApp DP & presence check</div>
                             <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> 12ms ultra-fast SQLite T9 lookup</div>
                             <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Orange Unknown Call highlighting</div>
                             <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> 250,000+ crowdsourced robocall auto-drop</div>
@@ -596,8 +794,8 @@
                         </div>
                     </div>
                     <div class="pt-6">
-                        <a href="IKTASmartDialer.apk" download="IKTASmartDialer.apk" class="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold text-xs uppercase tracking-wider transition shadow-md shadow-indigo-500/30">
-                            Download APK (100% Free)
+                        <a href="https://play.google.com/store/apps/details?id=com.ikta.iktasmartdialer" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold text-xs uppercase tracking-wider transition shadow-md shadow-indigo-500/30">
+                            <i class="fa-brands fa-google-play text-emerald-400 text-sm"></i> <span>Install on Google Play</span>
                         </a>
                     </div>
                 </div>
@@ -612,12 +810,12 @@
                             <div class="flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Scrapes entire user phonebook to cloud</div>
                             <div class="flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Intrusive video pop-ups on screen</div>
                             <div class="flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Heavy background battery drain</div>
-                            <div class="flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Expensive recurring subscriptions</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Uploads call logs to third-party brokers</div>
                             <div class="flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Frequent data privacy breaches</div>
                         </div>
                     </div>
                     <div class="pt-6">
-                        <span class="text-xs font-mono text-slate-400 font-semibold">Expensive Paid Subscriptions</span>
+                        <span class="text-xs font-mono text-slate-400 font-semibold">Intrusive Tracking & Scraping</span>
                     </div>
                 </div>
 
@@ -625,23 +823,46 @@
         </div>
     </section>
 
-    <!-- ================= DOWNLOAD & RELEASES SECTION ================= -->
+    <!-- ================= DOWNLOAD & OFFICIAL RELEASES SECTION ================= -->
     <section id="download" class="relative z-10 py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
                 <span class="text-xs font-mono font-bold tracking-wider uppercase text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100" data-i18n="dl_eyebrow">
-                    OFFICIAL PRODUCTION RELEASE
+                    OFFICIAL VERIFIED DISTRIBUTION
                 </span>
                 <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-slate-900 tracking-tight" data-i18n="dl_heading">
-                    Deploy to GitHub or Install on Android
+                    Official Release & Play Store Installation
                 </h2>
                 <p class="text-slate-600 text-sm" data-i18n="dl_sub">
-                    Everything is packaged and verified with zero advertisement artifacts.
+                    To guarantee authentic updates and data integrity, IKTA Smart Dialer is distributed exclusively through the Google Play Store. Sideloading from third-party APK sources is disabled.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
-                <!-- ZIP Package Card -->
+                <!-- Google Play Official Release Card -->
+                <div class="light-card rounded-2xl p-8 border-2 border-emerald-100 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 text-2xl shadow-sm">
+                            <i class="fa-brands fa-google-play"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-slate-900">Google Play Store (Official Release)</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Install directly from the official Google Play Store with Google Play Protect scanning and automatic background updates. Sideloading from external APK files is strictly blocked for security.
+                        </p>
+                        <div class="space-y-2 font-mono text-xs text-slate-600 py-3 border-y border-slate-100">
+                            <div class="flex justify-between"><span>Distribution:</span> <span class="font-bold text-slate-900">Google Play Store Only</span></div>
+                            <div class="flex justify-between"><span>Package ID:</span> <span class="text-indigo-600 font-bold">com.ikta.iktasmartdialer</span></div>
+                            <div class="flex justify-between"><span>Security:</span> <span class="text-emerald-600 font-bold"><i class="fa-solid fa-shield-check"></i> Play Protect Certified</span></div>
+                        </div>
+                    </div>
+                    <div class="pt-6">
+                        <a href="https://play.google.com/store/apps/details?id=com.ikta.iktasmartdialer" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2.5 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider transition shadow-md shadow-slate-900/20">
+                            <i class="fa-brands fa-google-play text-emerald-400 text-base"></i> Install on Google Play
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ZIP Package Card for Website Hosting -->
                 <div class="light-card rounded-2xl p-8 border-2 border-indigo-100 flex flex-col justify-between">
                     <div class="space-y-4">
                         <div class="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-center text-indigo-600 text-xl shadow-sm">
@@ -649,40 +870,17 @@
                         </div>
                         <h3 class="font-heading font-bold text-2xl text-slate-900">Full Website Package (.ZIP)</h3>
                         <p class="text-slate-600 text-sm leading-relaxed">
-                            Complete standalone multi-lingual website, setup guide, clean screenshots, and legal disclosures ready to push to GitHub Pages in seconds.
+                            Complete standalone multi-lingual website, setup guide, and clean privacy-first screenshots ready to push to GitHub Pages in seconds.
                         </p>
                         <div class="space-y-2 font-mono text-xs text-slate-600 py-3 border-y border-slate-100">
                             <div class="flex justify-between"><span>Archive Size:</span> <span class="font-bold text-slate-900">~18.0 MB</span></div>
-                            <div class="flex justify-between"><span>Clean Screenshots:</span> <span class="text-emerald-600 font-bold">67 Files (No Ads)</span></div>
+                            <div class="flex justify-between"><span>Clean Screenshots + GIF:</span> <span class="text-emerald-600 font-bold">69 Files (Verified)</span></div>
                             <div class="flex justify-between"><span>Hosting:</span> <span class="text-indigo-600 font-bold">GitHub Pages Ready</span></div>
                         </div>
                     </div>
                     <div class="pt-6">
                         <a href="IKTA_Smart_Dialer_Website_Pages.zip" download="IKTA_Smart_Dialer_Website_Pages.zip" class="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider transition shadow-md shadow-indigo-500/25">
                             <i class="fa-solid fa-download"></i> Download Website (.ZIP)
-                        </a>
-                    </div>
-                </div>
-
-                <!-- APK Card -->
-                <div class="light-card rounded-2xl p-8 border-2 border-emerald-100 flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 text-xl shadow-sm">
-                            <i class="fa-brands fa-android"></i>
-                        </div>
-                        <h3 class="font-heading font-bold text-2xl text-slate-900">Android Application (.APK)</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Official production APK built for Android phones and emulators (API 26+ / Android 8.0 through Android 15).
-                        </p>
-                        <div class="space-y-2 font-mono text-xs text-slate-600 py-3 border-y border-slate-100">
-                            <div class="flex justify-between"><span>Compatibility:</span> <span class="font-bold text-slate-900">Android 8.0 - 15</span></div>
-                            <div class="flex justify-between"><span>Permissions:</span> <span class="text-emerald-600 font-bold">Strictly Telecom</span></div>
-                            <div class="flex justify-between"><span>Version:</span> <span class="text-emerald-600 font-bold">v1.0.0 Verified</span></div>
-                        </div>
-                    </div>
-                    <div class="pt-6">
-                        <a href="IKTASmartDialer.apk" download="IKTASmartDialer.apk" class="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider transition shadow-md shadow-emerald-500/25">
-                            <i class="fa-brands fa-android"></i> Download App (.APK)
                         </a>
                     </div>
                 </div>
@@ -730,7 +928,7 @@
                         <span class="font-heading font-bold text-slate-900 text-base tracking-tight">IKTA Smart Dialer</span>
                     </div>
                     <p class="text-slate-500 text-xs leading-relaxed max-w-sm">
-                        High-performance intelligent telephony suite for Android devices. Engineered for speed, privacy, and full regulatory compliance.
+                        High-performance intelligent telephony suite for Android devices. Engineered for speed, privacy, instant WhatsApp verification, and full regulatory compliance.
                     </p>
                     <div class="flex items-center gap-2 text-emerald-600 text-[11px] font-semibold">
                         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -742,11 +940,11 @@
                 <div class="space-y-3">
                     <span class="text-slate-900 font-bold uppercase tracking-wider text-[11px]">Product</span>
                     <ul class="space-y-2">
-                        <li><a href="#features" class="hover:text-indigo-600 transition">T9 Search Engine</a></li>
-                        <li><a href="#features" class="hover:text-indigo-600 transition">Caller ID Privacy</a></li>
+                        <li><a href="#identity-verification" class="text-emerald-700 hover:underline font-bold"><i class="fa-brands fa-whatsapp text-emerald-600"></i> Instant DP Check</a></li>
+                        <li><a href="#hero" class="hover:text-indigo-600 transition">Home Screen Logs</a></li>
+                        <li><a href="#features" class="hover:text-indigo-600 transition">12ms T9 Engine</a></li>
                         <li><a href="#features" class="hover:text-indigo-600 transition">Spam Protection</a></li>
                         <li><a href="quiz.html" class="text-indigo-600 hover:underline font-bold">10-Tier Quiz Network</a></li>
-                        <li><a href="#features" class="hover:text-indigo-600 transition">Artistic Wallpapers</a></li>
                     </ul>
                 </div>
 
@@ -758,7 +956,7 @@
                         <li><a href="user_manual.html" class="hover:text-indigo-600 transition">Technical Manual</a></li>
                         <li><a href="privacy_policy.html" class="hover:text-indigo-600 transition">Privacy Policy</a></li>
                         <li><a href="privacy_policy.html#data-safety" class="hover:text-indigo-600 transition">Data Safety</a></li>
-                        <li><a href="#download" class="hover:text-indigo-600 transition">Download ZIP & APK</a></li>
+                        <li><a href="https://play.google.com/store/apps/details?id=com.ikta.iktasmartdialer" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:underline font-bold">Google Play Store</a></li>
                     </ul>
                 </div>
 
@@ -910,11 +1108,16 @@
         const i18nData = {
             en: {
                 label: 'English',
-                hero_pill: 'Official v1.0.0 Production Release • 100% Ad-Free Verified',
+                nav_home: 'Home Screen',
+                nav_identity: 'Instant Verification',
+                identity_badge: 'EXCLUSIVE TELEPHONY SECURITY • INSTANT IDENTITY VERIFICATION',
+                identity_title: 'Instant Identity Verification',
+                identity_desc: "Quickly check a caller's WhatsApp profile picture and account presence before sending a message or returning a missed call.",
+                hero_pill: 'Official Production Release • Available on Google Play Store',
                 hero_title: 'Intelligent Android Telephony.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600">Hardened for Privacy.</span>',
-                hero_sub: 'An ultra-fast, modern telephone suite engineered with a 12ms SQLite T9 search engine, orange unknown call highlighting, 1-tap TRAI 1909 regulatory complaints, and an educational 10-tier quiz network.',
+                hero_sub: 'An ultra-fast, modern telephone suite engineered with a 12ms SQLite T9 search engine, instant WhatsApp identity verification, orange unknown call highlighting, 1-tap TRAI 1909 regulatory complaints, and an educational 10-tier quiz network.',
                 btn_download_zip: 'Download Website (.ZIP)',
-                btn_download_apk: 'Get Android App (.APK)',
+                btn_google_play: 'Get on Google Play',
                 btn_explore_guide: 'Setup Guide',
                 nav_features: 'Capabilities',
                 nav_setup: 'Setup Guide',
@@ -922,7 +1125,7 @@
                 nav_comparison: 'Comparison',
                 nav_privacy: 'Privacy & Safety',
                 nav_contact: 'Contact',
-                nav_cta: 'Download App',
+                nav_cta: 'Google Play',
                 stat_lookup: 'SQLite T9 Lookup',
                 stat_privacy: 'Data Harvesting',
                 stat_threats: 'Spam Threat DB',
@@ -950,18 +1153,23 @@
                 theme_desc: 'Customize incoming and outgoing call screens with 5 handcrafted artistic wallpapers, custom photo selector, AMOLED dark mode, and 7 caller ID text colors.',
                 comp_eyebrow: 'TRANSPARENT ARCHITECTURAL COMPARISON',
                 comp_heading: 'How IKTA Smart Dialer Outclasses Legacy Solutions',
-                comp_sub: 'No intrusive subscriptions, no contact scraping, and zero laggy background services.',
-                dl_eyebrow: 'OFFICIAL PRODUCTION RELEASE',
-                dl_heading: 'Deploy to GitHub or Install on Android',
-                dl_sub: 'Everything is packaged and verified with zero advertisement artifacts.'
+                comp_sub: 'Strict Telecom privacy compliance, zero contact scraping, and ultra-fast local SQLite execution.',
+                dl_eyebrow: 'OFFICIAL VERIFIED DISTRIBUTION',
+                dl_heading: 'Official Release & Play Store Installation',
+                dl_sub: 'To guarantee authentic updates and data integrity, IKTA Smart Dialer is distributed exclusively through the Google Play Store.'
             },
             bn: {
                 label: 'বাংলা',
-                hero_pill: 'অফিসিয়াল v1.0.0 রিলিজ • সম্পূর্ণ বিজ্ঞাপনমুক্ত ভেরিফাইড',
+                nav_home: 'হোম স্ক্রিন',
+                nav_identity: 'তাৎক্ষণিক পরিচয় যাচাই',
+                identity_badge: 'বিশেষ টেলিকম নিরাপত্তা • তাৎক্ষণিক পরিচয় যাচাই',
+                identity_title: 'তাৎক্ষণিক পরিচয় যাচাই (Instant Identity Verification)',
+                identity_desc: 'কল ব্যাক বা মেসেজ পাঠানোর আগেই কলারের হোয়াটসঅ্যাপ প্রোফাইল ছবি এবং অ্যাকাউন্টের উপস্থিতি এক নিমেষে দেখে নিন।',
+                hero_pill: 'অফিসিয়াল প্রোডাকশন রিলিজ • গুগল প্লে স্টোরে উপলব্ধ',
                 hero_title: 'বুদ্ধিমান অ্যান্ড্রয়েড টেলিফোনি।<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600">সুরক্ষিত ও গোপনীয়।</span>',
-                hero_sub: '১২ মিলিসেকেন্ড আল্ট্রা-ফাস্ট SQLite T9 সার্চ, অপরিচিত নম্বরে অরেঞ্জ অ্যালার্ট, TRAI 1909 নিয়ন্ত্রণমূলক কমপ্লেন এবং শিক্ষামূলক ১০-টায়ার কুইজ নেটওয়ার্ক সমৃদ্ধ আধুনিক ডায়ালার।',
+                hero_sub: '১২ মিলিসেকেন্ড আল্ট্রা-ফাস্ট SQLite T9 সার্চ, হোয়াটসঅ্যাপ তাৎক্ষণিক পরিচয় যাচাই, অপরিচিত নম্বরে অরেঞ্জ অ্যালার্ট, TRAI 1909 নিয়ন্ত্রণমূলক কমপ্লেন এবং শিক্ষামূলক ১০-টায়ার কুইজ নেটওয়ার্ক।',
                 btn_download_zip: 'ওয়েবসাইট জিপ ডাউনলোড (.ZIP)',
-                btn_download_apk: 'অ্যান্ড্রয়েড অ্যাপ নিন (.APK)',
+                btn_google_play: 'গুগল প্লে থেকে ইনস্টল করুন',
                 btn_explore_guide: 'সেটআপ গাইড দেখুন',
                 nav_features: 'সুবিধাসমূহ',
                 nav_setup: 'সেটআপ গাইড',
@@ -969,7 +1177,7 @@
                 nav_comparison: 'তুলনা',
                 nav_privacy: 'গোপনীয়তা ও নিরাপত্তা',
                 nav_contact: 'যোগাযোগ',
-                nav_cta: 'অ্যাপ ডাউনলোড',
+                nav_cta: 'গুগল প্লে',
                 stat_lookup: 'T9 সার্চ গতি',
                 stat_privacy: 'ডাটা সংগ্রহ (শূন্য)',
                 stat_threats: 'স্প্যাম ডেটাবেস',
@@ -997,18 +1205,23 @@
                 theme_desc: '৫টি শৈল্পিক ওয়ালপেপার, গ্যালারি থেকে পছন্দের ছবি, ৭টি টেক্সট কালার এবং সম্পূর্ণ প্রাইভেট কলার আইডি মোড।',
                 comp_eyebrow: 'স্বচ্ছ ও নিরপেক্ষ প্রযুক্তি তুলনা',
                 comp_heading: 'কেন ইক্তা স্মার্ট ডায়ালার সেরা?',
-                comp_sub: 'কোনো বিজ্ঞাপন নেই, কোনো ডাটা চুরি নেই, এবং কোনো অপ্রয়োজনীয় সাবস্ক্রিপশন নেই।',
-                dl_eyebrow: 'অফিসিয়াল প্রোডাকশন প্যাকেজ',
-                dl_heading: 'গিটহাবে প্রকাশ করুন বা ফোনে ইনস্টল করুন',
-                dl_sub: 'সকল ফাইল সম্পূর্ণ ক্লিন ও বিজ্ঞাপনমুক্ত অবস্থায় জিপ ফাইল আকারে সংরক্ষিত।'
+                comp_sub: 'টেলিকম গোপনীয়তা ও সুরক্ষার নিশ্চয়তা, কোনো ডাটা চুরি নেই, এবং কোনো ল্যাগ ছাড়া লোকাল SQLite পারফরম্যান্স।',
+                dl_eyebrow: 'অফিসিয়াল ভেরিফাইড ডিস্ট্রিবিউশন',
+                dl_heading: 'অফিসিয়াল গুগল প্লে স্টোর থেকে ইনস্টল করুন',
+                dl_sub: 'নিরাপত্তা ও নির্ভরযোগ্য আপডেটের জন্য অ্যাপটি শুধুমাত্র গুগল প্লে স্টোরে প্রদান করা হয়েছে।'
             },
             hi: {
                 label: 'हिन्दी',
-                hero_pill: 'आधिकारिक v1.0.0 रिलीज़ • विज्ञापन-मुक्त',
+                nav_home: 'होम स्क्रीन',
+                nav_identity: 'इंस्टेंट पहचान जांच',
+                identity_badge: 'विशेष टेलीफोनी सुरक्षा • इंस्टेंट पहचान सत्यापन',
+                identity_title: 'इंस्टेंट आइडेंटिटी वेरिफिकेशन (WhatsApp)',
+                identity_desc: 'कॉल बैक करने या संदेश भेजने से पहले कॉलर की व्हाट्सएप प्रोफाइल तस्वीर और सक्रियता तुरंत जांचें।',
+                hero_pill: 'आधिकारिक प्रोडक्शन रिलीज़ • गूगल प्ले स्टोर पर उपलब्ध',
                 hero_title: 'स्मार्ट एंड्रॉयड टेलीफोनी।<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600">सुरक्षित और गोपनीय।</span>',
-                hero_sub: '12ms अल्ट्रा-फास्ट T9 सर्च, अज्ञात नंबरों के लिए ऑरेंज अलर्ट, TRAI 1909 रिपोर्टिंग और 10-स्तरीय क्विज़ नेटवर्क के साथ आधुनिक डायलर।',
+                hero_sub: '12ms अल्ट्रा-फास्ट T9 सर्च, व्हाट्सएप पहचान जांच, अज्ञात नंबरों के लिए ऑरेंज अलर्ट, TRAI 1909 रिपोर्टिंग और 10-स्तरीय क्विज़ नेटवर्क।',
                 btn_download_zip: 'वेबसाइट ज़िप डाउनलोड (.ZIP)',
-                btn_download_apk: 'ऐप डाउनलोड करें (.APK)',
+                btn_google_play: 'गूगल प्ले से इंस्टॉल करें',
                 btn_explore_guide: 'सेटअप गाइड देखें',
                 nav_features: 'विशेषताएं',
                 nav_setup: 'सेटअप गाइड',
@@ -1016,19 +1229,24 @@
                 nav_comparison: 'तुलना',
                 nav_privacy: 'गोपनीयता',
                 nav_contact: 'संपर्क',
-                nav_cta: 'ऐप डाउनलोड',
+                nav_cta: 'गूगल प्ले',
                 stat_lookup: 'T9 खोज गति',
                 stat_privacy: 'डेटा चोरी (शून्य)',
                 stat_threats: 'स्पैम डेटाबेस',
-                stat_quiz: 'क्विज़ स्तर'
+                stat_quiz: 'क्विज़ स्तर',
+                comp_sub: 'दूरसंचार गोपनीयता अनुपालन, शून्य डेटा चोरी, और सुपरफास्ट स्थानीय प्रदर्शन।'
             },
             te: {
                 label: 'తెలుగు',
-                hero_pill: 'అధికారిక v1.0.0 విడుదల • ప్రకటనలు లేవు',
+                nav_home: 'హోమ్ స్క్రీన్',
+                nav_identity: 'తక్షణ ధృవీకరణ',
+                identity_title: 'తక్షణ గుర్తింపు ధృవీకరణ (WhatsApp)',
+                identity_desc: 'కాల్ బ్యాక్ చేయడానికి ముందు లేదా మెసేజ్ పంపే ముందు కాలర్ యొక్క వాట్సాప్ ప్రొఫైల్ ఫోటోను త్వరగా తనిఖీ చేయండి.',
+                hero_pill: 'అధికారిక విడుదల • గూగుల్ ప్లే స్టోర్‌లో అందుబాటులో ఉంది',
                 hero_title: 'ఇంటెలిజెంట్ ఆండ్రాయిడ్ డయలర్.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600">పూర్తి గోప్యత & భద్రత.</span>',
-                hero_sub: '12ms వేగవంతమైన T9 సెర్చ్, తెలియని కాల్స్‌కు ఆరెంజ్ హైలైట్, TRAI 1909 ఫిర్యాదు మరియు 10-అంచెల క్విజ్ నెట్‌వర్క్.',
+                hero_sub: '12ms వేగవంతమైన T9 సెర్చ్, వాట్సాప్ ప్రొఫైల్ ధృవీకరణ, తెలియని కాల్స్‌కు ఆరెంజ్ హైలైట్, TRAI 1909 ఫిర్యాదు మరియు 10-అంచెల క్విజ్ నెట్‌వర్క్.',
                 btn_download_zip: 'వెబ్‌సైట్ జిప్ డౌన్‌లోడ్',
-                btn_download_apk: 'యాప్ డౌన్‌లోడ్ (.APK)',
+                btn_google_play: 'గూగుల్ ప్లే నుండి పొందండి',
                 btn_explore_guide: 'సెటప్ గైడ్',
                 nav_features: 'ఫీచర్లు',
                 nav_setup: 'సెటప్ గైడ్',
@@ -1036,15 +1254,19 @@
                 nav_comparison: 'పోలిక',
                 nav_privacy: 'గోప్యత',
                 nav_contact: 'సంప్రదించండి',
-                nav_cta: 'యాప్ డౌన్‌లోడ్'
+                nav_cta: 'గూగుల్ ప్లే'
             },
             ta: {
                 label: 'தமிழ்',
-                hero_pill: 'அதிகாரப்பூர்வ v1.0.0 வெளியீடு • விளம்பரங்கள் இல்லை',
+                nav_home: 'முகப்பு திரை',
+                nav_identity: 'உடனடி அடையாளம் சரிபார்ப்பு',
+                identity_title: 'உடனடி அடையாளம் சரிபார்ப்பு (WhatsApp)',
+                identity_desc: 'செய்தி அனுப்பும் முன் அல்லது அழைப்பைத் திரும்ப அழைக்கும் முன் வாட்ஸ்அப் சுயவிவரப் படம் மற்றும் கணக்கு இருப்பை விரைவாகச் சரிபார்க்கவும்.',
+                hero_pill: 'அதிகாரப்பூர்வ வெளியீடு • கூகுள் பிளே ஸ்டோரில் கிடைக்கிறது',
                 hero_title: 'புத்திசாலி ஆண்ட்ராய்டு டயலர்.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600">பாதுகாப்பானது & நம்பகமானது.</span>',
-                hero_sub: '12ms அதிவேக T9 தேடல், தெரியாத அழைப்புகளுக்கு ஆரஞ்சு எச்சரிக்கை, TRAI 1909 புகார் மற்றும் 10-அடுக்கு வினாடி வினா நெட்வொர்க்.',
+                hero_sub: '12ms அதிவேக T9 தேடல், வாட்ஸ்அப் உடனடி சரிபார்ப்பு, தெரியாத அழைப்புகளுக்கு ஆரஞ்சு எச்சரிக்கை, TRAI 1909 புகார் மற்றும் 10-அடுக்கு வினாடி வினா நெட்வொர்க்.',
                 btn_download_zip: 'ஜிப் பதிவிறக்குக',
-                btn_download_apk: 'செயலியை பதிவிறக்குக (.APK)',
+                btn_google_play: 'கூகுள் பிளேயில் பெறுங்கள்',
                 btn_explore_guide: 'வழிகாட்டி',
                 nav_features: 'அம்சங்கள்',
                 nav_setup: 'அமைப்பு வழிகாட்டி',
@@ -1052,15 +1274,19 @@
                 nav_comparison: 'ஒப்பீடு',
                 nav_privacy: 'தனியுரிமை',
                 nav_contact: 'தொடர்பு',
-                nav_cta: 'செயலி பதிவிறக்கம்'
+                nav_cta: 'கூகுள் பிளே'
             },
             mr: {
                 label: 'मराठी',
-                hero_pill: 'अधिकृत v1.0.0 रिलीझ • जाहिरातमुक्त',
+                nav_home: 'होम स्क्रीन',
+                nav_identity: 'त्वरित ओळख पडताळणी',
+                identity_title: 'त्वरित ओळख पडताळणी (WhatsApp)',
+                identity_desc: 'कॉल परत करण्यापूर्वी किंवा संदेश पाठवण्यापूर्वी कॉलरचे व्हॉट्सअ‍ॅप प्रोफाइल चित्र आणि खाते उपस्थिती त्वरित तपासा.',
+                hero_pill: 'अधिकृत रिलीझ • गुगल प्ले स्टोअरवर उपलब्ध',
                 hero_title: 'स्मार्ट अँड्रॉइड टेलिफोनी.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600">गोपनीय आणि सुरक्षित.</span>',
-                hero_sub: '१२ms सुपरफास्ट T9 शोध, अनोळखी कॉल्ससाठी ऑरेंज हायलाइट, TRAI १९०९ तक्रार आणि १०-स्तरीय क्विझ नेटवर्क.',
+                hero_sub: '१२ms सुपरफास्ट T9 शोध, व्हॉट्सअ‍ॅप ओळख पडताळणी, अनोळखी कॉल्ससाठी ऑरेंज हायलाइट, TRAI १९०९ तक्रार आणि १०-स्तरीय क्विझ नेटवर्क.',
                 btn_download_zip: 'वेबसाइट झिप डाउनलोड',
-                btn_download_apk: 'अ‍ॅप डाउनलोड करा (.APK)',
+                btn_google_play: 'गुगल प्ले वरून डाउनलोड करा',
                 btn_explore_guide: 'मार्गदर्शक',
                 nav_features: 'वैशिष्ट्ये',
                 nav_setup: 'मार्गदर्शक',
@@ -1068,12 +1294,21 @@
                 nav_comparison: 'तुलना',
                 nav_privacy: 'गोपनीयता',
                 nav_contact: 'संपर्क',
-                nav_cta: 'अ‍ॅप डाउनलोड'
+                nav_cta: 'गुगल प्ले'
             }
         };
 
         // Topic Detail Data with Dual-Screen Views (Both Scrolled and Top Views Side-by-Side)
         const topicDetails = {
+            whatsapp_identity: {
+                title: "Instant Identity Verification (WhatsApp DP & Presence)",
+                badge: "WHATSAPP IDENTITY SHIELD",
+                desc: "Quickly check a caller's WhatsApp profile picture and account presence before sending a message or returning a missed call. Inspect live DP, verify phone legitimacy, and chat directly without polluting your device contacts.",
+                view1_title: "View 1: Live Animated Workflow Demo",
+                view1_img: "screenshots/whatsapp_identity_verification.gif",
+                view2_title: "View 2: Home Screen Call Logs Integration",
+                view2_img: "screenshots/home_screen.png"
+            },
             t9: {
                 title: "12ms SQLite T9 Intelligent Search Engine",
                 badge: "SPEED & DUAL-SIM",
@@ -1098,8 +1333,8 @@
                 desc: "Every incoming, outgoing, or missed call not saved in your verified contacts glows in high-visibility safety orange. Prevents accidental callbacks to premium-rate numbers and scammers.",
                 view1_title: "View 1: Filtered Unknown Orange Call Log",
                 view1_img: "screenshots/topic_unknown_orange_filter.png",
-                view2_title: "View 2: All Call Logs with Color Segregation",
-                view2_img: "screenshots/topic_home_recents.png"
+                view2_title: "View 2: All Call Logs with Privacy Monogram Avatars",
+                view2_img: "screenshots/home_screen.png"
             },
             spam: {
                 title: "Crowdsourced Spam & Robocall Protection",
@@ -1183,12 +1418,16 @@
             nav.classList.toggle('hidden');
         }
 
-        function setHeroScreen(src, btn) {
+        function setHeroScreen(src, btn, badgeText) {
             const img = document.getElementById('heroPhoneImg');
+            const badge = document.getElementById('heroScreenBadgeText');
             img.style.opacity = '0';
             setTimeout(() => {
                 img.src = src;
                 img.style.opacity = '1';
+                if (badge && badgeText) {
+                    badge.innerText = badgeText;
+                }
             }, 150);
 
             document.querySelectorAll('.screen-btn').forEach(b => {
@@ -1215,22 +1454,22 @@
                         <!-- View 1 -->
                         <div class="light-card rounded-2xl p-4 border border-slate-200">
                             <span class="text-xs font-mono font-bold text-indigo-600 mb-2 block">${topic.view1_title}</span>
-                            <div class="rounded-xl overflow-hidden border border-slate-100 bg-slate-900 shadow-sm">
-                                <img src="${topic.view1_img}" alt="${topic.view1_title}" class="w-full h-auto object-cover">
+                            <div class="rounded-xl overflow-hidden border border-slate-100 bg-slate-900 shadow-sm flex items-center justify-center min-h-[300px]">
+                                <img src="${topic.view1_img}" alt="${topic.view1_title}" class="w-full h-auto object-cover max-h-[500px]">
                             </div>
                         </div>
 
                         <!-- View 2 -->
                         <div class="light-card rounded-2xl p-4 border border-slate-200">
                             <span class="text-xs font-mono font-bold text-purple-600 mb-2 block">${topic.view2_title}</span>
-                            <div class="rounded-xl overflow-hidden border border-slate-100 bg-slate-900 shadow-sm">
-                                <img src="${topic.view2_img}" alt="${topic.view2_title}" class="w-full h-auto object-cover">
+                            <div class="rounded-xl overflow-hidden border border-slate-100 bg-slate-900 shadow-sm flex items-center justify-center min-h-[300px]">
+                                <img src="${topic.view2_img}" alt="${topic.view2_title}" class="w-full h-auto object-cover max-h-[500px]">
                             </div>
                         </div>
                     </div>
 
                     <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-500">
-                        <span>Verified authentic Android UI screenshots with zero ads.</span>
+                        <span>Verified authentic Android UI screenshots with privacy protection.</span>
                         <button onclick="closeInspector()" class="px-4 py-2 rounded-lg bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition">Done Inspecting</button>
                     </div>
                 </div>
