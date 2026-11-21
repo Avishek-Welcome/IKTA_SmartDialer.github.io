@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy & Data Safety - IKTA Smart Dialer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1E3A8A;
+            --primary-light: #2563EB;
+            --primary-gradient: linear-gradient(135deg, #1E3A8A 0%, #2563EB 50%, #3B82F6 100%);
+            --accent-green: #10B981;
+            --accent-orange: #EA580C;
+            --dark: #0F172A;
+            --light-bg: #F8FAFC;
+            --white: #FFFFFF;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-800: #1E293B;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --shadow-soft: 0 10px 30px -10px rgba(30, 58, 138, 0.10);
+            --shadow-elevated: 0 20px 40px -15px rgba(30, 58, 138, 0.20);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--gray-800);
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(14px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .nav-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--dark);
+        }
+
+        .brand-badge {
+            width: 44px;
+            height: 44px;
+            background: var(--primary-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .brand-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-name span { color: var(--primary-light); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 14.5px;
+            font-weight: 600;
+            color: var(--gray-500);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-light);
+        }
+
+        .nav-cta {
+            background: var(--primary-gradient) !important;
+            color: var(--white) !important;
+            padding: 9px 18px;
+            border-radius: 25px;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Hero */
+        .policy-hero {
+            padding: 130px 24px 50px;
+            background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
+            text-align: center;
+        }
+
+        .policy-hero-inner {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .tag-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            color: #065F46;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .policy-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 14px;
+            letter-spacing: -1px;
+        }
+
+        .policy-desc {
+            font-size: 17.5px;
+            color: var(--gray-500);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* Content Container */
+        .policy-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px 24px 100px;
+        }
+
+        .policy-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--gray-200);
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .policy-card h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .policy-card h2 i {
+            color: var(--primary-light);
+            font-size: 22px;
+        }
+
+        .policy-card p {
+            color: #334155;
+            font-size: 15.5px;
+            margin-bottom: 14px;
+        }
+
+        .perm-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14.5px;
+        }
+
+        .perm-table th, .perm-table td {
+            padding: 12px 16px;
+            border: 1px solid var(--gray-200);
+            text-align: left;
+        }
+
+        .perm-table th {
+            background: var(--gray-100);
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .perm-badge {
+            font-family: monospace;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-light);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .highlight-box {
+            background: #EFF6FF;
+            border-left: 4px solid var(--primary-light);
+            padding: 16px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+            font-size: 15px;
+            color: #1E3A8A;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: #94A3B8;
+            padding: 50px 24px 30px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .footer a { color: #38BDF8; text-decoration: none; }
+
+        @media (max-width: 900px) {
+            .policy-card { padding: 26px 20px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-badge"><i class="fa-solid fa-phone-volume"></i></div>
+                <div class="brand-name">IKTA <span>Smart Dialer</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="setup_guide.html"><i class="fa-solid fa-gear"></i> Set Up Guide</a></li>
+                <li><a href="quiz.html"><i class="fa-solid fa-trophy"></i> Quiz & Network</a></li>
+                <li><a href="privacy_policy.html" class="active"><i class="fa-solid fa-shield-halved"></i> Privacy & Data Safety</a></li>
+                <li><a href="contact_us.html"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+                <li><a href="download.html" class="nav-cta"><i class="fa-solid fa-download"></i> Download</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="policy-hero">
+        <div class="policy-hero-inner">
+            <div class="tag-pill"><i class="fa-solid fa-lock"></i> Trust & Compliance</div>
+            <h1 class="policy-title">Privacy Policy & Data Safety</h1>
+            <p class="policy-desc">
+                Effective Date: November 2026. IKTA Smart Dialer is committed to absolute transparency, zero-data selling, and robust user data protection.
+            </p>
+        </div>
+    </header>
+
+    <div class="policy-container">
+
+        <!-- 1. Introduction -->
+        <article class="policy-card">
+            <h2><i class="fa-solid fa-shield-halved"></i> 1. Core Commitment & Privacy Philosophy</h2>
+            <p>
+                IKTA Smart Dialer ("we", "our", or "the app") provides a high-performance default phone calling experience. We believe personal communications, address books, and call logs belong exclusively to the device owner.
+            </p>
+            <div class="highlight-box">
+                <strong>Zero Commercial Data Selling:</strong> We do NOT sell, lease, rent, trade, or monetize your personal contacts, phone numbers, or call log entries with data brokers, advertisers, or analytics collectors.
+            </div>
+            <p>
+                All contact directories and call histories are saved locally inside your device's isolated SQLite Room database sandbox.
+            </p>
+        </article>
+
+        <!-- 2. Permissions -->
+        <article class="policy-card">
+            <h2><i class="fa-solid fa-key"></i> 2. Android System Permissions & Purpose</h2>
+            <p>
+                As a full-fledged replacement for your system default dialer, IKTA Smart Dialer requests standard Android Telecom and Contact permissions. Below is the explicit purpose of each permission:
+            </p>
+            <table class="perm-table">
+                <thead>
+                    <tr>
+                        <th>Android Permission</th>
+                        <th>Core Functionality & Exact Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="perm-badge">READ_CALL_LOG / WRITE_CALL_LOG</span></td>
+                        <td>Displaying recent incoming, outgoing, and missed communications on the Home screen; logging completed calls; recording durations; and allowing user-initiated call deletion.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="perm-badge">READ_CONTACTS / WRITE_CONTACTS</span></td>
+                        <td>Resolving caller names from your phone book, fast T9 dialpad search, multi-account sync (Google/Device/SIM), and saving new contacts.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="perm-badge">CALL_PHONE & BIND_INCALL_SERVICE</span></td>
+                        <td>Directly placing voice calls via your chosen SIM card and managing active in-call audio, speakerphone, hold, mute, and DTMF dialpad tones.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="perm-badge">READ_PHONE_STATE & READ_PHONE_NUMBERS</span></td>
+                        <td>Detecting carrier subscription accounts (SIM 1 and SIM 2) and handling multi-SIM call routing.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="perm-badge">USE_FULL_SCREEN_INTENT</span></td>
+                        <td>Displaying the interactive full-screen incoming call card when the phone screen is locked or idle, ensuring you never miss a call.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="perm-badge">CAMERA</span></td>
+                        <td>Exclusively utilized on user demand during the optional 3-Blink Liveness check for setting up your personal verified caller photo. No video or background streaming occurs.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+
+        <!-- 3. Encrypted Data Mode -->
+        <article class="policy-card">
+            <h2><i class="fa-solid fa-user-lock"></i> 3. Caller ID & AES-256 Encrypted Data Storage</h2>
+            <p>
+                IKTA Smart Dialer features two distinct privacy configurations under the <strong>Caller ID & Profile Privacy</strong> settings:
+            </p>
+            <ul style="padding-left: 20px; margin-bottom: 16px; color: #334155;">
+                <li style="margin-bottom: 10px;">
+                    <strong>Encrypted Data Mode (Default):</strong> Your phone number is encrypted via AES-256 and stored purely as an encrypted token. Your selfie, name, and identity are completely private and never broadcast to other users.
+                </li>
+                <li>
+                    <strong>Visible for All (Global):</strong> When explicitly enabled by you, your compressed profile avatar (&le;10 KB) is made visible to other users when placing or receiving unknown calls to deter spam and fraud.
+                </li>
+            </ul>
+        </article>
+
+        <!-- 4. Third-Party Advertising -->
+        <article class="policy-card">
+            <h2><i class="fa-solid fa-rectangle-ad"></i> 4. Advertisements & Google UMP GDPR Consent</h2>
+            <p>
+                To support free ongoing software development, the app displays non-intrusive advertisements served through <strong>Google AdMob</strong> and certified mediation network adapters (Meta Audience Network, AppLovin, InMobi, Mintegral, Unity Ads).
+            </p>
+            <p>
+                We integrate the official <strong>Google User Messaging Platform (UMP)</strong> SDK to collect GDPR, UK, and Indian consent parameters before requesting personalized ads. Users may revoke or update their consent preferences at any time.
+            </p>
+        </article>
+
+        <!-- 5. User Rights & Data Deletion -->
+        <article class="policy-card">
+            <h2><i class="fa-solid fa-trash-can"></i> 5. Data Retention, Control & Deletion</h2>
+            <p>
+                You hold absolute control over your stored data. You can delete individual or all call logs directly from the Recent Communications screen, reset photo sync caches, or uninstall the app to immediately wipe all local SQLite database records.
+            </p>
+            <p>
+                To request immediate removal of any registered cloud profile or IKTA coin account, email our Data Protection Officer at <a href="mailto:abssoftware2008@gmail.com" style="color: #2563EB; font-weight: 700;">abssoftware2008@gmail.com</a>.
+            </p>
+        </article>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 IKTA Smart Dialer. Strictly compliant with Google Play Policies and Telecom Regulations.</p>
+        <p style="margin-top: 8px;">
+            Support: <a href="mailto:abssoftware2008@gmail.com">abssoftware2008@gmail.com</a> | WhatsApp: <a href="https://wa.me/917980118839">+91 7980118839</a>
+        </p>
+        <div style="margin-top: 14px; display: flex; gap: 16px; justify-content: center;">
+            <a href="index.html">Home</a>
+            <a href="setup_guide.html">Set Up Guide</a>
+            <a href="privacy_policy.html">Privacy Policy & Data Safety</a>
+            <a href="contact_us.html">Contact Us</a>
+            <a href="download.html">Download ZIP & APK</a>
+        </div>
+    </footer>
+
+</body>
+</html>

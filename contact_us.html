@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us & Support - IKTA Smart Dialer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1E3A8A;
+            --primary-light: #2563EB;
+            --primary-gradient: linear-gradient(135deg, #1E3A8A 0%, #2563EB 50%, #3B82F6 100%);
+            --whatsapp-green: #25D366;
+            --whatsapp-dark: #128C7E;
+            --accent-orange: #EA580C;
+            --dark: #0F172A;
+            --dark-surface: #1E293B;
+            --light-bg: #F8FAFC;
+            --white: #FFFFFF;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-800: #1E293B;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --shadow-soft: 0 10px 30px -10px rgba(30, 58, 138, 0.12);
+            --shadow-elevated: 0 20px 40px -15px rgba(30, 58, 138, 0.22);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(14px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .nav-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--dark);
+        }
+
+        .brand-badge {
+            width: 44px;
+            height: 44px;
+            background: var(--primary-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .brand-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-name span { color: var(--primary-light); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 14.5px;
+            font-weight: 600;
+            color: var(--gray-500);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-light);
+        }
+
+        .nav-cta {
+            background: var(--primary-gradient) !important;
+            color: var(--white) !important;
+            padding: 9px 18px;
+            border-radius: 25px;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Hero */
+        .contact-hero {
+            padding: 130px 24px 40px;
+            background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
+            text-align: center;
+        }
+
+        .contact-hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tag-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(37, 99, 235, 0.08);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            color: var(--primary-light);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .contact-desc {
+            font-size: 17px;
+            color: var(--gray-500);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Main Section */
+        .contact-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px 90px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        /* Cards */
+        .contact-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .c-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+        }
+
+        .c-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-light);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .c-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            flex-shrink: 0;
+        }
+
+        .c-icon.email-icon {
+            background: rgba(37, 99, 235, 0.12);
+            color: var(--primary-light);
+        }
+
+        .c-icon.whatsapp-icon {
+            background: rgba(37, 211, 102, 0.15);
+            color: #128C7E;
+        }
+
+        .c-icon.location-icon {
+            background: rgba(234, 88, 12, 0.12);
+            color: var(--accent-orange);
+        }
+
+        .c-details {
+            flex: 1;
+        }
+
+        .c-details h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .c-details p {
+            font-size: 13.5px;
+            color: var(--gray-500);
+            margin-bottom: 6px;
+        }
+
+        .c-details a {
+            color: var(--primary-light);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #25D366;
+            color: #FFFFFF !important;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: var(--transition);
+            margin-top: 6px;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1EBE5D;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Screen Preview */
+        .screen-preview-card {
+            background: var(--dark);
+            border-radius: 20px;
+            padding: 22px;
+            color: #fff;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            box-shadow: var(--shadow-elevated);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .screen-preview-card img {
+            width: 100px;
+            height: 180px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .preview-info h5 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .preview-info p {
+            font-size: 13.5px;
+            color: #94A3B8;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .pill-badge {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.3);
+            border: 1px solid #3B82F6;
+            color: #93C5FD;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 10px;
+        }
+
+        /* Form Card */
+        .form-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--gray-200);
+            padding: 36px 32px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .form-card h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .form-card p {
+            font-size: 14px;
+            color: var(--gray-500);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 13px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--gray-200);
+            background: var(--light-bg);
+            font-family: inherit;
+            font-size: 14.5px;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--primary-gradient);
+            color: var(--white);
+            border: none;
+            padding: 15px;
+            border-radius: 30px;
+            font-size: 15.5px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(37, 99, 235, 0.45);
+        }
+
+        .success-alert {
+            display: none;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #065F46;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: #94A3B8;
+            padding: 50px 24px 30px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .footer a { color: #38BDF8; text-decoration: none; }
+
+        @media (max-width: 900px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-card { padding: 26px 20px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-badge"><i class="fa-solid fa-phone-volume"></i></div>
+                <div class="brand-name">IKTA <span>Smart Dialer</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="setup_guide.html"><i class="fa-solid fa-gear"></i> Set Up Guide</a></li>
+                <li><a href="quiz.html"><i class="fa-solid fa-trophy"></i> Quiz & Network</a></li>
+                <li><a href="privacy_policy.html"><i class="fa-solid fa-shield-halved"></i> Privacy & Data Safety</a></li>
+                <li><a href="contact_us.html" class="active"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+                <li><a href="download.html" class="nav-cta"><i class="fa-solid fa-download"></i> Download</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="contact-hero">
+        <div class="contact-hero-inner">
+            <div class="tag-pill"><i class="fa-solid fa-headset"></i> We Are Here To Help</div>
+            <h1 class="contact-title">Get In Touch With Us</h1>
+            <p class="contact-desc">
+                Have questions about IKTA Smart Dialer, setup instructions, or want to report feedback? Reach out directly via Email or WhatsApp.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="contact-section">
+        <div class="contact-grid">
+            <!-- Contact Info Cards -->
+            <div class="contact-cards">
+                <!-- Email Card -->
+                <div class="c-card">
+                    <div class="c-icon email-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="c-details">
+                        <h4>Direct Email Support</h4>
+                        <p>Official communication & technical query inbox</p>
+                        <a href="mailto:abssoftware2008@gmail.com"><i class="fa-solid fa-paper-plane"></i> abssoftware2008@gmail.com</a>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Card -->
+                <div class="c-card">
+                    <div class="c-icon whatsapp-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                    <div class="c-details">
+                        <h4>WhatsApp Direct Chat</h4>
+                        <p>Fast customer assistance & instant messaging</p>
+                        <div style="font-weight: 700; color: #1E293B; margin-bottom: 4px;">+91 7980118839</div>
+                        <a href="https://wa.me/917980118839?text=Hello%20IKTA%20Smart%20Dialer%20Team%2C%20I%20need%20support" target="_blank" class="whatsapp-btn">
+                            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Office / Org Card -->
+                <div class="c-card">
+                    <div class="c-icon location-icon"><i class="fa-solid fa-building-shield"></i></div>
+                    <div class="c-details">
+                        <h4>Engineering & Publishing Team</h4>
+                        <p>IKTA Smart Dialer Mobile Applications Division</p>
+                        <span style="font-weight: 600; color: #334155;">Kolkata, West Bengal, India</span>
+                    </div>
+                </div>
+
+                <!-- Live Screen Preview -->
+                <div class="screen-preview-card">
+                    <img src="screenshots/settings_screen.png" alt="Settings Screen">
+                    <div class="preview-info">
+                        <div class="pill-badge">Built-in In-App Support</div>
+                        <h5 style="margin-top: 8px;">Need quick in-app help?</h5>
+                        <p>You can also access the User Manual, TRAI 1909 Compliance, and Feedback directly from the Settings screen inside IKTA Smart Dialer.</p>
+                        <a href="setup_guide.html" style="color: #60A5FA; font-weight: 700; font-size: 13.5px; text-decoration: none;">Explore All App Settings & Functions ›</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Card -->
+            <div class="form-card">
+                <h3>Send Us A Message</h3>
+                <p>Fill out the form below to directly email our development and support team.</p>
+
+                <div id="successAlert" class="success-alert">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Thank you! Your message draft has been prepared. We will assist you promptly.</span>
+                </div>
+
+                <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="e.g. Rahul Sharma" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="e.g. rahul@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number / WhatsApp (Optional)</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="+91 XXXXX XXXXX">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Topic / Query Type</label>
+                        <select id="subject" class="form-control" required>
+                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="Setup & Permissions">Setup & Permissions Assistance</option>
+                            <option value="TRAI 1909 Compliance">TRAI 1909 DND Compliance</option>
+                            <option value="Bug Report">Technical Bug Report</option>
+                            <option value="IKTA Coins Network">IKTA Coins & Referral Questions</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" rows="4" class="form-control" placeholder="Describe your inquiry, suggestion, or issue in detail..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fa-solid fa-paper-plane"></i> Send Message to Support
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 IKTA Smart Dialer. All rights reserved.</p>
+        <p style="margin-top: 8px;">
+            Support: <a href="mailto:abssoftware2008@gmail.com">abssoftware2008@gmail.com</a> | WhatsApp: <a href="https://wa.me/917980118839">+91 7980118839</a>
+        </p>
+        <div style="margin-top: 14px; display: flex; gap: 16px; justify-content: center;">
+            <a href="index.html">Home</a>
+            <a href="setup_guide.html">Set Up Guide</a>
+            <a href="privacy_policy.html">Privacy Policy & Data Safety</a>
+            <a href="contact_us.html">Contact Us</a>
+            <a href="download.html">Download ZIP & APK</a>
+        </div>
+    </footer>
+
+    <script>
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            const mailtoUri = `mailto:abssoftware2008@gmail.com?subject=${encodeURIComponent('[IKTA Support] ' + subject)}&body=${encodeURIComponent(
+                'Name: ' + name + '\n' +
+                'Email: ' + email + '\n' +
+                'Phone: ' + phone + '\n\n' +
+                'Message:\n' + message
+            )}`;
+
+            document.getElementById('successAlert').style.display = 'flex';
+            window.location.href = mailtoUri;
+        }
+    </script>
+</body>
+</html>

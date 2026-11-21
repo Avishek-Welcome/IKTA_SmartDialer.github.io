@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Up Guide - Settings & Functions | IKTA Smart Dialer</title>
+    <meta name="description" content="Official Configuration Guide for IKTA Smart Dialer. Step-by-step instructions for Default Country Code, Duplicate Contact Cleaner, Call Blocker, Crowdsourced Spam Protection, Caller ID Privacy, and Themes.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1E3A8A;
+            --primary-light: #2563EB;
+            --primary-accent: #3B82F6;
+            --secondary: #0D9488;
+            --accent-orange: #EA580C;
+            --accent-green: #16A34A;
+            --accent-purple: #8B5CF6;
+            --accent-pink: #EC4899;
+            --dark: #0F172A;
+            --dark-card: #1E293B;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-600: #475569;
+            --white: #FFFFFF;
+            --primary-gradient: linear-gradient(135deg, #1E3A8A 0%, #2563EB 50%, #0D9488 100%);
+            --glow-gradient: linear-gradient(135deg, #2563EB, #8B5CF6, #EC4899, #F59E0B);
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --shadow-elevated: 0 12px 36px rgba(37, 99, 235, 0.12);
+            --shadow-glow: 0 0 25px rgba(37, 99, 235, 0.28), 0 8px 30px rgba(139, 92, 246, 0.2);
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 24px;
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #F8FAFC;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.05) 0px, transparent 50%);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray-200);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .nav-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--dark);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--primary-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 19px;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 14.5px;
+            font-weight: 600;
+            color: var(--gray-500);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-light);
+        }
+
+        .btn-download-nav {
+            background: var(--primary-gradient);
+            color: var(--white) !important;
+            padding: 8px 18px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .btn-download-nav:hover {
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
+            transform: translateY(-1px);
+        }
+
+        /* Container */
+        .main-container {
+            max-width: 1240px;
+            margin: 110px auto 80px;
+            padding: 0 24px;
+        }
+
+        /* Hero */
+        .guide-header {
+            text-align: center;
+            margin-bottom: 45px;
+            padding: 40px 20px 20px;
+        }
+
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-light);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 13.5px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(37, 99, 235, 0.25);
+            box-shadow: 0 2px 10px rgba(37, 99, 235, 0.12);
+        }
+
+        .guide-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #2563EB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-header p {
+            font-size: 17.5px;
+            color: var(--gray-500);
+            max-width: 760px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Quick Nav Bar */
+        .quick-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 50px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 18px 24px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .quick-nav a {
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--gray-600);
+            background: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+        }
+
+        .quick-nav a:hover {
+            background: var(--primary-light);
+            color: var(--white);
+            border-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.28);
+        }
+
+        /* Settings Blocks */
+        .settings-block {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            padding: 44px;
+            margin-bottom: 55px;
+            box-shadow: var(--shadow-soft);
+            display: grid;
+            grid-template-columns: 1fr 520px;
+            gap: 40px;
+            align-items: center;
+            transition: var(--transition);
+            scroll-margin-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .settings-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--glow-gradient);
+            opacity: 0.9;
+        }
+
+        .settings-block:hover {
+            box-shadow: var(--shadow-glow);
+            border-color: rgba(99, 102, 241, 0.45);
+            transform: translateY(-3px);
+        }
+
+        .settings-block.reverse {
+            grid-template-columns: 520px 1fr;
+        }
+
+        .settings-block.reverse .block-content {
+            order: 2;
+        }
+
+        .settings-block.reverse .block-media {
+            order: 1;
+        }
+
+        .badge-step {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(139, 92, 246, 0.12));
+            color: var(--primary-light);
+            font-weight: 800;
+            font-size: 13px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+        }
+
+        .badge-step.highlight {
+            background: linear-gradient(135deg, #FFEDD5, #FEE2E2);
+            color: #EA580C;
+            border-color: rgba(234, 88, 12, 0.3);
+            box-shadow: 0 2px 8px rgba(234, 88, 12, 0.15);
+        }
+
+        .badge-step.emerald {
+            background: linear-gradient(135deg, #DCFCE7, #E0F2FE);
+            color: #15803D;
+            border-color: rgba(21, 128, 61, 0.3);
+        }
+
+        .badge-step.purple {
+            background: linear-gradient(135deg, #EDE9FE, #FAE8FF);
+            color: #7C3AED;
+            border-color: rgba(124, 58, 237, 0.3);
+        }
+
+        .block-content h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 14px;
+            line-height: 1.3;
+        }
+
+        .block-content p {
+            font-size: 15.5px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        /* Guidelines Box */
+        .guidelines-box {
+            background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+            border-left: 4px solid var(--primary-light);
+            border-radius: 0 14px 14px 0;
+            padding: 18px 22px;
+            margin-bottom: 22px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            border-top: 1px solid var(--gray-200);
+            border-right: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .guidelines-box h4 {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .guidelines-box ol {
+            padding-left: 20px;
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.65;
+        }
+
+        .guidelines-box li {
+            margin-bottom: 7px;
+        }
+
+        .guidelines-box li strong {
+            color: var(--dark);
+        }
+
+        .feature-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .feature-bullets li {
+            font-size: 14.5px;
+            color: var(--gray-600);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.5;
+        }
+
+        .feature-bullets li i {
+            color: var(--accent-green);
+            margin-top: 4px;
+            font-size: 14px;
+        }
+
+        /* Media / Dual-Screen Layout */
+        .block-media {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .single-media img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12), 0 0 20px rgba(37, 99, 235, 0.15);
+            border: 4px solid #1E293B;
+            transition: var(--transition);
+        }
+
+        .single-media img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 45px rgba(37, 99, 235, 0.28);
+        }
+
+        /* Dual-Screen Showcase (Side-by-Side with glowing frames) */
+        .dual-media {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            background: linear-gradient(135deg, rgba(248, 250, 252, 0.95), rgba(241, 245, 249, 0.95));
+            padding: 16px;
+            border-radius: 22px;
+            border: 1px solid rgba(203, 213, 225, 0.8);
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.02), 0 10px 28px rgba(37, 99, 235, 0.08);
+            width: 100%;
+        }
+
+        .screen-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .screen-label {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #4338CA;
+            background: rgba(99, 102, 241, 0.12);
+            border: 1px solid rgba(99, 102, 241, 0.25);
+            padding: 4px 10px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+
+        .screen-card img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 0 15px rgba(37, 99, 235, 0.12);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: #000;
+        }
+
+        .screen-card img:hover {
+            transform: scale(1.035);
+            box-shadow: 0 16px 36px rgba(37, 99, 235, 0.28), 0 0 25px rgba(139, 92, 246, 0.3);
+            border-color: #6366F1;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: var(--gray-400);
+            padding: 60px 24px 30px;
+            text-align: center;
+            font-size: 14.5px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .footer a:hover {
+            color: var(--primary-accent);
+        }
+
+        @media (max-width: 992px) {
+            .settings-block, .settings-block.reverse {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .settings-block.reverse .block-content {
+                order: 1;
+            }
+            .settings-block.reverse .block-media {
+                order: 2;
+            }
+            .dual-media {
+                max-width: 520px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 580px) {
+            .dual-media {
+                grid-template-columns: 1fr;
+            }
+            .screen-card img {
+                height: 420px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-phone"></i></div>
+                <span>IKTA Smart Dialer</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="setup_guide.html" class="active"><i class="fa-solid fa-gear"></i> Set Up Guide</a></li>
+                <li><a href="quiz.html"><i class="fa-solid fa-trophy"></i> Quiz & Network</a></li>
+                <li><a href="privacy_policy.html"><i class="fa-solid fa-shield-halved"></i> Privacy & Safety</a></li>
+                <li><a href="contact_us.html"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+                <li><a href="download.html" class="btn-download-nav"><i class="fa-solid fa-file-zipper"></i> Download ZIP</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="main-container">
+
+        <!-- Guide Hero -->
+        <div class="guide-header">
+            <span class="hero-pill"><i class="fa-solid fa-sliders"></i> Master Settings Manual</span>
+            <h1>Settings & Functions Guide</h1>
+            <p>
+                Comprehensive step-by-step setup instructions for every configuration option inside IKTA Smart Dialer. Includes high-resolution dual-screen views with zero advertisements.
+            </p>
+        </div>
+
+        <!-- Quick Jump Bar -->
+        <nav class="quick-nav">
+            <a href="#default-dialer"><i class="fa-solid fa-phone-volume"></i> Default Phone App</a>
+            <a href="#account-sync"><i class="fa-solid fa-arrows-rotate"></i> Account & Sync</a>
+            <a href="#calling-options"><i class="fa-solid fa-sim-card"></i> Calling Options</a>
+            <a href="#ringtone-vibration"><i class="fa-solid fa-bell"></i> Ringtone & Vibration</a>
+            <a href="#country-code"><i class="fa-solid fa-globe"></i> Default Country Code</a>
+            <a href="#picture-sync"><i class="fa-solid fa-image"></i> Picture Sync</a>
+            <a href="#remove-duplicates"><i class="fa-solid fa-clone"></i> Remove Duplicates</a>
+            <a href="#call-blocker"><i class="fa-solid fa-ban"></i> Call Blocker</a>
+            <a href="#spam-protection"><i class="fa-solid fa-shield-virus"></i> Spam Protection</a>
+            <a href="#caller-id"><i class="fa-solid fa-user-shield"></i> Caller ID Privacy</a>
+            <a href="#themes"><i class="fa-solid fa-palette"></i> Theme & Wallpapers</a>
+            <a href="#coins"><i class="fa-solid fa-coins"></i> Quiz & Coins</a>
+        </nav>
+
+        <!-- 1. Default Phone App (Telecom Service) -->
+        <section id="default-dialer" class="settings-block">
+            <div class="block-content">
+                <span class="badge-step"><i class="fa-solid fa-star"></i> Setting 1</span>
+                <h3>Set as Default Phone App (Telecom Service)</h3>
+                <p>
+                    Ensure IKTA Smart Dialer handles all incoming voice calls, full-screen incoming alerts, outgoing call placements, and heads-up notifications across Android 10, 11, 12, 13, 14, and 15+.
+                </p>
+                <div class="guidelines-box">
+                    <h4><i class="fa-solid fa-book-open"></i> Configuration Guidelines:</h4>
+                    <ol>
+                        <li>Open the application. When prompted, tap <strong>Set as Default Phone App</strong>.</li>
+                        <li>In the native Android system dialog, choose <strong>IKTA Smart Dialer</strong> and tap <strong>Set as Default</strong>.</li>
+                        <li>Grant the requested telephony, contact, and notification permissions to activate high-priority in-call services.</li>
+                        <li>If the system prompt does not show, navigate to Android <em>Settings › Apps › Default Apps › Phone App</em> and select IKTA Smart Dialer.</li>
+                    </ol>
+                </div>
+                <ul class="feature-bullets">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Android Telecom Framework:</strong> Replaces the slow stock OEM dialer with instant call-state response.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Full Screen & Heads-Up Alerts:</strong> Never miss a call even while playing games or watching fullscreen videos.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Dual-SIM Placement:</strong> Directly select SIM 1 or SIM 2 with zero extra confirmation pop-ups.</li>
+                </ul>
+            </div>
+            <div class="block-media single-media">
+                <img src="screenshots/topic_default_dialer_telecom.png" alt="Set as Default Phone App Screen">
+            </div>
+        </section>
+
+        <!-- 2. Account & Sync -->
+        <section id="account-sync" class="settings-block reverse">
+            <div class="block-content">
+                <span class="badge-step"><i class="fa-solid fa-arrows-rotate"></i> Setting 2</span>
+                <h3>Account & Sync Management</h3>
+                <p>
+                    Manage unified contact synchronization across your Google Accounts, device phone memory, and active SIM cards with automated real-time change detection.
+                </p>
+                <div class="guidelines-box">
+                    <h4><i class="fa-solid fa-book-open"></i> Configuration Guidelines:</h4>
+                    <ol>
+                        <li>Navigate to <strong>Settings › Account & Sync</strong>.</li>
+                        <li>Review all detected account sources (Google Accounts, Device Storage, SIM 1, SIM 2).</li>
+                        <li>Toggle individual accounts to include or exclude specific directories from your active dialer address book.</li>
+                        <li>Tap <strong>Sync Now</strong> to force an immediate background refresh of newly added contacts.</li>
+                    </ol>
+                </div>
+                <ul class="feature-bullets">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Multi-Account Aggregation:</strong> Merges Gmail work accounts, personal Google profiles, and device contacts seamlessly.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Background Delta Sync:</strong> Only syncs new or edited contacts to minimize CPU and battery drain.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Account Filtering:</strong> Easily isolate and view only business or personal contacts in one tap.</li>
+                </ul>
+            </div>
+            <div class="block-media single-media">
+                <img src="screenshots/topic_settings_account_sync.png" alt="Account & Sync Settings Screen">
+            </div>
+        </section>
+
+        <!-- 3. Calling Options -->
+        <section id="calling-options" class="settings-block">
+            <div class="block-content">
+                <span class="badge-step"><i class="fa-solid fa-sim-card"></i> Setting 3</span>
+                <h3>Calling Options & SIM Slot Routing</h3>
+                <p>
+                    Customize your default outgoing call SIM preferences, configure auto-retry for dropped calls, and set up rapid 1-touch speed dial shortcuts.
+                </p>
+                <div class="guidelines-box">
+                    <h4><i class="fa-solid fa-book-open"></i> Configuration Guidelines:</h4>
+                    <ol>
+                        <li>Open <strong>Settings › Calling Options</strong>.</li>
+                        <li>Under <em>Default Calling SIM</em>, select <strong>Always Ask</strong>, <strong>SIM 1</strong>, or <strong>SIM 2</strong>.</li>
+                        <li>Enable <strong>Auto Redial on Busy</strong> to automatically re-attempt failed connections up to 3 times.</li>
+                        <li>Assign emergency and VIP family numbers to keys 2 through 9 for instant long-press dialing.</li>
+                    </ol>
+                </div>
+                <ul class="feature-bullets">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Intelligent Dual-SIM Engine:</strong> Automatically remembers which SIM was previously used to call each contact.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>ViLTE Carrier Video Calling:</strong> Direct 1-tap HD video calling over operator 4G/5G networks.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Dial Pad Touch Tones:</strong> Customizable DTMF audio feedback during number key presses.</li>
+                </ul>
+            </div>
+            <div class="block-media single-media">
+                <img src="screenshots/topic_settings_calling_options.png" alt="Calling Options Settings Screen">
+            </div>
+        </section>
+
+        <!-- 4. Ringtone & Vibration -->
+        <section id="ringtone-vibration" class="settings-block reverse">
+            <div class="block-content">
+                <span class="badge-step"><i class="fa-solid fa-bell"></i> Setting 4</span>
+                <h3>Ringtone & Vibration Customization</h3>
+                <p>
+                    Set separate ringtones and haptic vibration cadences for SIM 1 and SIM 2 so you instantly know which line is ringing without looking at the screen.
+                </p>
+                <div class="guidelines-box">
+                    <h4><i class="fa-solid fa-book-open"></i> Configuration Guidelines:</h4>
+                    <ol>
+                        <li>Tap <strong>Settings › Ringtone & Vibration</strong>.</li>
+                        <li>Select <strong>SIM 1 Ringtone</strong> to assign a ring melody from device storage or system sounds.</li>
+                        <li>Select <strong>SIM 2 Ringtone</strong> for your second line (e.g. personal vs business).</li>
+                        <li>Enable <strong>Vibrate on Call Connected</strong> to receive a subtle haptic confirmation when the callee answers.</li>
+                    </ol>
+                </div>
+                <ul class="feature-bullets">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Independent SIM Audio:</strong> Distinct audio profiles for work and personal numbers.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Ascending Ringtone:</strong> Starts softly and gradually increases volume to prevent sudden loud startles.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Gentle Connection Haptics:</strong> Know precisely when the remote party answers without holding phone to your ear.</li>
+                </ul>
+            </div>
+            <div class="block-media single-media">
+                <img src="screenshots/topic_settings_ringtone_vibration.png" alt="Ringtone & Vibration Settings Screen">
+            </div>
+        </section>
+
+        <!-- 5. Default Country Code (DUAL SCREEN) -->
+        <section id="country-code" class="settings-block">
+            <div class="block-content">
+                <span class="badge-step emerald"><i class="fa-solid fa-globe"></i> Setting 5 • Dual View</span>
+                <h3>Default Country Code & International Dialing</h3>
+                <p>
+                    Ensure numbers saved in your address book without international prefixes (+91, +1, +44) format and connect effortlessly. Includes a custom prefix editor and a directory of 240+ global nations.
+                </p>
+                <div class="guidelines-box">
+                    <h4><i class="fa-solid fa-book-open"></i> Configuration Guidelines:</h4>
+                    <ol>
+                        <li>Open <strong>Settings › Default Country Code</strong> in the application.</li>
+                        <li>View the <strong>How Country Code Formatting Works</strong> guidance explainer.</li>
+                        <li>Use the <strong>Custom Country Code</strong> field to input any custom prefix and tap <strong>Save</strong>.</li>
+                        <li>Alternatively, scroll through the <strong>Popular Country Codes</strong> directory (India 🇮🇳, USA 🇺🇸, UK 🇬🇧, Australia 🇦🇺, Bangladesh 🇧🇩, etc.) and tap to set as active default.</li>
+                    </ol>
+                </div>
+                <ul class="feature-bullets">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>E.164 Automated Normalization:</strong> Strips national trunks ('0') and matches caller ID records seamlessly.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Custom Prefix Input Box:</strong> Type any ITU prefix (+1 to +999) with real-time preference persistence.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>240+ Global Nations Directory:</strong> High-resolution emoji flags, localized dialer codes, and instant tap-to-activate.</li>
+                </ul>
+            </div>
+            <div class="block-media dual-media">
+                <div class="screen-card">
+                    <span class="screen-label"><i class="fa-solid fa-pen-to-square"></i> View 1: Custom Prefix & Defaults</span>
+                    <img src="screenshots/topic_country_code_custom_input.png" alt="Default Country Code Custom Input View">
+                </div>
+                <div class="screen-card">
+                    <span class="screen-label"><i class="fa-solid fa-list-ol"></i> View 2: Scrolled 240+ Global Nations</span>
+                    <img src="screenshots/topic_country_code_extended_list.png" alt="Default Country Code Scrolled Nations List View">
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Picture Sync -->
+        <section id="picture-sync" class="settings-block reverse">
+            <div class="block-content">
+                <span class="badge-step"><i class="fa-solid fa-image"></i> Setting 6</span>
+                <h3>Picture Sync & High-Resolution Contact Avatars</h3>
+                <p>
+                    Synchronize crisp, full-screen contact photos across all connected accounts. Keeps your dialer, in-call screen, and contact profile cards visually rich and modern.
+                </p>
+                <div class="guidelines-box">
+                    <h4><i class="fa-solid fa-book-open"></i> Configuration Guidelines:</h4>
+                    <ol>
+                        <li>Navigate to <strong>Settings › Picture Sync</strong> in the application.</li>
+                        <li>Select <strong>Sync Contact Photos</strong> to pull high-res avatars from Google Contacts and cloud profiles.</li>
+                        <li>Choose <strong>Wi-Fi Only Sync</strong> to preserve mobile cellular data when fetching large album pictures.</li>
+                        <li>Use <strong>Clear Cached Photos</strong> anytime you want to force fresh image re-download.</li>
+                    </ol>
+                </div>
+                <ul class="feature-bullets">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>High-Definition In-Call Photos:</strong> Displays crystal-clear caller images on incoming calls.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Intelligent Thumbnail Caching:</strong> Zero lag or stuttering when scrolling through 5,000+ contacts.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Bandwidth Optimization:</strong> Compresses images locally in WebP format for fast render speeds.</li>
+                </ul>
+            </div>
+            <div class="block-media single-media">
+                <img src="screenshots/topic_picture_sync.png" alt="Picture Sync Settings Screen">
+            </div>
+        </section>
+
+        <!-- 7. Remove Duplicate Contacts (DUAL SCREEN) -->
+        <section id="remove-duplicates" class="settings-block">
+            <div class="block-content">
+                <span class="badge-step purple"><i class="fa-solid fa-clone"></i> Setting 7 • Dual View</span>
+                <h3>Remove Duplicate Contacts & Address Book Cleaner</h3>
+                <p>
+                    Clean clutter and eliminate messy duplicate records across multiple email accounts, SIM cards, and phone storage. Features dual-tab scanning for duplicate numbers and phonetic name merging.
+                </p>
+                <div class="guidelines-box">
+                    <h4><i class="fa-solid fa-book-open"></i> Configuration Guidelines:</h4>
+                    <ol>
+                        <li>Tap <strong>Settings › Remove Duplicate Contacts</strong> to launch the scanner.</li>
+                        <li>Tab 1: <strong>Duplicate Numbers</strong> scans for identical phone numbers on multiple contact cards.</li>
+                        <li>Tab 2: <strong>Duplicate Names</strong> groups overlapping contact entries (e.g. <em>*121# with Instanthelp 24x7 vs my airtel</em>).</li>
+                        <li>Select which display name to keep using interactive radio buttons and tap <strong>Save All</strong> to merge safely.</li>
+                    </ol>
+                </div>
+                <ul class="feature-bullets">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Dual-Tab Scanner Architecture:</strong> Separate tabs for Duplicate Numbers (0) and Duplicate Names (1).</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Interactive Conflict Resolver:</strong> Radio buttons let you choose the primary name across Google and SIM accounts.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Zero Data Loss Guarantee:</strong> Merges multiple secondary numbers, emails, and notes into one unified profile.</li>
+                </ul>
+            </div>
+            <div class="block-media dual-media">
+                <div class="screen-card">
+                    <span class="screen-label"><i class="fa-solid fa-magnifying-glass"></i> View 1: Duplicate Numbers Scanner</span>
+                    <img src="screenshots/topic_remove_duplicates_numbers_tab.png" alt="Remove Duplicate Contacts Numbers Tab View">
+                </div>
+                <div class="screen-card">
+                    <span class="screen-label"><i class="fa-solid fa-code-merge"></i> View 2: Duplicate Names Merge Resolver</span>
+                    <img src="screenshots/topic_remove_duplicates_names_merge.png" alt="Remove Duplicate Contacts Names Merge Resolver View">
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Call Blocker & Blocked Numbers (DUAL SCREEN) -->
+        <section id="call-blocker" class="settings-block reverse">
+            <div class="block-content">
+                <span class="badge-step highlight"><i class="fa-solid fa-ban"></i> Setting 8 • Dual View</span>
+                <h3>Call Blocker & Blocked Numbers Manager</h3>
+                <p>
+                    Silence harassment, unwanted telemarketers, and private numbers with robust Telecom-layer call rejection. Manage your blacklist via Type Number, Select Contact, or 1-tap Recent Calls blocking.
+                </p>
+                <div class="guidelines-box">
+                    <h4><i class="fa-solid fa-book-open"></i> Configuration Guidelines:</h4>
+                    <ol>
+                        <li>Open <strong>Settings › Call Blocker</strong> to view your active blacklist manager.</li>
+                        <li>Toggle <strong>Block calls from unidentified callers</strong> to auto-reject incoming calls with no identified caller name.</li>
+                        <li>Use action buttons: <strong>Type Number</strong>, <strong>Contact</strong>, or <strong>History</strong> to add numbers to your blocklist.</li>
+                        <li>Alternatively, tap <strong>Block</strong> directly on any Recent Call card to trigger the instant Block Confirmation Dialog.</li>
+                    </ol>
+                </div>
+                <ul class="feature-bullets">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Unidentified Caller Rejection:</strong> Instantly drops callers who mask their identity.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>3-Way Addition Hub:</strong> Direct keypad manual entry, address book picker, or call log import.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>1-Tap Home Screen Blocking:</strong> Block nuisance callers directly from recent logs without opening settings.</li>
+                </ul>
+            </div>
+            <div class="block-media dual-media">
+                <div class="screen-card">
+                    <span class="screen-label"><i class="fa-solid fa-shield"></i> View 1: Auto-Reject & Action Hub</span>
+                    <img src="screenshots/topic_call_blocker_dashboard_top.png" alt="Call Blocker Dashboard View">
+                </div>
+                <div class="screen-card">
+                    <span class="screen-label"><i class="fa-solid fa-circle-exclamation"></i> View 2: 1-Tap Block Confirmation</span>
+                    <img src="screenshots/topic_call_blocker_confirmation_dialog.png" alt="Call Blocker Confirmation Dialog View">
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Crowdsourced Spam Protection (DUAL SCREEN) -->
+        <section id="spam-protection" class="settings-block">
+            <div class="block-content">
+                <span class="badge-step highlight"><i class="fa-solid fa-shield-virus"></i> Setting 9 • Dual View</span>
+                <h3>Crowdsourced Spam & Robocall Protection</h3>
+                <p>
+                    Community-powered real-time security shield powered by 250,000+ robocaller patterns, telemarketers, and financial fraud reports with customizable auto-block threshold levels.
+                </p>
+                <div class="guidelines-box">
+                    <h4><i class="fa-solid fa-book-open"></i> Configuration Guidelines:</h4>
+                    <ol>
+                        <li>Navigate to <strong>Settings › Spam Protection</strong> to review your active threat shield.</li>
+                        <li>Toggle <strong>Auto-Block Robocallers & Telemarketers</strong> to automatically drop known scammers.</li>
+                        <li>Choose your <strong>Spam Protection Level</strong>:
+                            <ul>
+                                <li><strong>Strict:</strong> Auto-blocks all robocallers, spoofed numbers, and suspicious patterns.</li>
+                                <li><strong>Balanced:</strong> Auto-blocks high-confidence global robocallers and verified spam lists.</li>
+                                <li><strong>Basic:</strong> Only displays warnings without automatic call rejection.</li>
+                            </ul>
+                        </li>
+                        <li>Scroll down to inspect your <strong>Total Auto-Blocked Spam</strong> count and community reports submitted.</li>
+                    </ol>
+                </div>
+                <ul class="feature-bullets">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>250,000+ Threat Pattern Database:</strong> Identifies fraudulent VoIP centers and robocall rings.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>3-Tier Protection Spectrum:</strong> Select between Strict, Balanced, or Basic threshold modes.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Community Analytics Counter:</strong> Transparent ledger tracking calls saved and reports submitted.</li>
+                </ul>
+            </div>
+            <div class="block-media dual-media">
+                <div class="screen-card">
+                    <span class="screen-label"><i class="fa-solid fa-gauge-high"></i> View 1: 250k+ Shield & Levels</span>
+                    <img src="screenshots/topic_spam_protection_levels_top.png" alt="Spam Protection Levels Top View">
+                </div>
+                <div class="screen-card">
+                    <span class="screen-label"><i class="fa-solid fa-chart-line"></i> View 2: Scrolled Community Stats</span>
+                    <img src="screenshots/topic_spam_protection_stats_scrolled.png" alt="Spam Protection Scrolled Stats View">
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. Caller ID & Profile Privacy (DUAL SCREEN) -->
+        <section id="caller-id" class="settings-block reverse">
+            <div class="block-content">
+                <span class="badge-step emerald"><i class="fa-solid fa-user-shield"></i> Power Feature 10 • Dual View</span>
+                <h3>Caller ID & Profile Privacy Mode</h3>
+                <p>
+                    Live face verification and cryptographic SIM ownership with complete privacy control. Choose between Private Encrypted Mode (permission required on calls) or Global Mode (visible to all users).
+                </p>
+                <div class="guidelines-box">
+                    <h4><i class="fa-solid fa-book-open"></i> Configuration Guidelines:</h4>
+                    <ol>
+                        <li>Tap <strong>Settings › Caller ID & Profile Privacy</strong>.</li>
+                        <li>Inspect the <strong>Live Verification Dashboard</strong> highlighting alive eye-blink check and secure encrypted storage.</li>
+                        <li>Choose <strong>Private Setup</strong> for maximum confidentiality (receivers must request access to see your photo).</li>
+                        <li>Or choose <strong>Global Setup</strong> for public business presence.</li>
+                        <li>In the setup dialog, select your active SIM card and configure custom profile display preferences.</li>
+                    </ol>
+                </div>
+                <ul class="feature-bullets">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Live Eye-Blink Verification:</strong> Prevents bot spoofing and unauthorized identity theft.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Encrypted Private Mode:</strong> Your photo and name remain encrypted until you explicitly authorize the receiver.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Zero Data Harvesting:</strong> Your personal address book contacts are never scraped or sold.</li>
+                </ul>
+            </div>
+            <div class="block-media dual-media">
+                <div class="screen-card">
+                    <span class="screen-label"><i class="fa-solid fa-fingerprint"></i> View 1: Live Verification Dashboard</span>
+                    <img src="screenshots/topic_caller_id_dashboard_privacy.png" alt="Caller ID Dashboard Privacy View">
+                </div>
+                <div class="screen-card">
+                    <span class="screen-label"><i class="fa-solid fa-sliders"></i> View 2: Encrypted Setup Dialog</span>
+                    <img src="screenshots/topic_caller_id_onboarding_dialog.png" alt="Caller ID Onboarding Dialog View">
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. Theme & Custom Wallpapers (DUAL SCREEN) -->
+        <section id="themes" class="settings-block">
+            <div class="block-content">
+                <span class="badge-step purple"><i class="fa-solid fa-palette"></i> Power Feature 11 • Dual View</span>
+                <h3>Theme & Custom Artistic Wallpapers</h3>
+                <p>
+                    Personalize your calling experience with customizable Caller ID text colors, backdrop text shades, live caller preview cards, pre-defined artistic wallpapers, and device gallery image picking.
+                </p>
+                <div class="guidelines-box">
+                    <h4><i class="fa-solid fa-book-open"></i> Configuration Guidelines:</h4>
+                    <ol>
+                        <li>Open <strong>Settings › Theme & Appearance</strong>.</li>
+                        <li>Toggle <strong>Full Screen Caller</strong> to show caller photos edge-to-edge on incoming calls.</li>
+                        <li>Select your <strong>Caller ID Text Color</strong> (Pink, Black, White, Yellow, Gold, Cyan, Green).</li>
+                        <li>Choose a <strong>Background Text Shade</strong> (No Shade, Yellow, Amber, Dark Glass, White Frost, Cyan).</li>
+                        <li>Scroll down to browse pre-defined wallpapers (<em>Prism Swirl, Warm Waves, Origami Petals, Neon Curves, Vibrant Spheres</em>) or tap <strong>Choose Custom Picture from Gallery</strong>.</li>
+                    </ol>
+                </div>
+                <ul class="feature-bullets">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Interactive Live Caller Preview:</strong> Real-time card showing exactly how "John Doe" will look on incoming rings.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>7 Text Colors & 6 Backdrop Shades:</strong> Maximum legibility over light, dark, or photographic wallpapers.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>5 Handcrafted Artistic Wallpapers:</strong> Plus AMOLED True Black Dark Mode and custom photo gallery import.</li>
+                </ul>
+            </div>
+            <div class="block-media dual-media">
+                <div class="screen-card">
+                    <span class="screen-label"><i class="fa-solid fa-font"></i> View 1: Text Colors & Live Preview</span>
+                    <img src="screenshots/topic_theme_appearance_top.png" alt="Theme Appearance Top View with Colors and Live Preview">
+                </div>
+                <div class="screen-card">
+                    <span class="screen-label"><i class="fa-solid fa-wand-magic-sparkles"></i> View 2: Wallpapers & Dark Mode</span>
+                    <img src="screenshots/topic_theme_wallpapers_scrolled.png" alt="Theme Wallpapers Scrolled View with Custom Gallery">
+                </div>
+            </div>
+        </section>
+
+        <!-- 12. Win Quiz & Collect Coins -->
+        <section id="coins" class="settings-block reverse">
+            <div class="block-content">
+                <span class="badge-step"><i class="fa-solid fa-coins"></i> Power Feature 12</span>
+                <h3>Win Quiz & Collect Coins Network</h3>
+                <p>
+                    Participate in daily educational trivia quizzes to earn IKTA coins. Earn rewards strictly based on verified answers and track your downline network rankings in a real-time ledger.
+                </p>
+                <div class="guidelines-box">
+                    <h4><i class="fa-solid fa-book-open"></i> Configuration Guidelines:</h4>
+                    <ol>
+                        <li>Tap the <strong>Win Quiz and Collect Coins</strong> card at the top of Settings.</li>
+                        <li>Answer daily knowledge trivia questions to earn coins.</li>
+                        <li>View your transparent ranking point ledger (Today, Month, Lifetime).</li>
+                        <li>Explore the 10-tier family tree architecture, weightage multipliers, and champions leaderboard.</li>
+                    </ol>
+                </div>
+                <ul class="feature-bullets">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Zero-OTP Referral Engine:</strong> Cryptographically linked upline trees supporting 10 levels of downline team rewards.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Verified Knowledge Quiz:</strong> Answer daily trivia questions to earn reward tokens.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Dedicated Showcase Page:</strong> <a href="quiz.html" style="color: #2563EB; font-weight: 700; text-decoration: underline;">Explore All 6 Quiz & Network Pages, Pop-ups & Tree Structure &rarr;</a></li>
+                </ul>
+            </div>
+            <div class="block-media dual-media">
+                <div class="screen-card">
+                    <span class="screen-label"><i class="fa-solid fa-circle-question"></i> View 1: Active Trivia Question</span>
+                    <img src="screenshots/quiz_question_active_challenge.png" alt="Quiz Question Active Challenge">
+                </div>
+                <div class="screen-card">
+                    <span class="screen-label"><i class="fa-solid fa-gift"></i> View 2: 3D Coin Reward Pop-up</span>
+                    <img src="screenshots/quiz_coin_collected_popup.png" alt="Quiz Coin Collected Reward Modal">
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 IKTA Smart Dialer. Built with Privacy, Speed, and Compliance.</p>
+        <p style="margin-top: 10px;">
+            Support: <a href="mailto:abssoftware2008@gmail.com">abssoftware2008@gmail.com</a> | WhatsApp: <a href="https://wa.me/917980118839">+91 7980118839</a>
+        </p>
+        <div style="margin-top: 16px; display: flex; gap: 20px; justify-content: center; font-size: 13.5px;">
+            <a href="index.html">Home</a>
+            <a href="quiz.html">Quiz & Network</a>
+            <a href="setup_guide.html">Set Up Guide</a>
+            <a href="privacy_policy.html">Privacy Policy</a>
+            <a href="contact_us.html">Contact Us</a>
+            <a href="download.html">Download ZIP</a>
+        </div>
+    </footer>
+
+</body>
+</html>

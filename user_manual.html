@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IKTA Smart Dialer - Interactive User Manual with Real Screens</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1E3A8A;
+            --primary-light: #3B82F6;
+            --primary-gradient: linear-gradient(135deg, #1E3A8A 0%, #2563EB 50%, #3B82F6 100%);
+            --accent: #10B981;
+            --accent-warm: #F59E0B;
+            --dark: #0F172A;
+            --dark-surface: #1E293B;
+            --light-bg: #F8FAFC;
+            --white: #FFFFFF;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-800: #1E293B;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --shadow-soft: 0 10px 30px -10px rgba(30, 58, 138, 0.12);
+            --shadow-elevated: 0 20px 40px -15px rgba(30, 58, 138, 0.22);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--dark);
+        }
+
+        .brand-badge {
+            width: 44px;
+            height: 44px;
+            background: var(--primary-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 20px;
+        }
+
+        .brand-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+        }
+
+        .brand-name span { color: var(--primary-light); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-500);
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-light); }
+
+        .nav-cta {
+            background: var(--primary-gradient);
+            color: var(--white) !important;
+            padding: 10px 22px;
+            border-radius: 30px;
+        }
+
+        /* Header / Banner */
+        .manual-hero {
+            padding: 130px 24px 60px;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.05) 0%, rgba(59, 130, 246, 0.08) 100%);
+            text-align: center;
+        }
+
+        .manual-hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tag-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-light);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .manual-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .manual-desc {
+            font-size: 17px;
+            color: var(--gray-500);
+            margin-bottom: 30px;
+        }
+
+        /* Quick Navigation Tabs */
+        .manual-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .tab-btn {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--gray-800);
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--primary-gradient);
+            color: var(--white);
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
+        }
+
+        /* Content Sections */
+        .manual-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px 100px;
+        }
+
+        .manual-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--gray-200);
+            padding: 48px;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow-soft);
+            scroll-margin-top: 100px;
+        }
+
+        .section-headline {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--gray-100);
+        }
+
+        .section-icon-badge {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: var(--primary-gradient);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .section-heading-text h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--dark);
+        }
+
+        .section-heading-text p {
+            color: var(--gray-500);
+            font-size: 14px;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .step-card {
+            background: var(--light-bg);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            gap: 18px;
+            transition: var(--transition);
+        }
+
+        .step-card:hover {
+            border-color: var(--primary-light);
+            background: var(--white);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+            transform: translateX(4px);
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--primary-light);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .step-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .step-info p {
+            font-size: 14px;
+            color: var(--gray-500);
+            line-height: 1.5;
+        }
+
+        /* Real Screen Phone Container */
+        .real-screen-mockup {
+            background: #0B1120;
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            max-width: 330px;
+            margin: 0 auto;
+        }
+
+        .real-screen-img {
+            width: 100%;
+            height: auto;
+            border-radius: 30px;
+            display: block;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .screen-caption-badge {
+            margin-top: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #38BDF8;
+            padding: 8px 14px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Pro Tip Callout Box */
+        .pro-tip-box {
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-top: 24px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .pro-tip-box i {
+            color: var(--accent);
+            font-size: 22px;
+            margin-top: 2px;
+        }
+
+        .pro-tip-box strong {
+            display: block;
+            color: #065F46;
+            margin-bottom: 4px;
+            font-size: 15px;
+        }
+
+        .pro-tip-box p {
+            color: #047857;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* FAQ Accordion Section */
+        .faq-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--gray-200);
+            padding: 48px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--gray-200);
+            padding: 20px 0;
+            cursor: pointer;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .faq-answer {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--gray-500);
+            line-height: 1.6;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer { display: block; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); color: var(--primary-light); }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: #94A3B8;
+            padding: 50px 24px 30px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .footer a { color: #38BDF8; text-decoration: none; }
+
+        @media (max-width: 992px) {
+            .guide-grid { grid-template-columns: 1fr; }
+            .manual-section { padding: 32px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-badge"><i class="fa-solid fa-phone-volume"></i></div>
+                <div class="brand-name">IKTA <span>Smart Dialer</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="index.html#showcase"><i class="fa-solid fa-mobile-screen"></i> Real Screens</a></li>
+                <li><a href="user_manual.html" class="active"><i class="fa-solid fa-book-open"></i> User Manual</a></li>
+                <li><a href="quiz.html"><i class="fa-solid fa-circle-question"></i> Quiz Model</a></li>
+                <li><a href="contact_us.html"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+                <li><a href="index.html#download" class="nav-cta"><i class="fa-solid fa-download"></i> Get APK</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="manual-hero">
+        <div class="manual-hero-inner">
+            <div class="tag-pill"><i class="fa-solid fa-camera"></i> Live Captured Screens</div>
+            <h1 class="manual-title">IKTA Smart Dialer User Manual</h1>
+            <p class="manual-desc">
+                Step-by-step interactive instructions illustrated with authentic screen pictures captured directly from the running application.
+            </p>
+
+            <div class="manual-tabs">
+                <a href="#recents" class="tab-btn active"><i class="fa-solid fa-clock-rotate-left"></i> Home & Recents</a>
+                <a href="#dialpad" class="tab-btn"><i class="fa-solid fa-calculator"></i> T9 Keypad</a>
+                <a href="#quick-actions" class="tab-btn"><i class="fa-solid fa-circle-nodes"></i> Radial Quick Actions</a>
+                <a href="#spam-protection" class="tab-btn"><i class="fa-solid fa-shield"></i> Unknown & Spam</a>
+                <a href="#picture-sync" class="tab-btn"><i class="fa-solid fa-images"></i> Picture Sync</a>
+                <a href="#themes" class="tab-btn"><i class="fa-solid fa-palette"></i> Themes</a>
+                <a href="#callerid" class="tab-btn"><i class="fa-solid fa-shield-halved"></i> Caller ID & Liveness</a>
+                <a href="#country-code" class="tab-btn"><i class="fa-solid fa-earth-americas"></i> Country Code</a>
+                <a href="#settings" class="tab-btn"><i class="fa-solid fa-gear"></i> Settings Hub</a>
+                <a href="#faq" class="tab-btn"><i class="fa-solid fa-circle-info"></i> FAQs</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Manual Content -->
+    <main class="manual-container">
+
+        <!-- 1. Home Screen & Recent Communications -->
+        <section class="manual-section" id="recents">
+            <div class="section-headline">
+                <div class="section-icon-badge"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                <div class="section-heading-text">
+                    <h2>1. Home Screen & Recent Communications</h2>
+                    <p>High-speed call log merging, instant grouping, and dual-SIM management.</p>
+                </div>
+            </div>
+
+            <div class="guide-grid">
+                <div class="steps-list">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-info">
+                            <h4>Instant Zero-Latency Loading</h4>
+                            <p>Home screen paints from high-speed binary snapshot memory on the first frame. No blank loading screens or lagging spinners.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-info">
+                            <h4>Unified Contact Deduplication</h4>
+                            <p>Calls to or from the same person (with or without +91 country codes) collapse into one clean record showing the latest timestamp and full history count.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-info">
+                            <h4>Horizontal Quick Actions</h4>
+                            <p>Each card provides 1-touch buttons: Voice Call, Video Call, SMS, and Add Contact, strictly arranged horizontally with no clutter.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-info">
+                            <h4>SIM 1 vs SIM 2 Badges</h4>
+                            <p>Every call displays the exact SIM slot used (SIM 1 or SIM 2) with customized carrier names and color-coded labels.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Original Screen Mockup -->
+                <div class="real-screen-mockup">
+                    <img src="screenshots/home_screen.png" alt="Actual Home Screen" class="real-screen-img">
+                    <div class="screen-caption-badge">
+                        <i class="fa-solid fa-circle-check" style="color: #10B981;"></i> Actual Screen: Home & Recents
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. T9 Smart Dialpad & Keypad -->
+        <section class="manual-section" id="dialpad">
+            <div class="section-headline">
+                <div class="section-icon-badge"><i class="fa-solid fa-calculator"></i></div>
+                <div class="section-heading-text">
+                    <h2>2. T9 Smart Search & Keypad</h2>
+                    <p>Type letters or numbers to find anyone in less than 5 milliseconds.</p>
+                </div>
+            </div>
+
+            <div class="guide-grid">
+                <div class="steps-list">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-info">
+                            <h4>Type Using Keypad Letters (T9)</h4>
+                            <p>To find "AMIT", press <strong>2</strong> (A), <strong>6</strong> (M), <strong>4</strong> (I), <strong>8</strong> (T). The smart ranker will surface Amit Roy to the very top.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-info">
+                            <h4>Fast Search by Initials</h4>
+                            <p>For two-word names like "Rahul Sharma", simply tap <strong>7</strong> (R) and <strong>7</strong> (S). The app matches initials instantly.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-info">
+                            <h4>Interactive SIM Choice</h4>
+                            <p>Choose between SIM 1 and SIM 2 directly from the call button bar before initiating the call.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Original Screen Mockup -->
+                <div class="real-screen-mockup">
+                    <img src="screenshots/t9_search_screen.png" alt="Actual T9 Search Screen" class="real-screen-img">
+                    <div class="screen-caption-badge">
+                        <i class="fa-solid fa-circle-check" style="color: #10B981;"></i> Actual Screen: T9 Search In Action
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Incoming & In-Call Screen Modes -->
+        <section class="manual-section" id="caller-screen">
+            <div class="section-headline">
+                <div class="section-icon-badge"><i class="fa-solid fa-phone-volume"></i></div>
+                <div class="section-heading-text">
+                    <h2>3. Incoming & In-Call Screen Modes</h2>
+                    <p>Customize Full Screen Caller ID and circular profile display with zero transparency.</p>
+                </div>
+            </div>
+
+            <div class="guide-grid">
+                <div class="steps-list">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-info">
+                            <h4>Full Screen Caller ID: OFF</h4>
+                            <p>Displays an elegant, maximum-size circular profile photo centered directly above the advertisement area. The "Audio Output" button is cleanly hidden on the incoming screen for streamlined answering.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-info">
+                            <h4>Full Screen Caller ID: ON</h4>
+                            <p>During an active call, the high-resolution caller profile photo covers the background of the control panel with rich modern visual effects, opaque buttons, and high contrast.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-info">
+                            <h4>In-Call Action Panel</h4>
+                            <p>Easily accessible buttons for Mute, Keypad, Audio Output, Hold, and More Controls. The circular avatar is neatly placed left beside the End Call button in standard mode.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Original Keypad Screen Mockup -->
+                <div class="real-screen-mockup">
+                    <img src="screenshots/dialer_screen.png" alt="Actual Dialer Keypad" class="real-screen-img">
+                    <div class="screen-caption-badge">
+                        <i class="fa-solid fa-circle-check" style="color: #10B981;"></i> Actual Screen: Smart Keypad
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Radial Quick Action Wheel -->
+        <section class="manual-section" id="quick-actions">
+            <div class="section-headline">
+                <div class="section-icon-badge"><i class="fa-solid fa-circle-nodes"></i></div>
+                <div class="section-heading-text">
+                    <h2>3. Radial Quick Action Wheel & Contact Info</h2>
+                    <p>Access Voice, Video, SMS, WhatsApp, and Telegram in an intuitive circular menu.</p>
+                </div>
+            </div>
+
+            <div class="guide-grid">
+                <div class="steps-list">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-info">
+                            <h4>Circular Action Ring</h4>
+                            <p>Tap "Details" on any call log or contact to open the radial wheel. Seven instant communication triggers surround the avatar: Voice Call, Video Call, SMS, WhatsApp Call, WhatsApp Video, WhatsApp Chat, and Telegram.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-info">
+                            <h4>One-Tap Contact Saving</h4>
+                            <p>For unsaved callers, the Contact Info card provides an instant "Add to contacts" button and primary number formatting with location detection.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-info">
+                            <h4>Update Profile Photo</h4>
+                            <p>Tap the camera icon over the central circular avatar to snap a fresh picture or crop from device gallery.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Original Screen Mockup -->
+                <div class="real-screen-mockup">
+                    <img src="screenshots/contact_details_screen.png" alt="Actual Radial Action Wheel Screen" class="real-screen-img">
+                    <div class="screen-caption-badge">
+                        <i class="fa-solid fa-circle-check" style="color: #10B981;"></i> Actual Screen: Radial Quick Actions
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Unknown Caller & Spam Protection -->
+        <section class="manual-section" id="spam-protection">
+            <div class="section-headline">
+                <div class="section-icon-badge"><i class="fa-solid fa-shield"></i></div>
+                <div class="section-heading-text">
+                    <h2>4. Unknown Caller Defense & 1-Tap TRAI 1909</h2>
+                    <p>Detect unknown calls, view national origin, and report spam instantly.</p>
+                </div>
+            </div>
+
+            <div class="guide-grid">
+                <div class="steps-list">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-info">
+                            <h4>"Unknown" Communication Filter</h4>
+                            <p>Tap the "Unknown" filter chip on the Home Screen to immediately isolate incoming calls from numbers not saved in your phone book.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-info">
+                            <h4>1-Tap TRAI 1909 DND Reporting</h4>
+                            <p>In India, unsolicited marketing calls violate TRAI guidelines. Tap the dedicated "TRAI 1909" button to auto-compose a complaint SMS with caller number and call timestamp.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-info">
+                            <h4>Direct Call Blocking</h4>
+                            <p>Tap "Block" on any suspicious record to immediately silence future incoming calls from that phone number.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Original Screen Mockup -->
+                <div class="real-screen-mockup">
+                    <img src="screenshots/unknown_filtered_screen.png" alt="Actual Unknown Filter Screen" class="real-screen-img">
+                    <div class="screen-caption-badge">
+                        <i class="fa-solid fa-circle-check" style="color: #10B981;"></i> Actual Screen: Unknown Caller Protection
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Picture Sync Priority Configuration -->
+        <section class="manual-section" id="picture-sync">
+            <div class="section-headline">
+                <div class="section-icon-badge"><i class="fa-solid fa-images"></i></div>
+                <div class="section-heading-text">
+                    <h2>4. Picture Source Priority Configuration</h2>
+                    <p>Control exactly where contact photos come from, in strict sequential fallback order.</p>
+                </div>
+            </div>
+
+            <div class="guide-grid">
+                <div class="steps-list">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-info">
+                            <h4>Default Priority Sequence</h4>
+                            <p><strong>1. Phone Storage</strong> &rarr; <strong>2. IKTA Database (Firestore)</strong> &rarr; <strong>3. Google / Gmail Profile</strong>.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-info">
+                            <h4>Strict Fallback Rule</h4>
+                            <p>If Option 1 (Phone Storage) contains a picture, Options 2 and 3 are ignored completely! This guarantees maximum speed and zero cloud data consumption.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-info">
+                            <h4>Re-order Anytime</h4>
+                            <p>Go to <strong>Settings &rarr; Picture Sync</strong> to move any source up or down using the Move Up / Move Down buttons.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Original Screen Mockup -->
+                <div class="real-screen-mockup">
+                    <img src="screenshots/picture_sync_screen.png" alt="Actual Picture Sync Screen" class="real-screen-img">
+                    <div class="screen-caption-badge">
+                        <i class="fa-solid fa-circle-check" style="color: #10B981;"></i> Actual Screen: Picture Sync Engine
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Themes & Appearance Customization -->
+        <section class="manual-section" id="themes">
+            <div class="section-headline">
+                <div class="section-icon-badge"><i class="fa-solid fa-palette"></i></div>
+                <div class="section-heading-text">
+                    <h2>5. Themes & Appearance Customization</h2>
+                    <p>Personalize your dialer with Dark, Light, AMOLED Black, and custom wallpapers.</p>
+                </div>
+            </div>
+
+            <div class="guide-grid">
+                <div class="steps-list">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-info">
+                            <h4>Theme Mode Selection</h4>
+                            <p>Choose between <strong>System Default</strong>, <strong>Pure Light</strong>, or <strong>Deep Dark</strong>. In dark mode, AMOLED optimization conserves battery life while dialing.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-info">
+                            <h4>Gradient & Custom Wallpapers</h4>
+                            <p>Set aesthetic gradient backdrops that render smoothly beneath transparent surface containers, giving your dialer a signature glassmorphic touch.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Original Screen Mockup -->
+                <div class="real-screen-mockup">
+                    <img src="screenshots/theme_screen.png" alt="Actual Theme & Appearance Screen" class="real-screen-img">
+                    <div class="screen-caption-badge">
+                        <i class="fa-solid fa-circle-check" style="color: #10B981;"></i> Actual Screen: Theme & Appearance
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Settings & Control Hub -->
+        <section class="manual-section" id="settings">
+            <div class="section-headline">
+                <div class="section-icon-badge"><i class="fa-solid fa-gear"></i></div>
+                <div class="section-heading-text">
+                    <h2>6. Settings & Privacy Control Hub</h2>
+                    <p>Configure spam protection, blocked numbers, duplicate contacts, and accounts.</p>
+                </div>
+            </div>
+
+            <div class="guide-grid">
+                <div class="steps-list">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-info">
+                            <h4>Modern, Ad-Free Settings Layout</h4>
+                            <p>All text labels, descriptions, and buttons are fully visible and readable on any screen resolution.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-info">
+                            <h4>Fast Duplicate Cleanup</h4>
+                            <p>Merge duplicate contacts saved under different accounts or phone numbers in one tap.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Original Screen Mockup -->
+                <div class="real-screen-mockup">
+                    <img src="screenshots/settings_screen.png" alt="Actual Settings Screen" class="real-screen-img">
+                    <div class="screen-caption-badge">
+                        <i class="fa-solid fa-circle-check" style="color: #10B981;"></i> Actual Screen: Settings Hub
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Verified Caller ID & 3-Blink Liveness Setup -->
+        <section class="manual-section" id="callerid">
+            <div class="section-headline">
+                <div class="section-icon-badge"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="section-heading-text">
+                    <h2>7. Verified Caller ID & 3-Blink Liveness Check</h2>
+                    <p>Cryptographically verified presence detection and fresh photo capture.</p>
+                </div>
+            </div>
+
+            <div class="guide-grid">
+                <div class="steps-list">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-info">
+                            <h4>3-Blink Liveness Proof</h4>
+                            <p>Look at your front camera and naturally blink your eyes 3 times. The on-device ML model detects genuine live human presence with zero biometric data leaving your phone.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-info">
+                            <h4>Fresh Photo Snap & Encryption</h4>
+                            <p>Snap an instant fresh caller photo. Your profile is encrypted and synced with your trusted network, preventing spoofing and spam identity attacks.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Original Screen Mockup -->
+                <div class="real-screen-mockup">
+                    <img src="screenshots/caller_id_screen.png" alt="Actual Caller ID & Liveness Setup Screen" class="real-screen-img">
+                    <div class="screen-caption-badge">
+                        <i class="fa-solid fa-circle-check" style="color: #10B981;"></i> Actual Screen: Caller ID & Liveness
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Default Country Code & Number Formatting -->
+        <section class="manual-section" id="country-code">
+            <div class="section-headline">
+                <div class="section-icon-badge"><i class="fa-solid fa-earth-americas"></i></div>
+                <div class="section-heading-text">
+                    <h2>8. Default Country Code & International Dialing</h2>
+                    <p>Format local phone numbers automatically to match incoming caller ID and history logs.</p>
+                </div>
+            </div>
+
+            <div class="guide-grid">
+                <div class="steps-list">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-info">
+                            <h4>Automatic Prefix Normalization</h4>
+                            <p>Numbers saved without an international country prefix (e.g. 9876543210) automatically adopt your default country code (e.g. +91), ensuring incoming calls always match the stored contact name and photo.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-info">
+                            <h4>Popular Country Presets</h4>
+                            <p>Tap popular country presets (India +91, USA / Canada +1) or type your own custom prefix in the Country Code settings page.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Original Screen Mockup -->
+                <div class="real-screen-mockup">
+                    <img src="screenshots/country_code_screen.png" alt="Actual Country Code Screen" class="real-screen-img">
+                    <div class="screen-caption-badge">
+                        <i class="fa-solid fa-circle-check" style="color: #10B981;"></i> Actual Screen: Country Code Settings
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. FAQs Section -->
+        <section class="faq-section" id="faq">
+            <h2 style="font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; margin-bottom: 24px; color: var(--dark);">
+                Frequently Asked Questions
+            </h2>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span>How do I set IKTA Smart Dialer as my default phone app?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Open IKTA Smart Dialer &rarr; Click on the banner at the top asking for Default Phone App &rarr; Select "IKTA Smart Dialer" and tap "Set as default". Alternatively, go to your phone's Android Settings &rarr; Apps &rarr; Default Apps &rarr; Phone App &rarr; Choose IKTA Smart Dialer.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span>How does the TRAI 1909 DND spam reporting work?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Whenever an unknown or suspected telemarketing number calls you, tap the "TRAI 1909" badge on their call card. IKTA Smart Dialer automatically formats the official SMS complaint string with the date, time, and caller number and opens your default SMS app addressed to 1909. All you need to do is press Send!
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span>Can I use IKTA Smart Dialer completely offline?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes! All primary features—including T9 dialing, local contact searches, call logging, phone storage profile pictures, and caller screening—run completely on-device without requiring an internet connection.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 IKTA Smart Dialer. Need more help? Visit our <a href="contact_us.html">Contact Us</a> page or test your knowledge in the <a href="quiz.html">Quiz Model</a>.</p>
+    </footer>
+
+    <script>
+        function toggleFaq(element) {
+            element.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

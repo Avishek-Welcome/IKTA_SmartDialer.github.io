@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Package - IKTA Smart Dialer Website & App</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #1E40AF;
+            --primary-light: #2563EB;
+            --primary-gradient: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+            --dark: #0F172A;
+            --dark-card: #1E293B;
+            --gray-100: #F8FAFC;
+            --gray-200: #E2E8F0;
+            --gray-500: #64748B;
+            --gray-800: #1E293B;
+            --white: #FFFFFF;
+            --accent-green: #10B981;
+            --accent-orange: #EA580C;
+            --radius-md: 18px;
+            --radius-lg: 28px;
+            --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --shadow-elevated: 0 20px 35px -5px rgba(37, 99, 235, 0.15), 0 10px 10px -5px rgba(37, 99, 235, 0.04);
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--gray-100);
+            color: var(--gray-800);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-200);
+            z-index: 1000;
+            padding: 16px 24px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-badge {
+            width: 44px;
+            height: 44px;
+            background: var(--primary-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .brand-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            color: var(--dark);
+            letter-spacing: -0.5px;
+        }
+
+        .brand-name span {
+            color: var(--primary-light);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-500);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-light);
+        }
+
+        .nav-cta {
+            background: var(--primary-gradient) !important;
+            color: var(--white) !important;
+            padding: 9px 18px;
+            border-radius: 25px;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Hero */
+        .download-hero {
+            padding: 60px 24px 30px;
+            text-align: center;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+        }
+
+        .download-hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tag-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            background: rgba(37, 99, 235, 0.08);
+            border: 1px solid rgba(37, 99, 235, 0.22);
+            color: var(--primary-light);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .download-hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 44px;
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .download-hero-title span {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .download-hero-desc {
+            font-size: 18px;
+            color: var(--gray-500);
+            margin-bottom: 30px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+        }
+
+        /* Download Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-bottom: 50px;
+        }
+
+        .download-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--gray-200);
+            padding: 40px 32px;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-elevated);
+            border-color: var(--primary-light);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-green);
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+
+        .download-card h3 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+
+        .download-card p {
+            font-size: 15px;
+            color: var(--gray-500);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .meta-list {
+            background: var(--gray-100);
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin-bottom: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--gray-500);
+        }
+
+        .meta-item strong {
+            color: var(--dark);
+        }
+
+        .btn-download {
+            background: var(--primary-gradient);
+            color: var(--white);
+            text-decoration: none;
+            padding: 16px 28px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.5);
+            color: var(--white);
+        }
+
+        .btn-apk {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
+        }
+
+        .btn-apk:hover {
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.5);
+        }
+
+        /* Package Details Box */
+        .details-box {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--gray-200);
+            padding: 40px;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 40px;
+        }
+
+        .details-box h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .file-tree {
+            background: #0F172A;
+            color: #38BDF8;
+            padding: 24px;
+            border-radius: 16px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .file-tree .comment {
+            color: #94A3B8;
+        }
+
+        /* GitHub Instructions */
+        .github-box {
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            color: #FFFFFF;
+            border-radius: var(--radius-lg);
+            padding: 44px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.25);
+        }
+
+        .github-box h3 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .steps-list {
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            font-size: 15px;
+            color: #CBD5E1;
+            margin-top: 20px;
+        }
+
+        .steps-list li strong {
+            color: #FFFFFF;
+        }
+
+        .steps-list code {
+            background: rgba(255, 255, 255, 0.12);
+            color: #38BDF8;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-family: monospace;
+        }
+
+        /* Floating WhatsApp Direct Chat */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: #FFFFFF;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+            text-decoration: none;
+            z-index: 1500;
+            transition: var(--transition);
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.08);
+            background: #1EBE5D;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: #94A3B8;
+            padding: 60px 24px 35px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .footer a { color: #38BDF8; text-decoration: none; }
+
+        @media (max-width: 900px) {
+            .cards-grid { grid-template-columns: 1fr; }
+            .download-hero-title { font-size: 34px; }
+            .details-box, .github-box { padding: 28px 20px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-badge"><i class="fa-solid fa-phone-volume"></i></div>
+                <div class="brand-name">IKTA <span>Smart Dialer</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="index.html#facilities"><i class="fa-solid fa-list-check"></i> Facilities</a></li>
+                <li><a href="setup_guide.html"><i class="fa-solid fa-gear"></i> Set Up Guide</a></li>
+                <li><a href="quiz.html"><i class="fa-solid fa-trophy"></i> Quiz & Network</a></li>
+                <li><a href="privacy_policy.html"><i class="fa-solid fa-shield-halved"></i> Privacy & Data Safety</a></li>
+                <li><a href="contact_us.html"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+                <li><a href="download.html" class="nav-cta active"><i class="fa-solid fa-download"></i> Download</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="download-hero">
+        <div class="download-hero-inner">
+            <div class="tag-pill"><i class="fa-solid fa-box-archive"></i> Downloadable Packages</div>
+            <h1 class="download-hero-title">Download <span>IKTA Smart Dialer</span> Website & App</h1>
+            <p class="download-hero-desc">
+                Get the complete web package in a single ZIP file ready for GitHub Pages hosting, or download the latest Android application installer.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Cards Grid -->
+        <div class="cards-grid">
+            <!-- Website ZIP Package Card -->
+            <div class="download-card">
+                <span class="featured-badge">Recommended for GitHub</span>
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-file-zipper"></i></div>
+                    <h3>Complete Website Package (.ZIP)</h3>
+                    <p>Includes all HTML pages, multi-language engine (English + 11 Indian languages), interactive facilities viewer, and 12 ad-free screenshots.</p>
+
+                    <div class="meta-list">
+                        <div class="meta-item"><span>File Name:</span> <strong>IKTA_Smart_Dialer_Website_Pages.zip</strong></div>
+                        <div class="meta-item"><span>File Size:</span> <strong>~3.1 MB</strong></div>
+                        <div class="meta-item"><span>Archive Type:</span> <strong>ZIP Archive</strong></div>
+                        <div class="meta-item"><span>Compatibility:</span> <strong>GitHub Pages, Netlify, Vercel, Apache, Nginx</strong></div>
+                        <div class="meta-item"><span>Status:</span> <strong style="color: var(--accent-green);"><i class="fa-solid fa-circle-check"></i> Verified Production Ready</strong></div>
+                    </div>
+                </div>
+
+                <a href="IKTA_Smart_Dialer_Website_Pages.zip" download="IKTA_Smart_Dialer_Website_Pages.zip" class="btn-download">
+                    <i class="fa-solid fa-download"></i> Download Website (.ZIP)
+                </a>
+            </div>
+
+            <!-- Android App APK Card -->
+            <div class="download-card">
+                <div>
+                    <div class="card-icon" style="color: #10B981; background: rgba(16, 185, 129, 0.1);"><i class="fa-brands fa-android"></i></div>
+                    <h3>Android App Package (.APK)</h3>
+                    <p>Direct installation package for Android devices. Features fast T9 dialing, Orange unknown caller highlight, Dual-SIM support, and TRAI 1909 DND compliance.</p>
+
+                    <div class="meta-list">
+                        <div class="meta-item"><span>Package Name:</span> <strong>com.ikta.iktasmartdialer</strong></div>
+                        <div class="meta-item"><span>Target OS:</span> <strong>Android 8.0 to Android 15 (API 26 - 36)</strong></div>
+                        <div class="meta-item"><span>Permissions:</span> <strong>Call Log, Contacts, Phone State, Overlay</strong></div>
+                        <div class="meta-item"><span>Data Safety:</span> <strong>100% On-Device Local SQLite Storage</strong></div>
+                        <div class="meta-item"><span>Build Type:</span> <strong style="color: var(--primary-light);"><i class="fa-solid fa-shield-check"></i> Verified Build</strong></div>
+                    </div>
+                </div>
+
+                <a href="IKTASmartDialer.apk" download="IKTASmartDialer.apk" class="btn-download btn-apk">
+                    <i class="fa-brands fa-android"></i> Download App (.APK)
+                </a>
+            </div>
+        </div>
+
+        <!-- Package Contents Details -->
+        <div class="details-box">
+            <h3><i class="fa-solid fa-folder-tree" style="color: var(--primary-light);"></i> What's Inside the ZIP Package?</h3>
+            <p style="color: var(--gray-500); font-size: 15px;">
+                The downloadable ZIP archive is structured cleanly at the root level, making it ready to extract straight into any web server or Git repository root:
+            </p>
+
+            <div class="file-tree">
+IKTA_Smart_Dialer_Website_Pages.zip
+├── index.html                  <span class="comment"># Home page with 12 Indian languages & point-wise facilities</span>
+├── setup_guide.html            <span class="comment"># Comprehensive manual for all settings & dialer functions</span>
+├── privacy_policy.html         <span class="comment"># Complete Google Play & India DPDP compliant data policy</span>
+├── contact_us.html             <span class="comment"># Developer contact page (Email, WhatsApp +917980118839)</span>
+├── download.html               <span class="comment"># Direct downloads for ZIP and APK packages</span>
+├── quiz.html                   <span class="comment"># Interactive Quiz & Coin system showcase</span>
+├── user_manual.html            <span class="comment"># Extended user documentation & tutorials</span>
+└── screenshots/                <span class="comment"># Dedicated topic-based ad-free screenshots</span>
+    ├── topic_home_recents.png            <span class="comment"># Recents list with badges and durations</span>
+    ├── topic_unknown_orange_filter.png   <span class="comment"># Orange unknown caller alert</span>
+    ├── topic_dialer_dual_sim.png         <span class="comment"># Dual-SIM dialpad buttons</span>
+    ├── topic_t9_smart_search.png         <span class="comment"># T9 live search matching</span>
+    ├── topic_contact_search.png          <span class="comment"># Contact search filter</span>
+    ├── topic_contact_profile.png         <span class="comment"># Contact profile & call history</span>
+    ├── topic_caller_id_step1_privacy.png <span class="comment"># AES-256 encrypted caller ID</span>
+    ├── topic_caller_id_step2_sims.png    <span class="comment"># Active SIM numbers assignment</span>
+    ├── topic_trai_1909_dialog.png        <span class="comment"># TRAI 1909 UCC spam reporting</span>
+    ├── topic_theme_appearance.png        <span class="comment"># 6 artistic custom photo wallpapers</span>
+    ├── topic_picture_sync.png            <span class="comment"># Multi-account picture sync</span>
+    ├── topic_quiz_and_coins.png          <span class="comment"># Win Quiz & Collect Coins ecosystem</span>
+    ├── topic_network_downline_ledger.png <span class="comment"># 10-level downline ranking ledger</span>
+    ├── topic_settings_main.png           <span class="comment"># Main settings overview</span>
+    └── topic_country_code_picker.png     <span class="comment"># Country dial code picker</span>
+            </div>
+        </div>
+
+        <!-- How to Deploy to GitHub Pages -->
+        <div class="github-box">
+            <h3><i class="fa-brands fa-github"></i> Deploy to GitHub Pages in 3 Simple Steps</h3>
+            <p style="color: #94A3B8; font-size: 15px;">
+                Follow these quick steps to get this website published for free on GitHub Pages:
+            </p>
+            <ol class="steps-list">
+                <li>
+                    <strong>Step 1: Download & Extract the ZIP Archive</strong><br>
+                    Click the <strong>Download Website (.ZIP)</strong> button above to save <code>IKTA_Smart_Dialer_Website_Pages.zip</code> on your computer. Extract its contents into a folder.
+                </li>
+                <li>
+                    <strong>Step 2: Upload to a GitHub Repository</strong><br>
+                    Create a new repository on <a href="https://github.com" target="_blank" style="color: #60A5FA;">GitHub.com</a> (e.g., <code>smart-dialer-web</code>). Commit and push all the extracted files (including <code>index.html</code> and the <code>screenshots/</code> folder) directly to the <code>main</code> branch.
+                </li>
+                <li>
+                    <strong>Step 3: Enable GitHub Pages</strong><br>
+                    In your GitHub repository, open <strong>Settings &rarr; Pages</strong>. Under <strong>Build and deployment &rarr; Branch</strong>, select <code>main</code> and folder <code>/ (root)</code>, then click <strong>Save</strong>.<br>
+                    Your website will be live in 60 seconds at: <code>https://&lt;your-username&gt;.github.io/&lt;repository-name&gt;/</code>
+                </li>
+            </ol>
+        </div>
+    </main>
+
+    <!-- Floating WhatsApp Direct Chat -->
+    <a href="https://wa.me/917980118839?text=Hello%20IKTA%20Smart%20Dialer%20Support%2C%20I%20have%20an%20inquiry" class="floating-whatsapp" target="_blank" title="Chat on WhatsApp (+91 7980118839)">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p style="font-weight: 700; color: #fff; margin-bottom: 8px;">IKTA Smart Dialer — Intelligent Android Telecom Suite</p>
+        <p>© 2026 IKTA Smart Dialer. Strictly compliant with Telecom & Privacy Standards.</p>
+        <p style="margin-top: 10px;">
+            Support Email: <a href="mailto:abssoftware2008@gmail.com">abssoftware2008@gmail.com</a> | WhatsApp: <a href="https://wa.me/917980118839">+91 7980118839</a>
+        </p>
+        <div style="margin-top: 14px; display: flex; gap: 16px; justify-content: center;">
+            <a href="index.html">Home</a>
+            <a href="setup_guide.html">Set Up Guide</a>
+            <a href="privacy_policy.html">Privacy Policy & Data Safety</a>
+            <a href="contact_us.html">Contact Us</a>
+            <a href="download.html">Download ZIP & APK</a>
+        </div>
+    </footer>
+
+</body>
+</html>

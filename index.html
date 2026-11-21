@@ -1,330 +1,1259 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IKTA Smart Dialer — Official Developer Portal & User Guide</title>
-  <meta name="description" content="IKTA Smart Dialer (com.ikta.iktasmartdialer) — Smart Caller ID, TRAI 1909 DND Spam Protection, and Educational Quiz Rewards for Android." />
-  <style>
-    :root {
-      --bg-dark: #0a1128;
-      --bg-card: #111d42;
-      --accent-pink: #ff2e7e;
-      --accent-gold: #ffd166;
-      --accent-cyan: #00d2ff;
-      --accent-green: #06d6a0;
-      --text-light: #f8fafc;
-      --text-muted: #cbd5e1;
-      --border-glow: rgba(255, 209, 102, 0.28);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IKTA Smart Dialer — Intelligent, Fast & Privacy-Centric Android Dialer</title>
+    <meta name="description" content="A modern, high-performance Android telephone suite featuring 12ms T9 search, orange unknown call highlighting, TRAI 1909 regulatory complaints, cryptographic caller ID, crowdsourced spam defense, and an educational 10-tier quiz network.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#EEF2FF',
+                            100: '#E0E7FF',
+                            200: '#C7D2FE',
+                            500: '#6366F1',
+                            600: '#4F46E5',
+                            700: '#4338CA',
+                            800: '#3730A3',
+                            900: '#312E81'
+                        },
+                        slateBg: '#F8FAFC',
+                        cardBg: '#FFFFFF',
+                        borderSubtle: '#E2E8F0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    letterSpacing: {
+                        tighter: '-0.04em',
+                        tight: '-0.03em',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Modern High-Craft Light Theme Styles */
+        body {
+            background-color: #FAFAFD;
+            color: #0F172A;
+            font-family: 'Inter', sans-serif;
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 100% 30%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 0% 70%, rgba(244, 63, 94, 0.04) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        /* Subtle grid background */
+        .light-grid-pattern {
+            background-size: 32px 32px;
+            background-image:
+                linear-gradient(to right, rgba(99, 102, 241, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
+        }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-light);
-      line-height: 1.6;
-    }
+        /* High-craft Light Cards with soft shadows */
+        .light-card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-    /* Tricolor Top Accent Bar */
-    .tricolor-bar {
-      height: 5px;
-      background: linear-gradient(90deg, #ff9933 0%, #ffffff 50%, #138808 100%);
-      width: 100%;
-    }
+        .light-card:hover {
+            border-color: #818CF8;
+            box-shadow: 0 20px 35px -5px rgba(99, 102, 241, 0.12), 0 10px 10px -5px rgba(99, 102, 241, 0.04);
+            transform: translateY(-3px);
+        }
 
-    header {
-      background: radial-gradient(circle at top right, #1d2d6b, var(--bg-dark) 70%);
-      padding: 3.5rem 1.5rem 3rem;
-      text-align: center;
-      border-bottom: 1px solid var(--border-glow);
-    }
+        .gradient-border-card {
+            background: #FFFFFF;
+            border: 2px solid transparent;
+            background-image: linear-gradient(white, white), linear-gradient(135deg, #4F46E5, #06B6D4);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            box-shadow: 0 10px 30px -5px rgba(79, 70, 229, 0.15);
+        }
 
-    .badge {
-      display: inline-block;
-      background: rgba(255, 46, 126, 0.16);
-      color: #ff6ba3;
-      border: 1px solid var(--accent-pink);
-      padding: 0.3rem 0.9rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin-bottom: 1rem;
-    }
+        /* Phone Mockup Frame */
+        .phone-frame-light {
+            border: 10px solid #1E293B;
+            border-radius: 42px;
+            background-color: #0F172A;
+            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25), 0 0 0 1px rgba(15, 23, 42, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
 
-    h1 {
-      font-size: 2.5rem;
-      color: var(--accent-gold);
-      margin-bottom: 0.6rem;
-      letter-spacing: -0.5px;
-    }
+        .phone-frame-light::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 16px;
+            background-color: #1E293B;
+            border-radius: 20px;
+            z-index: 20;
+        }
 
-    .subtitle {
-      max-width: 680px;
-      margin: 0 auto 1.8rem;
-      color: var(--text-muted);
-      font-size: 1.1rem;
-    }
-
-    .cta-group {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.8rem 1.6rem;
-      border-radius: 10px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent-pink), #d91b65);
-      color: #ffffff;
-      box-shadow: 0 6px 20px rgba(255, 46, 126, 0.35);
-    }
-
-    .btn-secondary {
-      background: var(--bg-card);
-      color: var(--accent-gold);
-      border: 1px solid var(--accent-gold);
-    }
-
-    .container {
-      max-width: 1050px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem;
-    }
-
-    h2 {
-      color: var(--accent-gold);
-      font-size: 1.75rem;
-      margin-bottom: 1.2rem;
-      border-left: 4px solid var(--accent-pink);
-      padding-left: 0.85rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.25rem;
-      margin-bottom: 3rem;
-    }
-
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-glow);
-      border-radius: 14px;
-      padding: 1.5rem;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-    }
-
-    .card h3 {
-      color: var(--accent-cyan);
-      margin-bottom: 0.5rem;
-      font-size: 1.15rem;
-    }
-
-    .card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    /* Step-by-Step Instructions */
-    .steps {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 3rem;
-    }
-
-    .step-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      background: var(--bg-card);
-      border: 1px solid rgba(0, 210, 255, 0.2);
-      border-radius: 12px;
-      padding: 1.25rem;
-    }
-
-    .step-num {
-      flex-shrink: 0;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--accent-pink);
-      color: #fff;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-    }
-
-    .step-content h4 {
-      color: var(--accent-gold);
-      margin-bottom: 0.25rem;
-      font-size: 1.05rem;
-    }
-
-    .step-content p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    /* Policy & Privacy Box */
-    .policy-box {
-      background: rgba(17, 29, 66, 0.85);
-      border: 1px solid var(--border-glow);
-      border-radius: 14px;
-      padding: 1.75rem;
-      margin-bottom: 2rem;
-    }
-
-    .policy-box h3 {
-      color: var(--accent-green);
-      margin-bottom: 0.6rem;
-    }
-
-    .policy-box ul {
-      margin-left: 1.25rem;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    .policy-box li {
-      margin-bottom: 0.45rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 1.5rem;
-      border-top: 1px solid var(--border-glow);
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      color: var(--accent-cyan);
-      text-decoration: none;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.9rem;
-      }
-    }
-  </style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+    </style>
 </head>
-<body>
+<body class="min-h-screen antialiased selection:bg-indigo-600 selection:text-white">
 
-  <div class="tricolor-bar"></div>
+    <!-- Ambient Grid Overlay -->
+    <div class="fixed inset-0 light-grid-pattern pointer-events-none z-0 opacity-80"></div>
 
-  <header>
-    <span class="badge">Android App • com.ikta.iktasmartdialer</span>
-    <h1>IKTA Smart Dialer</h1>
-    <p class="subtitle">
-      Next-generation Default Phone &amp; Caller ID application with smart call management, one-tap TRAI 1909 DND spam reporting, and interactive general knowledge quiz challenges.
-    </p>
-    <div class="cta-group">
-      <a href="#instructions" class="btn btn-primary">How to Set Up &amp; Use</a>
-      <a href="#privacy" class="btn btn-secondary">Privacy Policy &amp; Data Safety</a>
-    </div>
-  </header>
-
-  <main class="container">
-
-    <!-- Core Features -->
-    <h2>Key Application Features</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Smart Default Dialer</h3>
-        <p>Fast T9 keypad search, clean call history logs, speed dial shortcuts, and customizable caller ID themes.</p>
-      </div>
-      <div class="card">
-        <h3>TRAI 1909 Spam Reporting</h3>
-        <p>Identify unwanted telemarketing calls and generate instant TRAI 1909 DND spam complaints right after a call ends.</p>
-      </div>
-      <div class="card">
-        <h3>Cloud Contact Photo Sync</h3>
-        <p>Keep your address book organized with duplicate contact cleanup and automatic contact profile photo syncing.</p>
-      </div>
-      <div class="card">
-        <h3>Quiz Squad &amp; Study Group</h3>
-        <p>Participate in daily educational quizzes, earn virtual IKTA Coins for personal satisfaction, and climb the Friends Leaderboard.</p>
-      </div>
+    <!-- ================= TOP LANGUAGE NOTIFICATION STRIP ================= -->
+    <div id="topLangBar" class="relative z-50 bg-gradient-to-r from-indigo-700 via-indigo-600 to-purple-600 text-white text-xs py-2 px-4 shadow-sm flex items-center justify-between">
+        <div class="max-w-7xl mx-auto w-full flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div class="flex items-center gap-2 font-medium">
+                <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/20 text-[11px]">
+                    <i class="fa-solid fa-language"></i>
+                </span>
+                <span>Select Your Language: English is default, Bengali is 2nd option. All regional Indian languages available.</span>
+            </div>
+            <div class="flex items-center gap-2 font-mono text-[11px]">
+                <button onclick="setLanguage('en')" class="px-2.5 py-0.5 rounded bg-white/20 hover:bg-white text-white hover:text-indigo-900 font-bold transition">English (Default)</button>
+                <button onclick="setLanguage('bn')" class="px-2.5 py-0.5 rounded bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold transition shadow">বাংলা (2nd Option)</button>
+                <button onclick="openLangModal()" class="px-2.5 py-0.5 rounded bg-white/10 hover:bg-white/30 text-white transition flex items-center gap-1">
+                    <span>All Languages</span> <i class="fa-solid fa-chevron-down text-[9px]"></i>
+                </button>
+            </div>
+        </div>
     </div>
 
-    <!-- Step-by-Step User Instructions -->
-    <h2 id="instructions">Step-by-Step Setup &amp; Usage Instructions</h2>
-    <div class="steps">
-      <div class="step-item">
-        <div class="step-num">1</div>
-        <div class="step-content">
-          <h4>Install &amp; Set as Default Phone App</h4>
-          <p>Open <strong>IKTA Smart Dialer</strong> after installation and tap <strong>"Set as Default"</strong> when prompted by Android. This allows the app to handle outgoing/incoming calls, display Caller ID, and manage your call history.</p>
-        </div>
-      </div>
+    <!-- ================= NAVBAR ================= -->
+    <header class="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/85 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-600 to-purple-600 flex items-center justify-center text-white text-lg shadow-md shadow-indigo-500/30 transition group-hover:scale-105">
+                    <i class="fa-solid fa-phone-volume"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-heading font-extrabold text-xl tracking-tight text-slate-900 flex items-center gap-1.5">
+                        IKTA <span class="text-indigo-600 font-semibold text-sm">Smart Dialer</span>
+                    </span>
+                    <span class="text-[10px] font-mono text-slate-500 font-medium uppercase tracking-wider">Fast • Private • Regulatory Compliant</span>
+                </div>
+            </a>
 
-      <div class="step-item">
-        <div class="step-num">2</div>
-        <div class="step-content">
-          <h4>Grant Essential Telecommunications Permissions</h4>
-          <p>Allow <strong>Phone</strong>, <strong>Contacts</strong>, and <strong>Call Logs</strong> permissions so you can search contacts quickly, view recent call durations, and manage blocked numbers.</p>
-        </div>
-      </div>
+            <!-- Centered Nav Links -->
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600">
+                <a href="#features" class="hover:text-indigo-600 transition" data-i18n="nav_features">Capabilities</a>
+                <a href="setup_guide.html" class="hover:text-indigo-600 transition" data-i18n="nav_setup">Setup Guide</a>
+                <a href="quiz.html" class="text-indigo-600 hover:text-indigo-700 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-trophy text-amber-500 text-xs"></i> <span data-i18n="nav_quiz">Quiz & Network</span>
+                </a>
+                <a href="#comparison" class="hover:text-indigo-600 transition" data-i18n="nav_comparison">Comparison</a>
+                <a href="privacy_policy.html" class="hover:text-indigo-600 transition" data-i18n="nav_privacy">Privacy & Safety</a>
+                <a href="contact_us.html" class="hover:text-indigo-600 transition" data-i18n="nav_contact">Contact</a>
+            </nav>
 
-      <div class="step-item">
-        <div class="step-num">3</div>
-        <div class="step-content">
-          <h4>Report Spam Calls via TRAI 1909</h4>
-          <p>After disconnecting an unsolicited commercial call, open the call entry or post-call summary and select <strong>Report Spam (1909)</strong> to format and submit a DND complaint.</p>
-        </div>
-      </div>
+            <!-- Actions Right -->
+            <div class="flex items-center gap-3">
+                <!-- Language Selector Button in Navbar -->
+                <button onclick="openLangModal()" class="px-3.5 py-1.5 text-xs font-mono font-bold rounded-lg border border-slate-200 bg-slate-50 text-slate-700 hover:text-indigo-600 hover:border-indigo-400 hover:bg-indigo-50 transition flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-globe text-indigo-600"></i>
+                    <span id="currentLangLabel">English</span>
+                    <i class="fa-solid fa-angle-down text-[10px] text-slate-400"></i>
+                </button>
 
-      <div class="step-item">
-        <div class="step-num">4</div>
-        <div class="step-content">
-          <h4>Play Educational Quizzes &amp; Earn Virtual IKTA Coins</h4>
-          <p>Navigate to the <strong>Win Quiz &amp; Collect Coins</strong> section, optionally watch a rewarded video ad to unlock quiz rounds, and answer general knowledge questions to earn virtual IKTA Coins and Study Group ranking points.</p>
+                <!-- High Contrast Light Theme CTA -->
+                <a href="#download" class="hidden sm:inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-bold tracking-wide text-white uppercase rounded-lg bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 transition shadow-md shadow-indigo-500/25">
+                    <i class="fa-solid fa-download"></i> <span data-i18n="nav_cta">Download App</span>
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileNav()" class="lg:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
         </div>
-      </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileNav" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-5 space-y-3 font-semibold text-sm text-slate-700 shadow-xl">
+            <a href="#features" onclick="toggleMobileNav()" class="block py-2 hover:text-indigo-600" data-i18n="nav_features">Capabilities</a>
+            <a href="setup_guide.html" class="block py-2 hover:text-indigo-600" data-i18n="nav_setup">Setup Guide</a>
+            <a href="quiz.html" class="block py-2 text-indigo-600 flex items-center gap-2">
+                <i class="fa-solid fa-trophy text-amber-500"></i> <span data-i18n="nav_quiz">Quiz & Network</span>
+            </a>
+            <a href="#comparison" onclick="toggleMobileNav()" class="block py-2 hover:text-indigo-600" data-i18n="nav_comparison">Comparison</a>
+            <a href="privacy_policy.html" class="block py-2 hover:text-indigo-600" data-i18n="nav_privacy">Privacy Policy</a>
+            <a href="contact_us.html" class="block py-2 hover:text-indigo-600" data-i18n="nav_contact">Contact Us</a>
+            <div class="pt-2 border-t border-slate-100 flex gap-2">
+                <button onclick="openLangModal(); toggleMobileNav();" class="flex-1 py-2 text-xs font-bold rounded-lg border border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-globe text-indigo-600"></i> Select Language
+                </button>
+                <a href="#download" onclick="toggleMobileNav()" class="flex-1 py-2 text-xs font-bold rounded-lg bg-indigo-600 text-white text-center">Download APK</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= ASYMMETRIC HERO SECTION (LIGHT THEME) ================= -->
+    <section class="relative z-10 pt-12 pb-20 lg:pt-16 lg:pb-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                <!-- Left Column: Copy & Value Proposition -->
+                <div class="lg:col-span-7 space-y-6">
+
+                    <!-- Eyebrow Pill -->
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-indigo-200 bg-indigo-50/80 text-indigo-800 text-xs font-mono font-semibold shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span data-i18n="hero_pill">Official v1.0.0 Production Release • 100% Ad-Free Verified</span>
+                    </div>
+
+                    <!-- 2-Line Headline -->
+                    <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl text-slate-900 tracking-tight leading-[1.1]" data-i18n="hero_title">
+                        Intelligent Android Telephony.<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600">Hardened for Privacy.</span>
+                    </h1>
+
+                    <!-- Subheadline (Inter, 1.6 Line-Height, max-w-65ch) -->
+                    <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-[65ch]" data-i18n="hero_sub">
+                        An ultra-fast, modern telephone suite engineered with a 12ms SQLite T9 search engine, orange unknown call highlighting, 1-tap TRAI 1909 regulatory complaints, and an educational 10-tier quiz network.
+                    </p>
+
+                    <!-- Primary & Secondary CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                        <a href="IKTA_Smart_Dialer_Website_Pages.zip" download="IKTA_Smart_Dialer_Website_Pages.zip" class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-sm tracking-wide shadow-lg shadow-indigo-500/25 transition hover:-translate-y-0.5">
+                            <i class="fa-solid fa-file-zipper text-base"></i>
+                            <span data-i18n="btn_download_zip">Download Website (.ZIP)</span>
+                        </a>
+
+                        <a href="IKTASmartDialer.apk" download="IKTASmartDialer.apk" class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border-2 border-slate-200 hover:border-indigo-400 font-bold text-sm tracking-wide shadow-sm transition hover:-translate-y-0.5">
+                            <i class="fa-brands fa-android text-emerald-600 text-base"></i>
+                            <span data-i18n="btn_download_apk">Get Android App (.APK)</span>
+                        </a>
+
+                        <a href="setup_guide.html" class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-sm transition">
+                            <i class="fa-solid fa-book-open"></i>
+                            <span data-i18n="btn_explore_guide">Setup Guide</span>
+                        </a>
+                    </div>
+
+                    <!-- Social Proof / Telemetry Strip -->
+                    <div class="pt-6 border-t border-slate-200/80 grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <div class="space-y-1">
+                            <div class="font-heading font-extrabold text-2xl text-slate-900">12ms</div>
+                            <div class="text-xs font-mono text-slate-500" data-i18n="stat_lookup">SQLite T9 Lookup</div>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="font-heading font-extrabold text-2xl text-emerald-600">0%</div>
+                            <div class="text-xs font-mono text-slate-500" data-i18n="stat_privacy">Data Harvesting</div>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="font-heading font-extrabold text-2xl text-indigo-600">250k+</div>
+                            <div class="text-xs font-mono text-slate-500" data-i18n="stat_threats">Spam Threat DB</div>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="font-heading font-extrabold text-2xl text-purple-600">10 Tiers</div>
+                            <div class="text-xs font-mono text-slate-500" data-i18n="stat_quiz">Educational Quiz</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Interactive Phone Mockup with Dual Screen Toggle -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm">
+
+                        <!-- Background Ambient Glow -->
+                        <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500/15 via-purple-500/10 to-pink-500/10 rounded-3xl blur-2xl -z-10"></div>
+
+                        <!-- Phone Container -->
+                        <div class="phone-frame-light p-2 shadow-2xl">
+                            <!-- Inner Display Screen -->
+                            <div class="bg-slate-950 rounded-[32px] overflow-hidden relative">
+                                <img id="heroPhoneImg" src="screenshots/topic_dialer_dual_sim.png" alt="IKTA Smart Dialer Interface" class="w-full h-auto object-cover transition-opacity duration-300">
+
+                                <!-- Floating Micro-telemetry Badges -->
+                                <div class="absolute top-8 left-3 right-3 flex items-center justify-between pointer-events-none">
+                                    <div class="px-2.5 py-1 rounded-full bg-slate-900/90 border border-emerald-500/40 text-[10px] font-mono text-emerald-400 flex items-center gap-1.5 shadow-md">
+                                        <i class="fa-solid fa-shield-halved"></i>
+                                        <span>TELECOM PRIVACY ON</span>
+                                    </div>
+                                    <div class="px-2.5 py-1 rounded-full bg-slate-900/90 border border-indigo-500/40 text-[10px] font-mono text-indigo-400 flex items-center gap-1.5 shadow-md">
+                                        <i class="fa-solid fa-bolt"></i>
+                                        <span>12ms T9 ENGINE</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Phone Screen Switcher Controls -->
+                        <div class="mt-4 flex items-center justify-center gap-2">
+                            <button onclick="setHeroScreen('screenshots/topic_dialer_dual_sim.png', this)" class="screen-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white shadow-sm transition">
+                                Dialer & Dual-SIM
+                            </button>
+                            <button onclick="setHeroScreen('screenshots/topic_unknown_orange_filter.png', this)" class="screen-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition">
+                                Orange Unknown
+                            </button>
+                            <button onclick="setHeroScreen('screenshots/topic_quiz_and_coins.png', this)" class="screen-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition">
+                                Quiz Network
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= BENTO GRID FEATURE SECTION (3-COLUMN RESPONSIVE) ================= -->
+    <section id="features" class="relative z-10 py-20 bg-white border-y border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-mono font-bold tracking-wider uppercase text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100" data-i18n="bento_eyebrow">
+                    CORE TELECOM ARCHITECTURE
+                </span>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-slate-900 tracking-tight" data-i18n="bento_heading">
+                    Engineered for Precision, Speed & Safety
+                </h2>
+                <p class="text-slate-600 text-base" data-i18n="bento_sub">
+                    Click any module below to inspect full side-by-side screenshots, workflow diagrams, and technical details.
+                </p>
+            </div>
+
+            <!-- Bento Grid (3-Columns, gap-6) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- Card 1 (Span 2): SQLite 12ms T9 Search Engine -->
+                <div class="md:col-span-2 light-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between group cursor-pointer" onclick="openTopicModal('t9')">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-indigo-50 text-indigo-700 border border-indigo-100">ENGINE • 12ms</span>
+                            <span class="text-xs font-mono text-slate-400 group-hover:text-indigo-600 transition flex items-center gap-1">Inspect Screen <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-slate-900 group-hover:text-indigo-600 transition" data-i18n="t9_title">
+                            12ms SQLite T9 Intelligent Search Engine
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed" data-i18n="t9_desc">
+                            Instantly matches contacts as you tap numeric keys. Handles phonetic matching, prefix filtering, and dual-SIM dispatch without ever freezing the main Android UI thread.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-500">
+                        <span class="text-indigo-600 font-semibold"><i class="fa-solid fa-microchip"></i> Zero Lag with 10,000+ Contacts</span>
+                        <span class="text-slate-400">topic_dialer_dual_sim.png</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 (Span 1): TRAI 1909 Regulatory Reporting -->
+                <div class="md:col-span-1 light-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between group cursor-pointer" onclick="openTopicModal('trai')">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-amber-50 text-amber-800 border border-amber-200">REGULATORY • TRAI 1909</span>
+                            <span class="text-xs font-mono text-slate-400 group-hover:text-amber-600 transition flex items-center gap-1">Inspect <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-900 group-hover:text-amber-600 transition" data-i18n="trai_title">
+                            TRAI 1909 Regulatory 1-Tap SMS
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed" data-i18n="trai_desc">
+                            Compliant with Telecom Regulatory Authority of India standards. 1-tap SMS format automatically reported to 1909 to sanction telemarketers.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-500">
+                        <span class="text-amber-700 font-semibold"><i class="fa-solid fa-file-shield"></i> Official Legal Mandate</span>
+                        <span class="text-slate-400">topic_trai_1909_dialog.png</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 (Span 1): Orange Unknown Call Highlighting -->
+                <div class="md:col-span-1 light-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between group cursor-pointer" onclick="openTopicModal('orange')">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-orange-50 text-orange-800 border border-orange-200">VISUAL ALERT</span>
+                            <span class="text-xs font-mono text-slate-400 group-hover:text-orange-600 transition flex items-center gap-1">Inspect <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-900 group-hover:text-orange-600 transition" data-i18n="orange_title">
+                            Orange Unknown Call Highlighting
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed" data-i18n="orange_desc">
+                            Never get tricked by unfamiliar numbers. Unsaved and unknown callers glow in high-contrast orange across call logs and in-call popups.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-500">
+                        <span class="text-orange-600 font-semibold"><i class="fa-solid fa-eye"></i> Instant Threat Recognition</span>
+                        <span class="text-slate-400">topic_unknown_orange_filter.png</span>
+                    </div>
+                </div>
+
+                <!-- Card 4 (Span 2): Crowdsourced Spam & Robocall Auto-Drop -->
+                <div class="md:col-span-2 light-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between group cursor-pointer" onclick="openTopicModal('spam')">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-rose-50 text-rose-700 border border-rose-200">DEFENSE • 250,000+ DB</span>
+                            <span class="text-xs font-mono text-slate-400 group-hover:text-rose-600 transition flex items-center gap-1">Inspect Dual Views <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-slate-900 group-hover:text-rose-600 transition" data-i18n="spam_title">
+                            Crowdsourced Spam & Robocall Protection
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed" data-i18n="spam_desc">
+                            Three selectable defense modes: Strict, Balanced, and Basic. Automatically disconnects high-frequency robocalls without ringing your device. View 1 shows threat level controls; View 2 details live community blocking statistics.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-500">
+                        <span class="text-rose-600 font-semibold"><i class="fa-solid fa-ban"></i> Dual-Screen Scrolled Evidence</span>
+                        <span class="text-slate-400">topic_spam_protection_levels_top.png</span>
+                    </div>
+                </div>
+
+                <!-- Card 5 (Span 1): Default Country Code & ITU Prefix -->
+                <div class="md:col-span-1 light-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between group cursor-pointer" onclick="openTopicModal('country')">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-blue-50 text-blue-700 border border-blue-200">INTERNATIONAL • ITU</span>
+                            <span class="text-xs font-mono text-slate-400 group-hover:text-blue-600 transition flex items-center gap-1">Dual Screen <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-900 group-hover:text-blue-600 transition" data-i18n="country_title">
+                            Default Country Code & ITU Prefixes
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed" data-i18n="country_desc">
+                            Select or enter any custom ITU dial code (+1, +91, +44, +880, etc.). View 1 showcases popular quick codes; View 2 expands into the 240+ global country directory.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-500">
+                        <span class="text-blue-600 font-semibold"><i class="fa-solid fa-earth-americas"></i> 240+ Nations Directory</span>
+                        <span class="text-slate-400">topic_country_code_custom_input.png</span>
+                    </div>
+                </div>
+
+                <!-- Card 6 (Span 1): Remove Duplicate Contacts -->
+                <div class="md:col-span-1 light-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between group cursor-pointer" onclick="openTopicModal('duplicates')">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">CLEANER • DEDUPLICATION</span>
+                            <span class="text-xs font-mono text-slate-400 group-hover:text-emerald-600 transition flex items-center gap-1">Dual Screen <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-900 group-hover:text-emerald-600 transition" data-i18n="dups_title">
+                            Address Book Cleaner & Deduplication
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed" data-i18n="dups_desc">
+                            Audits your phonebook for duplicate telephone numbers and names. View 1 details the phone numbers scanner; View 2 illustrates the radio-button conflict resolver with Save All.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-500">
+                        <span class="text-emerald-600 font-semibold"><i class="fa-solid fa-users-viewfinder"></i> 1-Tap Merge Engine</span>
+                        <span class="text-slate-400">topic_remove_duplicates_numbers_tab.png</span>
+                    </div>
+                </div>
+
+                <!-- Card 7 (Span 1): Call Blocker & Blocked Numbers -->
+                <div class="md:col-span-1 light-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between group cursor-pointer" onclick="openTopicModal('blocker')">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-slate-100 text-slate-800 border border-slate-200">PRIVACY • BLOCK LIST</span>
+                            <span class="text-xs font-mono text-slate-400 group-hover:text-indigo-600 transition flex items-center gap-1">Dual Screen <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-900 group-hover:text-indigo-600 transition" data-i18n="blocker_title">
+                            Call Blocker & Blocked Numbers Manager
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed" data-i18n="blocker_desc">
+                            Autonomous call rejection engine. View 1 displays the auto-drop toggle for unidentified callers; View 2 demonstrates the 1-tap block confirmation dialog from recent call logs.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-500">
+                        <span class="text-slate-700 font-semibold"><i class="fa-solid fa-shield-virus"></i> Auto-Reject Unknowns</span>
+                        <span class="text-slate-400">topic_call_blocker_dashboard_top.png</span>
+                    </div>
+                </div>
+
+                <!-- Card 8 (Span 2): 10-Tier Educational Quiz & Downline Network -->
+                <div class="md:col-span-2 gradient-border-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between group cursor-pointer" onclick="window.location.href='quiz.html'">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">EDUCATIONAL REWARDS • 10 TIERS</span>
+                            <span class="text-xs font-mono text-indigo-600 group-hover:underline flex items-center gap-1">Open Full Quiz Portal <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-slate-900 group-hover:text-indigo-600 transition" data-i18n="quiz_title">
+                            Win Quiz & Collect Coins Network
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed" data-i18n="quiz_desc">
+                            Answer educational questions across General Knowledge, Science, and World History. Features a 10-tier referral tree network, coin collection analytics, real-time leaderboard champions, and coin redemption mechanics.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-slate-600">
+                        <span class="text-indigo-600 font-bold"><i class="fa-solid fa-sitemap"></i> Tree Structure & Weightage Breakdown</span>
+                        <span class="text-purple-600 font-bold"><i class="fa-solid fa-coins"></i> 10 Levels of Coin Multipliers</span>
+                    </div>
+                </div>
+
+                <!-- Card 9 (Span 3): Caller ID Privacy & Custom Artistic Wallpapers -->
+                <div class="md:col-span-3 light-card rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-8 group cursor-pointer" onclick="openTopicModal('theme')">
+                    <div class="space-y-3 max-w-2xl">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-purple-50 text-purple-700 border border-purple-200">APPEARANCE & PRIVACY</span>
+                            <span class="text-xs font-mono text-slate-400">Dual-Screen Views Verified</span>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-slate-900 group-hover:text-indigo-600 transition" data-i18n="theme_title">
+                            Artistic Wallpapers & Cryptographic Caller ID Privacy
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed" data-i18n="theme_desc">
+                            Customize your incoming and outgoing call screens with 5 handcrafted artistic wallpapers, custom photo selector, AMOLED dark mode, and 7 caller ID text colors. Toggle between Global and Private modes to protect your personal identity.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-14 h-14 rounded-2xl bg-indigo-50 border border-indigo-200 flex items-center justify-center text-indigo-600 text-2xl shadow-sm">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <div class="text-xs font-mono text-slate-500">
+                            <div>View 1: Color Picker & Simulator</div>
+                            <div>View 2: 5 Wallpapers & Gallery Picker</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 3-TIER ARCHITECTURAL COMPARISON SECTION (LIGHT THEME) ================= -->
+    <section id="comparison" class="relative z-10 py-20 bg-slate-50 border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-mono font-bold tracking-wider uppercase text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100" data-i18n="comp_eyebrow">
+                    TRANSPARENT ARCHITECTURAL COMPARISON
+                </span>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-slate-900 tracking-tight" data-i18n="comp_heading">
+                    How IKTA Smart Dialer Outclasses Legacy Solutions
+                </h2>
+                <p class="text-slate-600 text-base" data-i18n="comp_sub">
+                    No intrusive subscriptions, no contact scraping, and zero laggy background services.
+                </p>
+            </div>
+
+            <!-- 3-Tier Card Comparison -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+
+                <!-- Tier 1: Stock OEM Dialer -->
+                <div class="light-card rounded-2xl p-8 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <span class="text-xs font-mono text-slate-400 font-semibold uppercase tracking-wider">STOCK OEM DEFAULT</span>
+                        <h3 class="font-heading font-bold text-2xl text-slate-800">Native Android App</h3>
+                        <p class="text-slate-500 text-sm">Pre-installed phone apps by Samsung, Google, or Xiaomi.</p>
+                        <div class="py-4 border-y border-slate-100 space-y-3 font-mono text-xs text-slate-600">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-xmark text-rose-500"></i> Slow search over 3,000+ contacts</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-xmark text-rose-500"></i> No Orange highlight for unknowns</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-xmark text-rose-500"></i> No TRAI 1909 regulatory 1-tap SMS</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-xmark text-rose-500"></i> Generic OEM theme only</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-xmark text-rose-500"></i> No rewards or downline system</div>
+                        </div>
+                    </div>
+                    <div class="pt-6">
+                        <span class="text-xs font-mono text-slate-400 font-semibold">Pre-installed with phone</span>
+                    </div>
+                </div>
+
+                <!-- Tier 2: IKTA Smart Dialer (RECOMMENDED) -->
+                <div class="gradient-border-card rounded-2xl p-8 relative flex flex-col justify-between shadow-xl">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-mono text-[11px] font-bold tracking-wider uppercase shadow-md">
+                        RECOMMENDED CHOICE
+                    </div>
+                    <div class="space-y-4 pt-2">
+                        <span class="text-xs font-mono text-indigo-600 font-bold uppercase tracking-wider">COMMUNITY EDITION</span>
+                        <h3 class="font-heading font-bold text-3xl text-slate-900">IKTA Smart Dialer</h3>
+                        <p class="text-slate-600 text-sm">Complete high-speed telephone suite with privacy and educational rewards.</p>
+                        <div class="py-4 border-y border-slate-100 space-y-3 font-mono text-xs text-slate-800 font-medium">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> 12ms ultra-fast SQLite T9 lookup</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Orange Unknown Call highlighting</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> 250,000+ crowdsourced robocall auto-drop</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Private Encrypted Caller ID mode</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> 10-Tier educational quiz network</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Strict zero contact scraping policy</div>
+                        </div>
+                    </div>
+                    <div class="pt-6">
+                        <a href="IKTASmartDialer.apk" download="IKTASmartDialer.apk" class="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold text-xs uppercase tracking-wider transition shadow-md shadow-indigo-500/30">
+                            Download APK (100% Free)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tier 3: Invasive Commercial Dialers -->
+                <div class="light-card rounded-2xl p-8 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <span class="text-xs font-mono text-slate-400 font-semibold uppercase tracking-wider">INVASIVE COMMERCIAL APPS</span>
+                        <h3 class="font-heading font-bold text-2xl text-slate-800">Truecaller & Others</h3>
+                        <p class="text-slate-500 text-sm">Proprietary ad-heavy apps that harvest user contact databases.</p>
+                        <div class="py-4 border-y border-slate-100 space-y-3 font-mono text-xs text-slate-600">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Scrapes entire user phonebook to cloud</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Intrusive video pop-ups on screen</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Heavy background battery drain</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Expensive recurring subscriptions</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Frequent data privacy breaches</div>
+                        </div>
+                    </div>
+                    <div class="pt-6">
+                        <span class="text-xs font-mono text-slate-400 font-semibold">Expensive Paid Subscriptions</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= DOWNLOAD & RELEASES SECTION ================= -->
+    <section id="download" class="relative z-10 py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+                <span class="text-xs font-mono font-bold tracking-wider uppercase text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100" data-i18n="dl_eyebrow">
+                    OFFICIAL PRODUCTION RELEASE
+                </span>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-slate-900 tracking-tight" data-i18n="dl_heading">
+                    Deploy to GitHub or Install on Android
+                </h2>
+                <p class="text-slate-600 text-sm" data-i18n="dl_sub">
+                    Everything is packaged and verified with zero advertisement artifacts.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+                <!-- ZIP Package Card -->
+                <div class="light-card rounded-2xl p-8 border-2 border-indigo-100 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-center text-indigo-600 text-xl shadow-sm">
+                            <i class="fa-solid fa-file-zipper"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-slate-900">Full Website Package (.ZIP)</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Complete standalone multi-lingual website, setup guide, clean screenshots, and legal disclosures ready to push to GitHub Pages in seconds.
+                        </p>
+                        <div class="space-y-2 font-mono text-xs text-slate-600 py-3 border-y border-slate-100">
+                            <div class="flex justify-between"><span>Archive Size:</span> <span class="font-bold text-slate-900">~18.0 MB</span></div>
+                            <div class="flex justify-between"><span>Clean Screenshots:</span> <span class="text-emerald-600 font-bold">67 Files (No Ads)</span></div>
+                            <div class="flex justify-between"><span>Hosting:</span> <span class="text-indigo-600 font-bold">GitHub Pages Ready</span></div>
+                        </div>
+                    </div>
+                    <div class="pt-6">
+                        <a href="IKTA_Smart_Dialer_Website_Pages.zip" download="IKTA_Smart_Dialer_Website_Pages.zip" class="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider transition shadow-md shadow-indigo-500/25">
+                            <i class="fa-solid fa-download"></i> Download Website (.ZIP)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- APK Card -->
+                <div class="light-card rounded-2xl p-8 border-2 border-emerald-100 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 text-xl shadow-sm">
+                            <i class="fa-brands fa-android"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-slate-900">Android Application (.APK)</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Official production APK built for Android phones and emulators (API 26+ / Android 8.0 through Android 15).
+                        </p>
+                        <div class="space-y-2 font-mono text-xs text-slate-600 py-3 border-y border-slate-100">
+                            <div class="flex justify-between"><span>Compatibility:</span> <span class="font-bold text-slate-900">Android 8.0 - 15</span></div>
+                            <div class="flex justify-between"><span>Permissions:</span> <span class="text-emerald-600 font-bold">Strictly Telecom</span></div>
+                            <div class="flex justify-between"><span>Version:</span> <span class="text-emerald-600 font-bold">v1.0.0 Verified</span></div>
+                        </div>
+                    </div>
+                    <div class="pt-6">
+                        <a href="IKTASmartDialer.apk" download="IKTASmartDialer.apk" class="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider transition shadow-md shadow-emerald-500/25">
+                            <i class="fa-brands fa-android"></i> Download App (.APK)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GitHub Pages 3-Step Guide -->
+            <div class="max-w-4xl mx-auto rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8 font-mono text-xs text-slate-700 shadow-sm">
+                <div class="flex items-center gap-2 font-bold text-sm text-indigo-700 mb-4">
+                    <i class="fa-brands fa-github text-base"></i>
+                    <span>HOW TO HOST ON GITHUB PAGES IN 3 STEPS:</span>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex gap-3">
+                        <span class="text-indigo-600 font-bold">1.</span>
+                        <span>Extract <code>IKTA_Smart_Dialer_Website_Pages.zip</code> into your local repository folder.</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <span class="text-indigo-600 font-bold">2.</span>
+                        <span>Commit and push all files to your GitHub repository's <code>main</code> or <code>gh-pages</code> branch.</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <span class="text-indigo-600 font-bold">3.</span>
+                        <span>Go to <strong>Settings › Pages</strong> in your GitHub repository, choose <strong>Deploy from branch</strong>, select <code>/ (root)</code>, and click Save.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FLOATING WHATSAPP BUTTON ================= -->
+    <a href="https://wa.me/917980118839?text=Hello%20IKTA%20Smart%20Dialer%20Support" target="_blank" title="Chat on WhatsApp (+91 7980118839)" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center text-2xl shadow-xl shadow-emerald-500/30 transition hover:scale-110">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- ================= MINIMALIST LIGHT FOOTER ================= -->
+    <footer class="relative z-10 border-t border-slate-200 bg-white pt-16 pb-12 text-xs font-mono text-slate-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+                <!-- Col 1: Brand -->
+                <div class="col-span-2 space-y-4">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white text-sm shadow-sm">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <span class="font-heading font-bold text-slate-900 text-base tracking-tight">IKTA Smart Dialer</span>
+                    </div>
+                    <p class="text-slate-500 text-xs leading-relaxed max-w-sm">
+                        High-performance intelligent telephony suite for Android devices. Engineered for speed, privacy, and full regulatory compliance.
+                    </p>
+                    <div class="flex items-center gap-2 text-emerald-600 text-[11px] font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>All Telephony & TRAI 1909 Services Operational</span>
+                    </div>
+                </div>
+
+                <!-- Col 2: Product -->
+                <div class="space-y-3">
+                    <span class="text-slate-900 font-bold uppercase tracking-wider text-[11px]">Product</span>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="hover:text-indigo-600 transition">T9 Search Engine</a></li>
+                        <li><a href="#features" class="hover:text-indigo-600 transition">Caller ID Privacy</a></li>
+                        <li><a href="#features" class="hover:text-indigo-600 transition">Spam Protection</a></li>
+                        <li><a href="quiz.html" class="text-indigo-600 hover:underline font-bold">10-Tier Quiz Network</a></li>
+                        <li><a href="#features" class="hover:text-indigo-600 transition">Artistic Wallpapers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Resources -->
+                <div class="space-y-3">
+                    <span class="text-slate-900 font-bold uppercase tracking-wider text-[11px]">Resources</span>
+                    <ul class="space-y-2">
+                        <li><a href="setup_guide.html" class="hover:text-indigo-600 transition">Setup Guide</a></li>
+                        <li><a href="user_manual.html" class="hover:text-indigo-600 transition">Technical Manual</a></li>
+                        <li><a href="privacy_policy.html" class="hover:text-indigo-600 transition">Privacy Policy</a></li>
+                        <li><a href="privacy_policy.html#data-safety" class="hover:text-indigo-600 transition">Data Safety</a></li>
+                        <li><a href="#download" class="hover:text-indigo-600 transition">Download ZIP & APK</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Support & Contact -->
+                <div class="space-y-3">
+                    <span class="text-slate-900 font-bold uppercase tracking-wider text-[11px]">Contact & Support</span>
+                    <ul class="space-y-2">
+                        <li><a href="mailto:abssoftware2008@gmail.com" class="hover:text-indigo-600 transition font-bold text-slate-800">abssoftware2008@gmail.com</a></li>
+                        <li><a href="https://wa.me/917980118839" class="hover:text-indigo-600 transition font-bold text-slate-800">WhatsApp: +91 7980118839</a></li>
+                        <li><a href="contact_us.html" class="hover:text-indigo-600 transition">Official Contact Page</a></li>
+                        <li class="text-slate-400">Kolkata, West Bengal, India</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Row -->
+            <div class="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-[11px]">
+                <p>© 2026 IKTA Smart Dialer. Strictly compliant with Google Play & Telecom Policies.</p>
+                <div class="flex items-center gap-6">
+                    <a href="privacy_policy.html" class="hover:text-slate-800 transition">Privacy Policy</a>
+                    <a href="setup_guide.html" class="hover:text-slate-800 transition">Setup Guide</a>
+                    <a href="contact_us.html" class="hover:text-slate-800 transition">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= DETAIL TOPIC INSPECTOR MODAL (LIGHT THEME DUAL SCREEN) ================= -->
+    <div id="inspectorModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="relative w-full max-w-4xl rounded-2xl border border-slate-200 bg-white shadow-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeInspector()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-xl font-bold w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="inspectorContent"></div>
+        </div>
     </div>
 
-    <!-- Privacy, Virtual Coin Disclaimer & Data Deletion -->
-    <h2 id="privacy">Privacy Policy, Virtual Points Disclaimer &amp; Support</h2>
-    <div class="policy-box">
-      <h3>Important Disclosures &amp; Data Safety</h3>
-      <ul>
-        <li><strong>Core Dialer Data Usage:</strong> Contacts and Call Log data are used strictly to provide core default dialer, caller ID, and call history features on your device. We never sell your personal contacts or call logs.</li>
-        <li><strong>Advertising &amp; Analytics:</strong> This application uses Google AdMob and certified mediation partners to display ads. Advertising IDs (AAID) may be processed securely in transit for ad delivery and analytics.</li>
-        <li><strong>Virtual IKTA Coins Disclaimer:</strong> IKTA Coins and Team Points are purely virtual score units earned for educational quiz participation and personal satisfaction. They hold <strong>zero cash, monetary, gift, or cryptocurrency value</strong> and cannot be withdrawn or redeemed for real money.</li>
-        <li><strong>Account &amp; Data Deletion Request:</strong> Users can clear local app data anytime via Android Settings or request cloud profile deletion by contacting our developer support email below.</li>
-      </ul>
+    <!-- ================= POPUP LANGUAGE SELECTOR (LOADS AT FIRST VISIT) ================= -->
+    <div id="langModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="relative w-full max-w-2xl rounded-3xl border border-slate-200 bg-white shadow-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
+                <div>
+                    <h3 class="font-heading font-extrabold text-xl text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-globe text-indigo-600"></i> Choose Your Language / ভাষা নির্বাচন করুন
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-1 font-mono">
+                        Default is English. 2nd Option is Bengali (বাংলা). All Indian Regional Languages available.
+                    </p>
+                </div>
+                <button onclick="closeLangModal()" class="text-slate-400 hover:text-slate-800 text-lg p-2 rounded-lg hover:bg-slate-100 transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Priority Language Grid (English & Bengali Prominent) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <!-- Option 1: English (Default) -->
+                <button onclick="setLanguage('en')" class="p-4 text-left rounded-2xl border-2 border-indigo-600 bg-indigo-50/60 hover:bg-indigo-100/70 transition flex items-center justify-between shadow-sm">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-heading font-extrabold text-lg text-slate-900">English</span>
+                            <span class="px-2 py-0.5 rounded-full bg-indigo-600 text-white font-mono text-[10px] font-bold uppercase">Default</span>
+                        </div>
+                        <div class="text-xs text-slate-600 font-mono mt-0.5">International & Primary Interface</div>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center text-sm shadow-sm">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </button>
+
+                <!-- Option 2: Bengali (বাংলা - 2nd Option Prominent) -->
+                <button onclick="setLanguage('bn')" class="p-4 text-left rounded-2xl border-2 border-amber-400 bg-amber-50/70 hover:bg-amber-100/80 transition flex items-center justify-between shadow-sm">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-heading font-extrabold text-lg text-slate-900">বাংলা</span>
+                            <span class="px-2 py-0.5 rounded-full bg-amber-500 text-slate-900 font-mono text-[10px] font-bold uppercase">2nd Option</span>
+                        </div>
+                        <div class="text-xs text-slate-600 font-mono mt-0.5">Bengali Regional Language</div>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-amber-500 text-slate-900 flex items-center justify-center text-sm shadow-sm font-bold">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Regional Indian Languages Grid -->
+            <div class="border-t border-slate-100 pt-4 mb-4">
+                <span class="text-xs font-mono font-bold uppercase tracking-wider text-slate-500 mb-3 block">
+                    All Regional Indian Languages
+                </span>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <button onclick="setLanguage('hi')" class="p-3 text-left rounded-xl border border-slate-200 bg-slate-50 hover:border-indigo-500 hover:bg-indigo-50/50 transition">
+                        <div class="font-bold text-sm text-slate-900">हिन्दी</div>
+                        <div class="text-[11px] font-mono text-slate-500">Hindi</div>
+                    </button>
+                    <button onclick="setLanguage('te')" class="p-3 text-left rounded-xl border border-slate-200 bg-slate-50 hover:border-indigo-500 hover:bg-indigo-50/50 transition">
+                        <div class="font-bold text-sm text-slate-900">తెలుగు</div>
+                        <div class="text-[11px] font-mono text-slate-500">Telugu</div>
+                    </button>
+                    <button onclick="setLanguage('mr')" class="p-3 text-left rounded-xl border border-slate-200 bg-slate-50 hover:border-indigo-500 hover:bg-indigo-50/50 transition">
+                        <div class="font-bold text-sm text-slate-900">मराठी</div>
+                        <div class="text-[11px] font-mono text-slate-500">Marathi</div>
+                    </button>
+                    <button onclick="setLanguage('ta')" class="p-3 text-left rounded-xl border border-slate-200 bg-slate-50 hover:border-indigo-500 hover:bg-indigo-50/50 transition">
+                        <div class="font-bold text-sm text-slate-900">தமிழ்</div>
+                        <div class="text-[11px] font-mono text-slate-500">Tamil</div>
+                    </button>
+                    <button onclick="setLanguage('ur')" class="p-3 text-left rounded-xl border border-slate-200 bg-slate-50 hover:border-indigo-500 hover:bg-indigo-50/50 transition">
+                        <div class="font-bold text-sm text-slate-900">اردو</div>
+                        <div class="text-[11px] font-mono text-slate-500">Urdu</div>
+                    </button>
+                    <button onclick="setLanguage('gu')" class="p-3 text-left rounded-xl border border-slate-200 bg-slate-50 hover:border-indigo-500 hover:bg-indigo-50/50 transition">
+                        <div class="font-bold text-sm text-slate-900">ગુજરાતી</div>
+                        <div class="text-[11px] font-mono text-slate-500">Gujarati</div>
+                    </button>
+                    <button onclick="setLanguage('kn')" class="p-3 text-left rounded-xl border border-slate-200 bg-slate-50 hover:border-indigo-500 hover:bg-indigo-50/50 transition">
+                        <div class="font-bold text-sm text-slate-900">ಕನ್ನಡ</div>
+                        <div class="text-[11px] font-mono text-slate-500">Kannada</div>
+                    </button>
+                    <button onclick="setLanguage('ml')" class="p-3 text-left rounded-xl border border-slate-200 bg-slate-50 hover:border-indigo-500 hover:bg-indigo-50/50 transition">
+                        <div class="font-bold text-sm text-slate-900">മലയാളം</div>
+                        <div class="text-[11px] font-mono text-slate-500">Malayalam</div>
+                    </button>
+                    <button onclick="setLanguage('pa')" class="p-3 text-left rounded-xl border border-slate-200 bg-slate-50 hover:border-indigo-500 hover:bg-indigo-50/50 transition">
+                        <div class="font-bold text-sm text-slate-900">ਪੰਜਾਬੀ</div>
+                        <div class="text-[11px] font-mono text-slate-500">Punjabi</div>
+                    </button>
+                    <button onclick="setLanguage('or')" class="p-3 text-left rounded-xl border border-slate-200 bg-slate-50 hover:border-indigo-500 hover:bg-indigo-50/50 transition">
+                        <div class="font-bold text-sm text-slate-900">ଓଡ଼ିଆ</div>
+                        <div class="text-[11px] font-mono text-slate-500">Odia</div>
+                    </button>
+                    <button onclick="setLanguage('as')" class="p-3 text-left rounded-xl border border-slate-200 bg-slate-50 hover:border-indigo-500 hover:bg-indigo-50/50 transition">
+                        <div class="font-bold text-sm text-slate-900">অসমীয়া</div>
+                        <div class="text-[11px] font-mono text-slate-500">Assamese</div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-500">
+                <span>Selected language will be saved for your visit.</span>
+                <button onclick="closeLangModal()" class="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold transition">Close</button>
+            </div>
+        </div>
     </div>
 
-  </main>
+    <!-- ================= CLIENT JAVASCRIPT ================= -->
+    <script>
+        // Multi-Language Translation Dictionaries
+        const i18nData = {
+            en: {
+                label: 'English',
+                hero_pill: 'Official v1.0.0 Production Release • 100% Ad-Free Verified',
+                hero_title: 'Intelligent Android Telephony.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600">Hardened for Privacy.</span>',
+                hero_sub: 'An ultra-fast, modern telephone suite engineered with a 12ms SQLite T9 search engine, orange unknown call highlighting, 1-tap TRAI 1909 regulatory complaints, and an educational 10-tier quiz network.',
+                btn_download_zip: 'Download Website (.ZIP)',
+                btn_download_apk: 'Get Android App (.APK)',
+                btn_explore_guide: 'Setup Guide',
+                nav_features: 'Capabilities',
+                nav_setup: 'Setup Guide',
+                nav_quiz: 'Quiz & Network',
+                nav_comparison: 'Comparison',
+                nav_privacy: 'Privacy & Safety',
+                nav_contact: 'Contact',
+                nav_cta: 'Download App',
+                stat_lookup: 'SQLite T9 Lookup',
+                stat_privacy: 'Data Harvesting',
+                stat_threats: 'Spam Threat DB',
+                stat_quiz: 'Educational Quiz',
+                bento_eyebrow: 'CORE TELECOM ARCHITECTURE',
+                bento_heading: 'Engineered for Precision, Speed & Safety',
+                bento_sub: 'Click any module below to inspect full side-by-side screenshots, workflow diagrams, and technical details.',
+                t9_title: '12ms SQLite T9 Intelligent Search Engine',
+                t9_desc: 'Instantly matches contacts as you tap numeric keys. Handles phonetic matching, prefix filtering, and dual-SIM dispatch without ever freezing the main Android UI thread.',
+                trai_title: 'TRAI 1909 Regulatory 1-Tap SMS',
+                trai_desc: 'Compliant with Telecom Regulatory Authority of India standards. 1-tap SMS format automatically reported to 1909 to sanction telemarketers.',
+                orange_title: 'Orange Unknown Call Highlighting',
+                orange_desc: 'Never get tricked by unfamiliar numbers. Unsaved and unknown callers glow in high-contrast orange across call logs and in-call popups.',
+                spam_title: 'Crowdsourced Spam & Robocall Protection',
+                spam_desc: 'Three selectable defense modes: Strict, Balanced, and Basic. Automatically disconnects high-frequency robocalls without ringing your device.',
+                country_title: 'Default Country Code & ITU Prefixes',
+                country_desc: 'Select or enter any custom ITU dial code (+1, +91, +44, +880, etc.). Features popular quick codes and 240+ global country directory.',
+                dups_title: 'Address Book Cleaner & Deduplication',
+                dups_desc: 'Audits your phonebook for duplicate telephone numbers and names with an intuitive radio-button resolver.',
+                blocker_title: 'Call Blocker & Blocked Numbers Manager',
+                blocker_desc: 'Autonomous call rejection engine with 1-tap block confirmation dialog from recent call logs.',
+                quiz_title: 'Win Quiz & Collect Coins Network',
+                quiz_desc: 'Answer educational questions across General Knowledge, Science, and World History. Features a 10-tier referral tree network.',
+                theme_title: 'Artistic Wallpapers & Cryptographic Caller ID Privacy',
+                theme_desc: 'Customize incoming and outgoing call screens with 5 handcrafted artistic wallpapers, custom photo selector, AMOLED dark mode, and 7 caller ID text colors.',
+                comp_eyebrow: 'TRANSPARENT ARCHITECTURAL COMPARISON',
+                comp_heading: 'How IKTA Smart Dialer Outclasses Legacy Solutions',
+                comp_sub: 'No intrusive subscriptions, no contact scraping, and zero laggy background services.',
+                dl_eyebrow: 'OFFICIAL PRODUCTION RELEASE',
+                dl_heading: 'Deploy to GitHub or Install on Android',
+                dl_sub: 'Everything is packaged and verified with zero advertisement artifacts.'
+            },
+            bn: {
+                label: 'বাংলা',
+                hero_pill: 'অফিসিয়াল v1.0.0 রিলিজ • সম্পূর্ণ বিজ্ঞাপনমুক্ত ভেরিফাইড',
+                hero_title: 'বুদ্ধিমান অ্যান্ড্রয়েড টেলিফোনি।<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600">সুরক্ষিত ও গোপনীয়।</span>',
+                hero_sub: '১২ মিলিসেকেন্ড আল্ট্রা-ফাস্ট SQLite T9 সার্চ, অপরিচিত নম্বরে অরেঞ্জ অ্যালার্ট, TRAI 1909 নিয়ন্ত্রণমূলক কমপ্লেন এবং শিক্ষামূলক ১০-টায়ার কুইজ নেটওয়ার্ক সমৃদ্ধ আধুনিক ডায়ালার।',
+                btn_download_zip: 'ওয়েবসাইট জিপ ডাউনলোড (.ZIP)',
+                btn_download_apk: 'অ্যান্ড্রয়েড অ্যাপ নিন (.APK)',
+                btn_explore_guide: 'সেটআপ গাইড দেখুন',
+                nav_features: 'সুবিধাসমূহ',
+                nav_setup: 'সেটআপ গাইড',
+                nav_quiz: 'কুইজ ও নেটওয়ার্ক',
+                nav_comparison: 'তুলনা',
+                nav_privacy: 'গোপনীয়তা ও নিরাপত্তা',
+                nav_contact: 'যোগাযোগ',
+                nav_cta: 'অ্যাপ ডাউনলোড',
+                stat_lookup: 'T9 সার্চ গতি',
+                stat_privacy: 'ডাটা সংগ্রহ (শূন্য)',
+                stat_threats: 'স্প্যাম ডেটাবেস',
+                stat_quiz: 'কুইজ লেভেল',
+                bento_eyebrow: 'টেলিযোগাযোগের মূল প্রযুক্তি',
+                bento_heading: 'গতি, নিরাপত্তা ও স্বচ্ছতার জন্য নির্মিত',
+                bento_sub: 'যেকোনো ফিচারে ক্লিক করে লাইভ স্ক্রিনশট এবং বিস্তারিত বিবরণ দেখুন।',
+                t9_title: '১২ মিলিসেকেন্ড আল্ট্রা-ফাস্ট T9 সার্চ ইঞ্জিন',
+                t9_desc: 'নম্বর ডায়াল করার সাথে সাথেই কন্টাক্ট খুঁজে পায়। ডুয়াল-সিম সাপোর্ট এবং কোনো প্রকার ল্যাগ ছাড়া কাজ করে।',
+                trai_title: 'TRAI 1909 রেগুলেটরি ১-ট্যাপ রিপোর্ট',
+                trai_desc: 'টেলিকম রেগুলেটরি অথরিটি অব ইন্ডিয়া (TRAI) মানসম্মত কমপ্লেন ফরম্যাটে এক ক্লিকে ১৯৯০৯ নম্বরে এসএমএস রিপোর্ট।',
+                orange_title: 'অপরিচিত নম্বরে উজ্জ্বল অরেঞ্জ হাইলাইট',
+                orange_desc: 'অপরিচিত নম্বর এলেই সতর্ক থাকুন। ফোনবুকে না থাকা নম্বরগুলো উজ্জ্বল কমলা রঙে প্রদর্শিত হয়।',
+                spam_title: 'স্প্যাম ও রোবোকল অটো-রিজেক্ট সুরক্ষা',
+                spam_desc: '২৫০,০০০+ স্প্যাম নম্বর ডেটাবেস। রিং হওয়ার আগেই সন্দেহজনক স্প্যাম ও প্রতারক কল স্বয়ংক্রিয়ভাবে কেটে দেয়।',
+                country_title: 'ডিফল্ট কান্ট্রি কোড ও আন্তর্জাতিক ডায়ালিং',
+                country_desc: 'যেকোনো দেশের কান্ট্রি কোড (+১, +৯১, +৮৮০, +৪৪) নির্বাচন বা টাইপ করুন। ২৪০+ দেশের তালিকা।',
+                dups_title: 'ডুপ্লিকেট কন্টাক্ট রিমুভার ও ক্লিনার',
+                dups_desc: 'একই নম্বর বা নামের একাধিক কন্টাক্ট স্ক্যান করে এক ক্লিকে সমাধান ও মার্জ করুন।',
+                blocker_title: 'কল ব্লকার ও ব্লকড নম্বর ম্যানেজার',
+                blocker_desc: 'যেকোনো স্প্যামারকে সাম্প্রতিক কল লিস্ট থেকে ১-ট্যাপে নিশ্চিতকরণের মাধ্যমে চিরতরে ব্লক করুন।',
+                quiz_title: 'কুইজ খেলুন এবং কয়েন নেটওয়ার্ক আয় করুন',
+                quiz_desc: 'সাধারণ জ্ঞান ও বিজ্ঞানের প্রশ্নের সঠিক উত্তর দিয়ে কয়েন জিতুন এবং ১০-স্তরের রেফারেল ট্রিতে নেটওয়ার্ক তৈরি করুন।',
+                theme_title: 'আর্টিস্টিক ওয়ালপেপার ও কলার আইডি গোপনীয়তা',
+                theme_desc: '৫টি শৈল্পিক ওয়ালপেপার, গ্যালারি থেকে পছন্দের ছবি, ৭টি টেক্সট কালার এবং সম্পূর্ণ প্রাইভেট কলার আইডি মোড।',
+                comp_eyebrow: 'স্বচ্ছ ও নিরপেক্ষ প্রযুক্তি তুলনা',
+                comp_heading: 'কেন ইক্তা স্মার্ট ডায়ালার সেরা?',
+                comp_sub: 'কোনো বিজ্ঞাপন নেই, কোনো ডাটা চুরি নেই, এবং কোনো অপ্রয়োজনীয় সাবস্ক্রিপশন নেই।',
+                dl_eyebrow: 'অফিসিয়াল প্রোডাকশন প্যাকেজ',
+                dl_heading: 'গিটহাবে প্রকাশ করুন বা ফোনে ইনস্টল করুন',
+                dl_sub: 'সকল ফাইল সম্পূর্ণ ক্লিন ও বিজ্ঞাপনমুক্ত অবস্থায় জিপ ফাইল আকারে সংরক্ষিত।'
+            },
+            hi: {
+                label: 'हिन्दी',
+                hero_pill: 'आधिकारिक v1.0.0 रिलीज़ • विज्ञापन-मुक्त',
+                hero_title: 'स्मार्ट एंड्रॉयड टेलीफोनी।<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600">सुरक्षित और गोपनीय।</span>',
+                hero_sub: '12ms अल्ट्रा-फास्ट T9 सर्च, अज्ञात नंबरों के लिए ऑरेंज अलर्ट, TRAI 1909 रिपोर्टिंग और 10-स्तरीय क्विज़ नेटवर्क के साथ आधुनिक डायलर।',
+                btn_download_zip: 'वेबसाइट ज़िप डाउनलोड (.ZIP)',
+                btn_download_apk: 'ऐप डाउनलोड करें (.APK)',
+                btn_explore_guide: 'सेटअप गाइड देखें',
+                nav_features: 'विशेषताएं',
+                nav_setup: 'सेटअप गाइड',
+                nav_quiz: 'क्विज़ और नेटवर्क',
+                nav_comparison: 'तुलना',
+                nav_privacy: 'गोपनीयता',
+                nav_contact: 'संपर्क',
+                nav_cta: 'ऐप डाउनलोड',
+                stat_lookup: 'T9 खोज गति',
+                stat_privacy: 'डेटा चोरी (शून्य)',
+                stat_threats: 'स्पैम डेटाबेस',
+                stat_quiz: 'क्विज़ स्तर'
+            },
+            te: {
+                label: 'తెలుగు',
+                hero_pill: 'అధికారిక v1.0.0 విడుదల • ప్రకటనలు లేవు',
+                hero_title: 'ఇంటెలిజెంట్ ఆండ్రాయిడ్ డయలర్.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600">పూర్తి గోప్యత & భద్రత.</span>',
+                hero_sub: '12ms వేగవంతమైన T9 సెర్చ్, తెలియని కాల్స్‌కు ఆరెంజ్ హైలైట్, TRAI 1909 ఫిర్యాదు మరియు 10-అంచెల క్విజ్ నెట్‌వర్క్.',
+                btn_download_zip: 'వెబ్‌సైట్ జిప్ డౌన్‌లోడ్',
+                btn_download_apk: 'యాప్ డౌన్‌లోడ్ (.APK)',
+                btn_explore_guide: 'సెటప్ గైడ్',
+                nav_features: 'ఫీచర్లు',
+                nav_setup: 'సెటప్ గైడ్',
+                nav_quiz: 'క్విజ్ & నెట్‌వర్క్',
+                nav_comparison: 'పోలిక',
+                nav_privacy: 'గోప్యత',
+                nav_contact: 'సంప్రదించండి',
+                nav_cta: 'యాప్ డౌన్‌లోడ్'
+            },
+            ta: {
+                label: 'தமிழ்',
+                hero_pill: 'அதிகாரப்பூர்வ v1.0.0 வெளியீடு • விளம்பரங்கள் இல்லை',
+                hero_title: 'புத்திசாலி ஆண்ட்ராய்டு டயலர்.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600">பாதுகாப்பானது & நம்பகமானது.</span>',
+                hero_sub: '12ms அதிவேக T9 தேடல், தெரியாத அழைப்புகளுக்கு ஆரஞ்சு எச்சரிக்கை, TRAI 1909 புகார் மற்றும் 10-அடுக்கு வினாடி வினா நெட்வொர்க்.',
+                btn_download_zip: 'ஜிப் பதிவிறக்குக',
+                btn_download_apk: 'செயலியை பதிவிறக்குக (.APK)',
+                btn_explore_guide: 'வழிகாட்டி',
+                nav_features: 'அம்சங்கள்',
+                nav_setup: 'அமைப்பு வழிகாட்டி',
+                nav_quiz: 'வினாடி வினா',
+                nav_comparison: 'ஒப்பீடு',
+                nav_privacy: 'தனியுரிமை',
+                nav_contact: 'தொடர்பு',
+                nav_cta: 'செயலி பதிவிறக்கம்'
+            },
+            mr: {
+                label: 'मराठी',
+                hero_pill: 'अधिकृत v1.0.0 रिलीझ • जाहिरातमुक्त',
+                hero_title: 'स्मार्ट अँड्रॉइड टेलिफोनी.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-600 to-purple-600">गोपनीय आणि सुरक्षित.</span>',
+                hero_sub: '१२ms सुपरफास्ट T9 शोध, अनोळखी कॉल्ससाठी ऑरेंज हायलाइट, TRAI १९०९ तक्रार आणि १०-स्तरीय क्विझ नेटवर्क.',
+                btn_download_zip: 'वेबसाइट झिप डाउनलोड',
+                btn_download_apk: 'अ‍ॅप डाउनलोड करा (.APK)',
+                btn_explore_guide: 'मार्गदर्शक',
+                nav_features: 'वैशिष्ट्ये',
+                nav_setup: 'मार्गदर्शक',
+                nav_quiz: 'क्विझ व नेटवर्क',
+                nav_comparison: 'तुलना',
+                nav_privacy: 'गोपनीयता',
+                nav_contact: 'संपर्क',
+                nav_cta: 'अ‍ॅप डाउनलोड'
+            }
+        };
 
-  <footer>
-    <p><strong>ABS Software Solutions</strong> — Developer of IKTA Smart Dialer (<code>com.ikta.iktasmartdialer</code>)</p>
-    <p>Authorized Seller Verification: <a href="/app-ads.txt">app-ads.txt</a> | Support: <a href="mailto:support@abssoftwaresolutions.in">support@abssoftwaresolutions.in</a></p>
-    <p style="margin-top: 0.5rem; font-size: 0.8rem;">&copy; 2026 ABS Software Solutions. All rights reserved.</p>
-  </footer>
+        // Topic Detail Data with Dual-Screen Views (Both Scrolled and Top Views Side-by-Side)
+        const topicDetails = {
+            t9: {
+                title: "12ms SQLite T9 Intelligent Search Engine",
+                badge: "SPEED & DUAL-SIM",
+                desc: "High-performance T9 predictive matching algorithm runs on a dedicated background thread with instant SQLite query indexing. Handles names, numbers, dual-SIM assignment, and recent call history without dropping a single frame.",
+                view1_title: "View 1: Dual-SIM T9 Dialer",
+                view1_img: "screenshots/topic_dialer_dual_sim.png",
+                view2_title: "View 2: Fast Contact Search Results",
+                view2_img: "screenshots/topic_t9_smart_search.png"
+            },
+            trai: {
+                title: "TRAI 1909 Regulatory 1-Tap SMS Complaint",
+                badge: "REGULATORY COMPLIANCE",
+                desc: "Built to adhere to the Telecom Regulatory Authority of India (TRAI) Telecom Commercial Communications Customer Preference Regulations. Pre-populates formatted violation details directly to 1909.",
+                view1_title: "View 1: TRAI 1909 Violation Dialog",
+                view1_img: "screenshots/topic_trai_1909_dialog.png",
+                view2_title: "View 2: Extended TRAI Telecom Settings",
+                view2_img: "screenshots/topic_settings_extended_trai.png"
+            },
+            orange: {
+                title: "Orange Unknown Call Highlighting",
+                badge: "VISUAL THREAT RECOGNITION",
+                desc: "Every incoming, outgoing, or missed call not saved in your verified contacts glows in high-visibility safety orange. Prevents accidental callbacks to premium-rate numbers and scammers.",
+                view1_title: "View 1: Filtered Unknown Orange Call Log",
+                view1_img: "screenshots/topic_unknown_orange_filter.png",
+                view2_title: "View 2: All Call Logs with Color Segregation",
+                view2_img: "screenshots/topic_home_recents.png"
+            },
+            spam: {
+                title: "Crowdsourced Spam & Robocall Protection",
+                badge: "COMMUNITY THREAT REJECTION",
+                desc: "250,000+ threat database actively updated. Choose between Strict, Balanced, and Basic protection levels. Both the threat level controls and live community statistics are shown side-by-side.",
+                view1_title: "View 1: Threat Level Controls (Strict/Balanced)",
+                view1_img: "screenshots/topic_spam_protection_levels_top.png",
+                view2_title: "View 2: Scrolled Community Stats & Auto-Drop Counters",
+                view2_img: "screenshots/topic_spam_protection_stats_scrolled.png"
+            },
+            country: {
+                title: "Default Country Code & International Dialing",
+                badge: "GLOBAL ITU STANDARDS",
+                desc: "Custom ITU dial code configuration. View 1 provides the custom input editor for quick codes (+1, +91, +44, +880); View 2 shows the 240+ global country directory with instant alphabetical search.",
+                view1_title: "View 1: Custom Code Input & Popular Nations",
+                view1_img: "screenshots/topic_country_code_custom_input.png",
+                view2_title: "View 2: Scrolled 240+ Global Nations Directory",
+                view2_img: "screenshots/topic_country_code_extended_list.png"
+            },
+            duplicates: {
+                title: "Address Book Cleaner & Deduplication",
+                badge: "DATA INTEGRITY",
+                desc: "Scans your phonebook across all local and cloud storage accounts. View 1 shows the duplicate numbers scanner; View 2 demonstrates the radio-button conflict merge resolver with 1-tap Save All.",
+                view1_title: "View 1: Duplicate Numbers Tab",
+                view1_img: "screenshots/topic_remove_duplicates_numbers_tab.png",
+                view2_title: "View 2: Duplicate Names Conflict Resolver",
+                view2_img: "screenshots/topic_remove_duplicates_names_merge.png"
+            },
+            blocker: {
+                title: "Call Blocker & Blocked Numbers Manager",
+                badge: "AUTONOMOUS REJECTION",
+                desc: "Prevents unwanted disturbances. View 1 shows the dashboard with auto-drop for unidentified callers; View 2 demonstrates the 1-tap block confirmation dialog from recent call logs.",
+                view1_title: "View 1: Blocker Dashboard & Add Methods",
+                view1_img: "screenshots/topic_call_blocker_dashboard_top.png",
+                view2_title: "View 2: 1-Tap Block Confirmation Dialog",
+                view2_img: "screenshots/topic_call_blocker_confirmation_dialog.png"
+            },
+            theme: {
+                title: "Artistic Wallpapers & Caller ID Privacy",
+                badge: "AESTHETICS & PRIVACY",
+                desc: "View 1 demonstrates the live color selector with 7 caller ID text colors and caller simulation; View 2 details the scrolled catalog of 5 handcrafted artistic wallpapers and custom gallery photo selection.",
+                view1_title: "View 1: Live Color Selector & Simulator",
+                view1_img: "screenshots/topic_theme_appearance_top.png",
+                view2_title: "View 2: Scrolled 5 Handcrafted Wallpapers",
+                view2_img: "screenshots/topic_theme_wallpapers_scrolled.png"
+            }
+        };
 
+        // Language Functions
+        function setLanguage(lang) {
+            const data = i18nData[lang] || i18nData['en'];
+            localStorage.setItem('ikta_lang_preference', lang);
+
+            // Update all data-i18n elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (data[key]) {
+                    el.innerHTML = data[key];
+                }
+            });
+
+            // Update navbar indicator
+            const labelEl = document.getElementById('currentLangLabel');
+            if (labelEl) {
+                labelEl.innerText = data.label || lang.toUpperCase();
+            }
+
+            closeLangModal();
+        }
+
+        function openLangModal() {
+            document.getElementById('langModal').classList.remove('hidden');
+        }
+
+        function closeLangModal() {
+            document.getElementById('langModal').classList.add('hidden');
+        }
+
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('hidden');
+        }
+
+        function setHeroScreen(src, btn) {
+            const img = document.getElementById('heroPhoneImg');
+            img.style.opacity = '0';
+            setTimeout(() => {
+                img.src = src;
+                img.style.opacity = '1';
+            }, 150);
+
+            document.querySelectorAll('.screen-btn').forEach(b => {
+                b.classList.remove('bg-indigo-600', 'text-white');
+                b.classList.add('bg-white', 'text-slate-700');
+            });
+            btn.classList.remove('bg-white', 'text-slate-700');
+            btn.classList.add('bg-indigo-600', 'text-white');
+        }
+
+        function openTopicModal(topicKey) {
+            const topic = topicDetails[topicKey];
+            if (!topic) return;
+
+            const content = `
+                <div class="space-y-6">
+                    <div>
+                        <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-indigo-50 text-indigo-700 border border-indigo-200">${topic.badge}</span>
+                        <h3 class="font-heading font-extrabold text-2xl text-slate-900 mt-2">${topic.title}</h3>
+                        <p class="text-slate-600 text-sm mt-1 leading-relaxed">${topic.desc}</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                        <!-- View 1 -->
+                        <div class="light-card rounded-2xl p-4 border border-slate-200">
+                            <span class="text-xs font-mono font-bold text-indigo-600 mb-2 block">${topic.view1_title}</span>
+                            <div class="rounded-xl overflow-hidden border border-slate-100 bg-slate-900 shadow-sm">
+                                <img src="${topic.view1_img}" alt="${topic.view1_title}" class="w-full h-auto object-cover">
+                            </div>
+                        </div>
+
+                        <!-- View 2 -->
+                        <div class="light-card rounded-2xl p-4 border border-slate-200">
+                            <span class="text-xs font-mono font-bold text-purple-600 mb-2 block">${topic.view2_title}</span>
+                            <div class="rounded-xl overflow-hidden border border-slate-100 bg-slate-900 shadow-sm">
+                                <img src="${topic.view2_img}" alt="${topic.view2_title}" class="w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-500">
+                        <span>Verified authentic Android UI screenshots with zero ads.</span>
+                        <button onclick="closeInspector()" class="px-4 py-2 rounded-lg bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition">Done Inspecting</button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('inspectorContent').innerHTML = content;
+            document.getElementById('inspectorModal').classList.remove('hidden');
+        }
+
+        function closeInspector() {
+            document.getElementById('inspectorModal').classList.add('hidden');
+        }
+
+        // On Page Load: Language Selection Logic
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('ikta_lang_preference');
+            if (savedLang) {
+                setLanguage(savedLang);
+            } else {
+                // Show language selection dialog immediately at first visit!
+                openLangModal();
+            }
+        });
+    </script>
 </body>
 </html>
