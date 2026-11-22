@@ -29,6 +29,35 @@
       padding: 24px 16px;
     }
 
+    .nav-bar-top {
+      max-width: 820px;
+      margin: 0 auto 14px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-bar-top a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #4b5563;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-bar-top a:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      background: #fff0f5;
+    }
+
     .container {
       max-width: 820px;
       margin: 0 auto;
@@ -130,6 +159,11 @@
   </style>
 </head>
 <body>
+  <div class="nav-bar-top">
+    <a href="index.html">← Back to IKTA Smart Dialer Home</a>
+    <a href="privacy_policy.html">Privacy Policy &amp; Safety</a>
+  </div>
+
   <div class="container">
     <header>
       <h1>Child Safety Standards Policy</h1>

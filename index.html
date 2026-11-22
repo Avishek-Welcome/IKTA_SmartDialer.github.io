@@ -211,12 +211,21 @@
                 <a href="quiz.html" class="text-indigo-600 hover:text-indigo-700 transition flex items-center gap-1.5">
                     <i class="fa-solid fa-trophy text-amber-500 text-xs"></i> <span data-i18n="nav_quiz">Quiz & Network</span>
                 </a>
+                <a href="child-safety.html" class="text-rose-700 hover:text-rose-800 transition flex items-center gap-1.5 font-bold bg-rose-50 px-3 py-1 rounded-full border border-rose-200 shadow-sm">
+                    <i class="fa-solid fa-shield-heart text-rose-500 text-xs"></i> <span>Child Safety</span>
+                </a>
                 <a href="#comparison" class="hover:text-indigo-600 transition" data-i18n="nav_comparison">Comparison</a>
                 <a href="contact_us.html" class="hover:text-indigo-600 transition" data-i18n="nav_contact">Contact</a>
             </nav>
 
             <!-- Actions Right -->
             <div class="flex items-center gap-3">
+                <!-- Child Safety Quick Button in Actions Bar -->
+                <a href="child-safety.html" class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg border border-rose-200 bg-rose-50/80 text-rose-700 hover:bg-rose-100 transition shadow-sm">
+                    <i class="fa-solid fa-shield-heart text-rose-500"></i>
+                    <span>Child-safety</span>
+                </a>
+
                 <!-- Language Selector Button in Navbar -->
                 <button onclick="openLangModal()" class="px-3 py-1.5 text-xs font-mono font-bold rounded-lg border border-slate-200 bg-slate-50 text-slate-700 hover:text-indigo-600 hover:border-indigo-400 hover:bg-indigo-50 transition flex items-center gap-2 shadow-sm">
                     <i class="fa-solid fa-globe text-indigo-600"></i>
@@ -241,6 +250,9 @@
             <a href="#hero" onclick="toggleMobileNav()" class="block py-2 hover:text-indigo-600" data-i18n="nav_home">Home Screen</a>
             <a href="#identity-verification" onclick="toggleMobileNav()" class="block py-2 text-emerald-700 font-bold flex items-center gap-2 bg-emerald-50 px-3 rounded-lg border border-emerald-200">
                 <i class="fa-brands fa-whatsapp text-emerald-600"></i> <span data-i18n="nav_identity">Instant Identity Verification</span>
+            </a>
+            <a href="child-safety.html" class="block py-2 text-rose-700 font-bold flex items-center gap-2 bg-rose-50 px-3 rounded-lg border border-rose-200">
+                <i class="fa-solid fa-shield-heart text-rose-600"></i> <span>Child-safety Standards</span>
             </a>
             <a href="#features" onclick="toggleMobileNav()" class="block py-2 hover:text-indigo-600" data-i18n="nav_features">Capabilities</a>
             <a href="setup_guide.html" class="block py-2 hover:text-indigo-600" data-i18n="nav_setup">Setup Guide</a>
@@ -287,7 +299,7 @@
                     </p>
 
                     <!-- Primary & Secondary CTA Buttons (Google Play Only - No Direct APK Download) -->
-                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+                    <div class="flex flex-wrap items-center gap-3 pt-2">
                         <a href="https://play.google.com/store/apps/details?id=com.ikta.iktasmartdialer" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm tracking-wide shadow-lg shadow-slate-900/20 transition hover:-translate-y-0.5">
                             <i class="fa-brands fa-google-play text-emerald-400 text-base"></i>
                             <span data-i18n="btn_google_play">Get on Google Play</span>
@@ -296,6 +308,11 @@
                         <a href="#identity-verification" class="inline-flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold text-sm tracking-wide shadow-sm transition hover:-translate-y-0.5">
                             <i class="fa-brands fa-whatsapp text-emerald-600 text-lg"></i>
                             <span>Instant Verification</span>
+                        </a>
+
+                        <a href="child-safety.html" class="inline-flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-300 font-bold text-sm tracking-wide shadow-sm transition hover:-translate-y-0.5">
+                            <i class="fa-solid fa-shield-heart text-rose-600 text-base"></i>
+                            <span>Child-safety</span>
                         </a>
 
                         <a href="setup_guide.html" class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-sm transition">
@@ -491,6 +508,140 @@
                         </div>
 
                     </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= OFFICIAL PROMO VIDEO & SAFETY STANDARDS SHOWCASE ================= -->
+    <section id="promo-video" class="relative z-10 py-16 lg:py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 border-t border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                <!-- Left Column: High-Impact Video Player in Sleek Smartphone Mockup -->
+                <div class="lg:col-span-5 flex justify-center order-2 lg:order-1">
+                    <div class="relative w-full max-w-sm">
+                        <!-- Soft Atmospheric Glow -->
+                        <div class="absolute -inset-4 bg-gradient-to-tr from-indigo-500/20 via-purple-500/15 to-emerald-500/15 rounded-[44px] blur-2xl -z-10"></div>
+
+                        <!-- Phone Mockup Container -->
+                        <div class="phone-frame-light p-2 shadow-2xl bg-white border border-slate-200/80">
+                            <!-- Inner Display Screen -->
+                            <div class="bg-black rounded-[32px] overflow-hidden relative shadow-inner aspect-[9/16]">
+                                <!-- HTML5 Video Element with Native Poster & Controls -->
+                                <video id="promoVideoPlayer"
+                                       class="w-full h-full object-cover rounded-[30px]"
+                                       poster="screenshots/home_screen.png"
+                                       controls
+                                       playsinline
+                                       preload="metadata">
+                                    <source src="IKTA_Smart_Dialer_Promo_Short.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+
+                                <!-- Top Video Floating Telemetry Badge -->
+                                <div class="absolute top-4 left-3 right-3 flex items-center justify-between pointer-events-none z-10">
+                                    <div class="px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-indigo-400/40 text-[10px] font-mono text-indigo-300 flex items-center gap-1.5 shadow-md">
+                                        <i class="fa-solid fa-play text-[9px] text-emerald-400"></i>
+                                        <span>30s PROMO SHORT</span>
+                                    </div>
+                                    <div class="px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-rose-400/40 text-[10px] font-mono text-rose-300 flex items-center gap-1.5 shadow-md">
+                                        <i class="fa-solid fa-shield-heart text-[9px] text-rose-400"></i>
+                                        <span>CHILD-SAFE</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Control Action Strip -->
+                        <div class="mt-4 flex items-center justify-center gap-3">
+                            <button onclick="document.getElementById('promoVideoPlayer').play()" class="px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-md shadow-indigo-600/20 hover:bg-indigo-700 transition flex items-center gap-2">
+                                <i class="fa-solid fa-play text-xs"></i> Play Short Video
+                            </button>
+                            <a href="IKTA_Smart_Dialer_Promo_Short.mp4" download class="px-3.5 py-2 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-download text-slate-500"></i> Download MP4
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Video Overview & Child-Safety Trust Card -->
+                <div class="lg:col-span-7 space-y-6 order-1 lg:order-2">
+
+                    <!-- Badges -->
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-indigo-200 bg-indigo-50 text-indigo-700 text-xs font-mono font-bold shadow-sm">
+                            <i class="fa-solid fa-film text-indigo-600"></i> OFFICIAL 30-SECOND APP TOUR
+                        </span>
+                        <a href="child-safety.html" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-rose-200 bg-rose-50 text-rose-700 hover:bg-rose-100 text-xs font-mono font-bold shadow-sm transition">
+                            <i class="fa-solid fa-shield-heart text-rose-600"></i> CHILD SAFETY COMPLIANT
+                        </a>
+                    </div>
+
+                    <!-- Headline -->
+                    <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-slate-900 tracking-tight leading-tight">
+                        See IKTA Smart Dialer in Real High-Speed Action
+                    </h2>
+
+                    <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+                        Watch our 30-second official feature demonstration showcasing the lightning-fast 12ms SQLite T9 predictive engine, live WhatsApp identity verification, high-contrast orange unknown caller alerts, 250k+ crowdsourced robocall drop, and TRAI 1909 regulatory engine running on Android.
+                    </p>
+
+                    <!-- Feature Checkpoints Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
+                        <div class="flex items-center gap-3 p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 text-sm">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800">Instant WhatsApp DP & Status Check</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
+                            <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0 text-sm">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800">12ms SQLite T9 Predictive Dialer</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
+                            <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 text-sm">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800">Orange High-Contrast Unknown Alert</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
+                            <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center shrink-0 text-sm">
+                                <i class="fa-solid fa-shield-heart"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800">Strict Child Safety Policy Compliant</span>
+                        </div>
+                    </div>
+
+                    <!-- Safety & Child Protection Spotlight Banner -->
+                    <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-rose-50/90 via-pink-50/80 to-amber-50/80 border border-rose-200 shadow-sm space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-7 h-7 rounded-lg bg-rose-600 text-white flex items-center justify-center text-xs shadow-sm">
+                                    <i class="fa-solid fa-child-reaching"></i>
+                                </div>
+                                <span class="font-bold text-slate-900 text-sm">Zero Tolerance Child Safety Standards</span>
+                            </div>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-rose-200/80 text-rose-800 uppercase">CSAE & CSAM Protection</span>
+                        </div>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            ABS Software enforces strict policies against child sexual abuse and exploitation. All user contacts and logs remain 100% on-device, and community features strictly prohibit inappropriate imagery.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-3 pt-1">
+                            <a href="child-safety.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition shadow-md shadow-rose-600/20">
+                                <i class="fa-solid fa-shield-heart"></i>
+                                <span>Child-safety Policy & Standards</span>
+                            </a>
+                            <a href="privacy_policy.html" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-xs font-semibold transition shadow-sm">
+                                <i class="fa-solid fa-lock text-slate-500"></i>
+                                <span>Privacy & Data Safety</span>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
@@ -838,21 +989,21 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
                 <!-- Google Play Official Release Card -->
-                <div class="light-card rounded-2xl p-8 border-2 border-emerald-100 flex flex-col justify-between">
+                <div class="light-card rounded-2xl p-7 border-2 border-emerald-100 flex flex-col justify-between hover:border-emerald-300 transition">
                     <div class="space-y-4">
                         <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 text-2xl shadow-sm">
                             <i class="fa-brands fa-google-play"></i>
                         </div>
-                        <h3 class="font-heading font-bold text-2xl text-slate-900">Google Play Store (Official Release)</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Install directly from the official Google Play Store with Google Play Protect scanning and automatic background updates. Sideloading from external APK files is strictly blocked for security.
+                        <h3 class="font-heading font-bold text-xl text-slate-900">Google Play Store</h3>
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                            Install directly from the official Google Play Store with Play Protect scanning and automatic background updates. Sideloading blocked.
                         </p>
                         <div class="space-y-2 font-mono text-xs text-slate-600 py-3 border-y border-slate-100">
-                            <div class="flex justify-between"><span>Distribution:</span> <span class="font-bold text-slate-900">Google Play Store Only</span></div>
+                            <div class="flex justify-between"><span>Distribution:</span> <span class="font-bold text-slate-900">Google Play Only</span></div>
                             <div class="flex justify-between"><span>Package ID:</span> <span class="text-indigo-600 font-bold">com.ikta.iktasmartdialer</span></div>
-                            <div class="flex justify-between"><span>Security:</span> <span class="text-emerald-600 font-bold"><i class="fa-solid fa-shield-check"></i> Play Protect Certified</span></div>
+                            <div class="flex justify-between"><span>Security:</span> <span class="text-emerald-600 font-bold"><i class="fa-solid fa-shield-check"></i> Play Protect</span></div>
                         </div>
                     </div>
                     <div class="pt-6">
@@ -862,19 +1013,42 @@
                     </div>
                 </div>
 
+                <!-- Child Safety Standards Compliance Card -->
+                <div class="light-card rounded-2xl p-7 border-2 border-rose-100 flex flex-col justify-between hover:border-rose-300 transition shadow-sm hover:shadow-md">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-rose-50 border border-rose-200 flex items-center justify-center text-rose-600 text-2xl shadow-sm">
+                            <i class="fa-solid fa-shield-heart"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-900">Child Safety Standards Policy</h3>
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                            Absolute zero tolerance against CSAE and CSAM. Age 13+ safeguards, fast reporting mechanisms, and law enforcement escalation.
+                        </p>
+                        <div class="space-y-2 font-mono text-xs text-slate-600 py-3 border-y border-slate-100">
+                            <div class="flex justify-between"><span>Policy:</span> <span class="font-bold text-rose-600">Zero Tolerance CSAE</span></div>
+                            <div class="flex justify-between"><span>Officer:</span> <span class="text-slate-800 font-bold">ABS Software</span></div>
+                            <div class="flex justify-between"><span>Legal:</span> <span class="text-emerald-600 font-bold"><i class="fa-solid fa-check"></i> POCSO / IT Act</span></div>
+                        </div>
+                    </div>
+                    <div class="pt-6">
+                        <a href="child-safety.html" class="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white font-bold text-xs uppercase tracking-wider transition shadow-md shadow-rose-500/25">
+                            <i class="fa-solid fa-shield-heart"></i> Open Child-safety Page
+                        </a>
+                    </div>
+                </div>
+
                 <!-- ZIP Package Card for Website Hosting -->
-                <div class="light-card rounded-2xl p-8 border-2 border-indigo-100 flex flex-col justify-between">
+                <div class="light-card rounded-2xl p-7 border-2 border-indigo-100 flex flex-col justify-between hover:border-indigo-300 transition">
                     <div class="space-y-4">
                         <div class="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-center text-indigo-600 text-xl shadow-sm">
                             <i class="fa-solid fa-file-zipper"></i>
                         </div>
-                        <h3 class="font-heading font-bold text-2xl text-slate-900">Full Website Package (.ZIP)</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
+                        <h3 class="font-heading font-bold text-xl text-slate-900">Full Website Package (.ZIP)</h3>
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
                             Complete standalone multi-lingual website, setup guide, and clean privacy-first screenshots ready to push to GitHub Pages in seconds.
                         </p>
                         <div class="space-y-2 font-mono text-xs text-slate-600 py-3 border-y border-slate-100">
-                            <div class="flex justify-between"><span>Archive Size:</span> <span class="font-bold text-slate-900">~18.0 MB</span></div>
-                            <div class="flex justify-between"><span>Clean Screenshots + GIF:</span> <span class="text-emerald-600 font-bold">69 Files (Verified)</span></div>
+                            <div class="flex justify-between"><span>Archive Size:</span> <span class="font-bold text-slate-900">~29.1 MB</span></div>
+                            <div class="flex justify-between"><span>All Pages & Screens:</span> <span class="text-emerald-600 font-bold">83 Files (Verified)</span></div>
                             <div class="flex justify-between"><span>Hosting:</span> <span class="text-indigo-600 font-bold">GitHub Pages Ready</span></div>
                         </div>
                     </div>
@@ -950,8 +1124,9 @@
 
                 <!-- Col 3: Resources -->
                 <div class="space-y-3">
-                    <span class="text-slate-900 font-bold uppercase tracking-wider text-[11px]">Resources</span>
+                    <span class="text-slate-900 font-bold uppercase tracking-wider text-[11px]">Resources & Compliance</span>
                     <ul class="space-y-2">
+                        <li><a href="child-safety.html" class="text-rose-600 hover:underline font-bold flex items-center gap-1.5"><i class="fa-solid fa-shield-heart text-rose-500"></i> Child-safety Policy</a></li>
                         <li><a href="setup_guide.html" class="hover:text-indigo-600 transition">Setup Guide</a></li>
                         <li><a href="user_manual.html" class="hover:text-indigo-600 transition">Technical Manual</a></li>
                         <li><a href="privacy_policy.html" class="hover:text-indigo-600 transition">Privacy Policy</a></li>
@@ -976,6 +1151,7 @@
             <div class="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-[11px]">
                 <p>© 2026 IKTA Smart Dialer. Strictly compliant with Google Play & Telecom Policies.</p>
                 <div class="flex items-center gap-6">
+                    <a href="child-safety.html" class="text-rose-600 hover:text-rose-700 font-bold transition">Child-safety</a>
                     <a href="privacy_policy.html" class="hover:text-slate-800 transition">Privacy Policy</a>
                     <a href="setup_guide.html" class="hover:text-slate-800 transition">Setup Guide</a>
                     <a href="contact_us.html" class="hover:text-slate-800 transition">Contact Us</a>
